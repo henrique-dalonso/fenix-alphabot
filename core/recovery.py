@@ -63,18 +63,14 @@ class RecoveryManager:
         4. Clica seta direita → seta esquerda (força carregamento dos campos)
         5. Valida que os campos aparecerem
         """
-        # 1. Aceita dialog inicial
         self.aceitar_dialog_pendente(page)
         self._aguardar(800)
 
-        # 2. Seleciona banco e tipo
         if not self._selecionar_banco_tipo(page):
             return False
 
-        # 3. Dialog pós-seleção já foi aceito pelo handler registrado na sessão
         self._aguardar(1_200)
 
-        # 4. Seta direita → seta esquerda (força carregamento)
         return self._forcar_carregamento(page)
 
     def _selecionar_banco_tipo(self, page: Page) -> bool:
@@ -82,7 +78,6 @@ class RecoveryManager:
         banco_val = cfg.get("banco_value", "")
         tipo_val = cfg.get("tipo_value", "")
 
-        # Seleciona banco via JS (sem mover mouse)
         ok_banco = self._js_select(page,
                                    settings.LUNA_SELETORES["banco"],
                                    banco_val)
@@ -90,10 +85,8 @@ class RecoveryManager:
             logger.erro("Banco não encontrado na LUNA.")
             return False
 
-        # Aguarda dialog pós-banco e o select de tipo aparecer
         self._aguardar(1_500)
 
-        # Retry: tipo pode demorar a aparecer após o dialog
         import time as _time
         ok_tipo = False
         inicio = _time.time()
@@ -134,7 +127,6 @@ class RecoveryManager:
     def _clicar_seta(self, page: Page, direcao: str) -> bool:
         seletores = settings.LUNA_SELETORES[f"seta_{direcao}"]
 
-        # Tenta por seletor via JS (sem mover mouse)
         for frame in page.frames:
             for sel in seletores:
                 try:
@@ -172,18 +164,27 @@ class RecoveryManager:
         return False
 
     def _tela_ja_processada(self, page: Page) -> bool:
-        """Verifica se os campos do formulário apareceram."""
-        campos_check = [
-            settings.LUNA_SELETORES["botao_pdf"],
-            settings.LUNA_SELETORES["botao_gravar"],
+        """
+        CORRIGIDO (bug 2): antes verificava botao_pdf/botao_gravar, que
+        continuam presentes na tela mesmo sem caso real (fila vazia) —
+        por isso o recovery achava que a tela já estava pronta quando
+        não estava. Agora verifica os campos de resultado/endereço, que
+        só existem quando a LUNA carregou um caso de verdade. Mesmo
+        critério comprovado no AlphaBot original (validar_tela_processada_luna).
+        """
+        indicadores = [
+            'input[name="valor_grupo_cota"]',
+            'input[name="valor_resultado_cep"]',
+            'input[name="valor_resultado"]',
+            'input[name="valor_resultado_estado"]',
         ]
         for frame in page.frames:
             try:
                 encontrados = sum(
-                    1 for sel in campos_check
+                    1 for sel in indicadores
                     if frame.locator(sel).count() > 0
                 )
-                if encontrados >= 1:
+                if encontrados >= 2:
                     return True
             except Exception:
                 continue
@@ -226,7 +227,14 @@ class RecoveryManager:
         return True
 
     def _aguardar(self, ms: int):
-        """Aguarda em pequenos passos verificando stop_event."""
+        """
+        CORRIGIDO (bug 4): removidas as duas linhas que zeravam
+        _recovery_pendente/_sessao_bloqueada aqui dentro. _aguardar()
+        só deve esperar — quem decide quando essas flags somem é
+        limpar_flags(), chamado explicitamente por caso no engine.
+        Do jeito que estava, qualquer espera no meio de um recovery
+        apagava as flags que o próprio recovery dependia pra funcionar.
+        """
         fim = ms / 1000
         passo = 0.1
         import time
@@ -235,8 +243,6 @@ class RecoveryManager:
             if self._stop.is_set():
                 return
             time.sleep(passo)
-        self._recovery_pendente = False
-        self._sessao_bloqueada = False
 
     @property
     def recovery_pendente(self) -> bool:
@@ -250,7 +256,6 @@ class RecoveryManager:
     # Internos
     # -----------------------------------------------------------
     def _js_select(self, page: Page, seletor: str, valor: str) -> bool:
-        """Seleciona opção em um <select> via JavaScript."""
         for frame in page.frames:
             try:
                 ok = frame.evaluate(
@@ -270,6 +275,13 @@ class RecoveryManager:
         return False
 
     def _classificar_dialog(self, mensagem: str) -> str:
+        """
+        CORRIGIDO (bug 3): adicionado o tipo "confirmacao" para dialogs
+        como "Confirma a gravação dos dados preenchidos?". Sem isso,
+        esse dialog caía em "desconhecido", o que prejudica o
+        diagnóstico e os logs de auditoria (bíblia, seção 2.3: nunca
+        esconder erro — inclui não confundir tipos de dialog nos logs).
+        """
         t = self._norm(mensagem)
         if "OCORREU UM ERRO" in t and "REINICI" in t:
             return "recovery"
@@ -281,6 +293,8 @@ class RecoveryManager:
             return "sucesso"
         if any(x in t for x in ("OBRIGATOR", "INVALID", "CAMPO")):
             return "bloqueio"
+        if any(x in t for x in ("DESEJA", "CONFIRMA", "CONFIRMAR", "TEM CERTEZA", "CONTINUAR", "PROSSEGUIR")):
+            return "confirmacao"
         if any(x in t for x in ("ERRO", "FALHA")):
             return "erro"
         return "desconhecido"

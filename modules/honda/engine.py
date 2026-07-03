@@ -131,8 +131,6 @@ class HondaEngine(threading.Thread):
             logger.erro("Edge não encontrado.")
             return
 
-        # Verifica se Edge já está aberto como processo externo
-        # (só relevante se o bot NÃO abriu ele — context None)
         if self._context is None and self._edge_ja_aberto():
             confirmado = _messagebox(
                 "Fênix — Edge detectado",
@@ -144,13 +142,11 @@ class HondaEngine(threading.Thread):
                 return
             self._matar_processos_edge()
 
-        # Abre ou reutiliza browser
         if not self._garantir_browser(pw, edge_path):
             return
 
         self._recovery = RecoveryManager(self._stop_ev, modulo="HONDA")
 
-        # Login
         _aceitar = lambda d: d.accept()
         self._page.on("dialog", _aceitar)
         logger.info("Navegando para o login...")
@@ -163,7 +159,6 @@ class HondaEngine(threading.Thread):
             pass
         self._page.on("dialog", self._recovery.criar_handler_dialog("Honda"))
 
-        # Inicializa LUNA
         logger.info("Navegando para a rotina da LUNA...")
         self._navegar_seguro(self._page, settings.ROTINA_LUNA_URL)
         self._aguardar(1_500)
@@ -174,7 +169,6 @@ class HondaEngine(threading.Thread):
 
         logger.sucesso("LUNA pronta. Iniciando processamento...")
 
-        # Loop de casos
         while not self._stop_ev.is_set() and not self._quit_ev.is_set():
             self._processar_um_caso(self._page)
 
@@ -191,13 +185,27 @@ class HondaEngine(threading.Thread):
                 self._page = self._consolidar_aba(self._context)
                 return self._page is not None
             except Exception:
-                logger.info("Browser anterior não responde. Abrindo novo.")
+                # O processo antigo pode ter travado sem liberar o lock do
+                # profile. Se não matarmos ele aqui, o próximo launch_persistent_context
+                # some no singleton do Edge: o Edge novo só abre uma aba
+                # about:blank no processo zumbi e fecha, e o Playwright recebe
+                # "Target page, context or browser has been closed".
+                logger.info("Browser anterior não responde. Encerrando processos residuais...")
                 self._context = None
                 self._page = None
+                self._matar_processos_edge()
 
         logger.info("Abrindo Edge...")
+        self._context = self._lancar_context(pw, edge_path)
+        if self._context is None:
+            return False
+
+        self._page = self._consolidar_aba(self._context)
+        return self._page is not None
+
+    def _lancar_context(self, pw, edge_path: str, tentar_de_novo: bool = True) -> Optional[BrowserContext]:
         try:
-            self._context = pw.chromium.launch_persistent_context(
+            return pw.chromium.launch_persistent_context(
                 user_data_dir=settings.DIR_PERFIL_EDGE,
                 executable_path=edge_path,
                 channel="msedge",
@@ -214,11 +222,12 @@ class HondaEngine(threading.Thread):
                 locale="pt-BR",
             )
         except Exception as e:
+            if tentar_de_novo:
+                logger.aviso(f"Falha ao abrir o Edge ({e}). Encerrando processos residuais e tentando de novo...")
+                self._matar_processos_edge()
+                return self._lancar_context(pw, edge_path, tentar_de_novo=False)
             logger.erro(f"Não foi possível abrir o Edge: {e}")
-            return False
-
-        self._page = self._consolidar_aba(self._context)
-        return self._page is not None
+            return None
 
     def _consolidar_aba(self, context: BrowserContext) -> Optional[Page]:
         abas = context.pages
@@ -344,7 +353,6 @@ class HondaEngine(threading.Thread):
         self._recovery.limpar_flags()
 
         try:
-            # Verifica se há casos na fila antes de qualquer coisa
             if self._fila_vazia(page):
                 if self._pdf_miss_count == 0:
                     logger.aviso("Nenhum caso na fila Honda. Aguardando...")
@@ -387,7 +395,6 @@ class HondaEngine(threading.Thread):
                 self._aguardar(3_000)
                 return
 
-            # PDF encontrado — reseta contador
             self._pdf_miss_count = 0
 
             match = re.search(r"abrirPdf\('(.*?)'\)", onclick)
@@ -463,13 +470,21 @@ class HondaEngine(threading.Thread):
             self._aguardar(2_000)
 
     # -----------------------------------------------------------
-    # Sessão expirada
+    # Sessão expirada / fila vazia
     # -----------------------------------------------------------
     def _fila_vazia(self, page: Page) -> bool:
-        """Retorna True se total=0 (sem casos na fila)."""
+        """
+        CORRIGIDO (bug 1): settings.LUNA_SELETORES["total"] já é o
+        seletor completo 'input[name="total"]'. O código antigo
+        envolvia isso de novo em f'input[name="{...}"]', gerando
+        locator('input[name="input[name="total"]"]') — inválido,
+        nunca encontrava o campo, e por isso a fila vazia nunca era
+        detectada antes de tentar baixar o PDF (causa raiz do caso
+        falso "ERRO NO PDF" sendo gravado com a fila zerada).
+        """
         for frame in page.frames:
             try:
-                loc = frame.locator(f'input[name="{settings.LUNA_SELETORES["total"]}"]').first
+                loc = frame.locator(settings.LUNA_SELETORES["total"]).first
                 if loc.count() > 0:
                     val = loc.input_value(timeout=2_000).strip()
                     return val == "0" or val == ""
@@ -505,7 +520,6 @@ class HondaEngine(threading.Thread):
         m = re.search(r"lido_ok_(.*?)_CONTRATO", pdf_path, re.IGNORECASE)
         if not m:
             return ""
-        # Converte underscores em espaços: "46065_790_2.6" → "46065 790 2.6"
         return m.group(1).replace("_", " ")
 
     def _tratar_pdf_ausente(self, page: Page):
@@ -627,7 +641,8 @@ class HondaEngine(threading.Thread):
     # -----------------------------------------------------------
     def _clicar_gravar(self, page: Page):
         """
-        Fiel ao AlphaBot: handler único local, .click() físico, confirmacao aceita e aguarda sucesso.
+        Fiel ao AlphaBot: handler único local, .click() físico,
+        confirmacao aceita e aguarda sucesso.
         Dialogs esperados:
           1. "Confirma a gravação..." → confirmacao → aceita e aguarda próximo
           2. "Dados gravados com sucesso" → sucesso → retorna True
@@ -668,7 +683,6 @@ class HondaEngine(threading.Thread):
             return None
 
         try:
-            # Localiza botão GRAVAR em qualquer frame
             botao = None
             for frame in page.frames:
                 try:
@@ -691,7 +705,6 @@ class HondaEngine(threading.Thread):
             self._aguardar(250)
             self._verificar_stop()
 
-            # .click() físico — igual ao AlphaBot (JS click não funciona bem com jsGravarDados)
             botao.click(force=True)
             logger.info("GRAVAR clicado.")
 
