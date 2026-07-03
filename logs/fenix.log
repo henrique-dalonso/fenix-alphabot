@@ -1399,3 +1399,60 @@ Call log:
 [2026-07-01 19:54:58] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
 [2026-07-01 19:55:01] [AVISO] STOP solicitado — finalizando tarefa atual...
 [2026-07-01 19:55:01] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-03 16:22:08] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-03 16:23:15] [INFO] Honda iniciando...
+[2026-07-03 16:23:15] [INFO] Browser anterior não responde. Abrindo novo.
+[2026-07-03 16:23:15] [INFO] Abrindo Edge...
+[2026-07-03 16:23:15] [ERRO] Não foi possível abrir o Edge: BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+<launched> pid=1588
+[pid=1588][out] Abrindo em uma sess�o existente do navegador.
+Call log:
+  - <launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+  - <launched> pid=1588
+  - [pid=1588][out] Abrindo em uma sess�o existente do navegador.
+  - [pid=1588] <gracefully close start>
+  - [pid=1588] <kill>
+  - [pid=1588] <will force kill>
+  - [pid=1588] taskkill stderr: ERRO: o processo "1588" n�o foi encontrado.
+  - [pid=1588] <process did exit: exitCode=0, signal=null>
+  - [pid=1588] starting temporary directories cleanup
+  - [pid=1588] finished temporary directories cleanup
+  - [pid=1588] <gracefully close end>
+
+[2026-07-03 16:28:14] [INFO] Honda iniciando...
+[2026-07-03 16:28:15] [INFO] Encerrando processos do Edge...
+[2026-07-03 16:28:17] [INFO] Processos encerrados.
+[2026-07-03 16:28:17] [INFO] Abrindo Edge...
+[2026-07-03 16:28:18] [INFO] Navegando para o login...
+[2026-07-03 16:28:20] [INFO] Faça o login na janela do Edge — o Fênix continuará automaticamente.
+[2026-07-03 16:28:34] [ERRO] Timeout aguardando login: net::ERR_NAME_NOT_RESOLVED
+[2026-07-03 16:28:57] [INFO] Honda iniciando...
+[2026-07-03 16:28:57] [INFO] Reutilizando Edge já aberto.
+[2026-07-03 16:28:57] [INFO] Navegando para o login...
+[2026-07-03 16:28:59] [INFO] Auto-login realizado.
+[2026-07-03 16:29:02] [SUCESSO] Login confirmado.
+[2026-07-03 16:29:02] [INFO] Navegando para a rotina da LUNA...
+[2026-07-03 16:29:05] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-03 16:29:10] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-03 16:29:10] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-03 16:29:14] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-03 16:29:15] [INFO] GRUPO/COTA: 44606.604.2.0
+[2026-07-03 16:29:15] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-03 16:29:15] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-03 16:29:15] [INFO] GRAVAR clicado.
+[2026-07-03 16:29:16] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-03 16:29:16] [ERRO] Falha ao gravar 'FALTANDO ENDERECO'. Pausando.
+[2026-07-03 16:29:16] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-03 16:29:50] [INFO] Honda iniciando...
+[2026-07-03 16:29:50] [INFO] Reutilizando Edge já aberto.
+[2026-07-03 16:29:50] [INFO] Navegando para o login...
+[2026-07-03 16:29:51] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-03 16:29:52] [INFO] Auto-login realizado.
+[2026-07-03 16:29:55] [SUCESSO] Login confirmado.
+[2026-07-03 16:29:55] [INFO] Navegando para a rotina da LUNA...
+[2026-07-03 16:29:56] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-03 16:29:56] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-03 16:29:56] [RECOVERY] Recovery iniciado (falha na inicialização).

@@ -1,7 +1,8 @@
 """
 Ponto de entrada do Fênix.
 
-Executar com: python app.py
+
+Rodar com: python app.py
 """
 
 from ui.main_window import FenixApp
