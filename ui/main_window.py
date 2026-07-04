@@ -1,7 +1,15 @@
 """
-Janela principal do Fênix — v3.
+Janela principal do Fênix — v4.
 
-Mudanças desta versão (a pedido do usuário, vendo os prints da v2):
+Novidades desta versão:
+- Checkbox "Modo de Teste" no painel Honda: quando ativo, o engine
+  abre o PDF fisicamente e pausa antes de GRAVAR, esperando o
+  usuário revisar e confirmar pela barra de confirmação que aparece
+  entre os cartões de status e o log.
+- Checkbox some ao trocar para Volks (lá o fluxo já é manual por
+  padrão) e trava enquanto o bot está em execução.
+
+Histórico (v3):
 - Ícones de módulo (sidebar) agora são as LOGOS reais da Honda/Volks,
   não mais letra "H"/"V".
 - Ícones de ação (engrenagem, tema, campos, gravação, atividade)
@@ -104,7 +112,7 @@ class FenixApp(ctk.CTk):
         self.conteudo = ctk.CTkFrame(self, corner_radius=0)
         self.conteudo.grid(row=0, column=1, sticky="nsew")
         self.conteudo.grid_columnconfigure(0, weight=1)
-        self.conteudo.grid_rowconfigure(2, weight=1)
+        self.conteudo.grid_rowconfigure(3, weight=1)
 
         cabecalho = ctk.CTkFrame(self.conteudo, fg_color="transparent")
         cabecalho.grid(row=0, column=0, sticky="ew", padx=36, pady=(32, 12))
@@ -118,6 +126,16 @@ class FenixApp(ctk.CTk):
             font=theme.FONTE_SUBTITULO, anchor="w"
         )
         self.label_descricao.grid(row=1, column=0, sticky="w", pady=(3, 0))
+
+        # Modo de Teste: pausa antes de gravar, esperando conferência manual.
+        # Só faz sentido pro Honda (Volks já é manual por padrão) — ver
+        # _selecionar_modulo, que esconde/mostra este checkbox.
+        self.modo_teste_var = ctk.BooleanVar(value=False)
+        self.check_modo_teste = ctk.CTkCheckBox(
+            cabecalho, text="Modo de Teste — pausa antes de gravar para conferência",
+            variable=self.modo_teste_var, font=theme.FONTE_LABEL_PEQUENA,
+        )
+        self.check_modo_teste.grid(row=2, column=0, sticky="w", pady=(12, 0))
 
         # Botão circular renderizado como imagem — garante círculo perfeito
         from core.icon_loader import botao_circular
@@ -151,8 +169,33 @@ class FenixApp(ctk.CTk):
         self.cartao_gravar = CartaoStatus(linha_status, theme.ICONE_GRAVAR, "GRAVAÇÃO", self.cores)
         self.cartao_gravar.grid(row=0, column=2, sticky="ew", padx=(10, 0))
 
+        # Barra de confirmação do Modo de Teste — oculta até o engine
+        # sinalizar que está aguardando revisão do usuário.
+        self.frame_confirmacao = ctk.CTkFrame(
+            self.conteudo, fg_color=theme.COR_AVISO, corner_radius=theme.RAIO_PAINEL
+        )
+        self.frame_confirmacao.grid(row=2, column=0, sticky="ew", padx=36, pady=(0, 16))
+        self.frame_confirmacao.grid_columnconfigure(0, weight=1)
+
+        self.label_confirmacao = ctk.CTkLabel(
+            self.frame_confirmacao,
+            text="Revise o PDF e os campos na LUNA. Quando estiver tudo certo, confirme.",
+            font=theme.FONTE_LABEL_PEQUENA, text_color="#ffffff", anchor="w"
+        )
+        self.label_confirmacao.grid(row=0, column=0, sticky="w", padx=18, pady=14)
+
+        self.btn_confirmar = ctk.CTkButton(
+            self.frame_confirmacao, text="✅ Confirmar e Gravar",
+            command=self._confirmar_gravacao_teste,
+            fg_color=theme.COR_SUCESSO, hover_color="#15803d",
+            font=theme.FONTE_BOTAO,
+        )
+        self.btn_confirmar.grid(row=0, column=1, sticky="e", padx=18, pady=10)
+
+        self.frame_confirmacao.grid_remove()
+
         painel_log = ctk.CTkFrame(self.conteudo, corner_radius=theme.RAIO_PAINEL)
-        painel_log.grid(row=2, column=0, sticky="nsew", padx=36, pady=(0, 32))
+        painel_log.grid(row=3, column=0, sticky="nsew", padx=36, pady=(0, 32))
         painel_log.grid_columnconfigure(0, weight=1)
         painel_log.grid_rowconfigure(1, weight=1)
 
@@ -187,6 +230,7 @@ class FenixApp(ctk.CTk):
         self.label_descricao.configure(text_color=c["texto_secundario"])
         self.label_atividade.configure(text_color=c["texto_secundario"])
         self.label_icone_log.configure(image=icone_tingido(theme.ICONE_LOG, c["texto_secundario"], 18))
+        self.check_modo_teste.configure(text_color=c["texto_secundario"])
 
         for cartao in (self.cartao_pdf, self.cartao_campos, self.cartao_gravar):
             cartao.aplicar_tema(c)
@@ -218,9 +262,12 @@ class FenixApp(ctk.CTk):
         if modulo == "HONDA":
             self.label_modulo.configure(text="Honda")
             self.label_descricao.configure(text="Automação completa do início ao fim.")
+            self.check_modo_teste.grid()
         else:
             self.label_modulo.configure(text="Volks")
             self.label_descricao.configure(text="Assistente — preenche e aguarda sua conferência.")
+            self.check_modo_teste.grid_remove()
+            self._mostrar_confirmacao(False)
 
     # -----------------------------------------------------------
     # Execução — sinaliza a thread persistente do engine
@@ -229,7 +276,13 @@ class FenixApp(ctk.CTk):
         self.rodando = not self.rodando
         if self.rodando:
             self._btn_acao_stop()
-            self._engine.play(self._montar_callbacks())
+            modo_teste = bool(self.modo_teste_var.get())
+            if modo_teste:
+                logger.info(
+                    "Modo de Teste ativado — o Fênix vai abrir o PDF e pausar "
+                    "antes de cada GRAVAR para sua conferência."
+                )
+            self._engine.play(self._montar_callbacks(), modo_teste=modo_teste)
             # Monitora quando o engine para para atualizar o botão
             self.after(300, self._verificar_engine_parado)
         else:
@@ -237,6 +290,7 @@ class FenixApp(ctk.CTk):
             self._engine.stop()
             self._btn_acao_play()
             self.rodando = False
+            self._mostrar_confirmacao(False)
 
     def _montar_callbacks(self) -> dict:
         return {
@@ -246,27 +300,49 @@ class FenixApp(ctk.CTk):
             "on_campos": lambda v: self.after(0, lambda: self.cartao_campos.atualizar(
                 v.upper(), theme.COR_SUCESSO if "valid" in v else theme.COR_INFO
             )),
-            "on_gravar": lambda v: self.after(0, lambda: self.cartao_gravar.atualizar(
-                v.upper(),
-                theme.COR_SUCESSO if v == "sucesso" else (
-                    theme.COR_RECOVERY if v == "recovery" else theme.COR_ERRO
-                ),
-            )),
+            "on_gravar": lambda v: self.after(0, lambda: self._atualizar_cartao_gravar(v)),
         }
+
+    def _atualizar_cartao_gravar(self, v: str):
+        if v == "aguardando":
+            self.cartao_gravar.atualizar(v.upper(), theme.COR_AVISO)
+            self._mostrar_confirmacao(True)
+            return
+
+        self.cartao_gravar.atualizar(
+            v.upper(),
+            theme.COR_SUCESSO if v == "sucesso" else (
+                theme.COR_RECOVERY if v == "recovery" else theme.COR_ERRO
+            ),
+        )
+        self._mostrar_confirmacao(False)
+
+    def _mostrar_confirmacao(self, mostrar: bool):
+        if mostrar:
+            self.frame_confirmacao.grid()
+        else:
+            self.frame_confirmacao.grid_remove()
+
+    def _confirmar_gravacao_teste(self):
+        self._engine.confirmar("gravar")
+        self._mostrar_confirmacao(False)
 
     def _verificar_engine_parado(self):
         """Polling leve: detecta quando engine para e restaura o botão."""
         if self.rodando and not self._engine.rodando:
             self.rodando = False
             self._btn_acao_play()
+            self._mostrar_confirmacao(False)
         elif self.rodando:
             self.after(300, self._verificar_engine_parado)
 
     def _btn_acao_play(self):
         self.btn_acao.configure(image=self._img_play)
+        self.check_modo_teste.configure(state="normal")
 
     def _btn_acao_stop(self):
         self.btn_acao.configure(image=self._img_stop)
+        self.check_modo_teste.configure(state="disabled")
 
     def _ao_fechar_janela(self):
         self._engine.quit()

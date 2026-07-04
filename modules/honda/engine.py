@@ -1,11 +1,26 @@
 """
-modules/honda/engine.py — Motor Honda v5.
+modules/honda/engine.py — Motor Honda v8.
 
 Arquitetura corrigida: engine é uma Thread persistente.
 - Playwright roda SEMPRE na mesma thread (requisito do sync API).
 - Browser abre uma vez e fica aberto entre sessões (STOP não fecha).
 - Play/Stop são eventos de sinalização, não criam novas threads.
 - Quit (fechar app) fecha o browser e encerra a thread.
+
+Novidades desta versão:
+- CORRIGIDO: handler de dialog do recovery ficava acumulado entre
+  sessões (Play → Stop → Play), já que o Edge/página são reaproveitados
+  e o handler antigo nunca era removido. Cada novo Play empilhava mais
+  um listener de dialog em cima dos anteriores, causando
+  "Cannot accept dialog which is already handled" (handlers de
+  sessões passadas competindo pelo mesmo dialog). Agora o handler
+  atual é guardado e removido explicitamente antes de registrar um
+  novo, a cada sessão.
+
+Histórico (v7):
+- Limpa também o campo "valor_nome" (além de "valor_nome2").
+- Corrigido bug de handler de dialog duplicado em _clicar_gravar que
+  causava ~15-20s de atraso entre o GRAVAR e o próximo caso.
 """
 
 import re
@@ -47,9 +62,14 @@ class HondaEngine(threading.Thread):
     Ciclo de vida:
         __init__ → start() [app inicia]
             → dorme esperando play_event
-        play(callbacks) → acorda → processa casos → dorme
+        play(callbacks, modo_teste=False) → acorda → processa casos → dorme
         stop()          → pausa (browser fica aberto)
         quit()          → encerra thread e fecha browser
+
+    Modo de teste:
+        confirmar("gravar") → chamado pela UI quando o usuário
+        revisou o caso e autoriza a gravação. Sem essa confirmação,
+        o engine nunca clica em GRAVAR.
     """
 
     def __init__(self):
@@ -66,22 +86,46 @@ class HondaEngine(threading.Thread):
         self._context: Optional[BrowserContext] = None
         self._page: Optional[Page] = None
 
+        # Handler de dialog da sessão atual — guardado para poder ser
+        # removido no início da próxima sessão (evita acúmulo quando o
+        # Edge/página são reaproveitados entre Play/Stop/Play).
+        self._dialog_handler_atual: Optional[Callable] = None
+
+        # Modo de teste (conferência manual antes de gravar)
+        self._modo_teste = False
+        self._confirmar_ev = threading.Event()
+        self._acao_pendente: Optional[str] = None
+
     # -----------------------------------------------------------
     # API para a UI
     # -----------------------------------------------------------
-    def play(self, callbacks: dict):
+    def play(self, callbacks: dict, modo_teste: bool = False):
         self._callbacks = callbacks
+        self._modo_teste = modo_teste
         self._stop_ev.clear()
         self._play_ev.set()
 
     def stop(self):
         self._stop_ev.set()
+        # Se estava pausado esperando confirmação, desbloqueia a espera.
+        self._confirmar_ev.set()
 
     def quit(self):
         """Chamado ao fechar o app — encerra thread e fecha browser."""
         self._quit_ev.set()
         self._stop_ev.set()
+        self._confirmar_ev.set()
         self._play_ev.set()  # desbloqueia o wait
+
+    def confirmar(self, acao: str = "gravar"):
+        """
+        Chamado pela UI (thread principal) quando o usuário revisou o
+        caso em modo de teste e decidiu a ação. Único valor tratado
+        hoje: "gravar". Qualquer outro valor faz o engine pular a
+        gravação desse caso por segurança.
+        """
+        self._acao_pendente = acao
+        self._confirmar_ev.set()
 
     @property
     def rodando(self) -> bool:
@@ -122,6 +166,8 @@ class HondaEngine(threading.Thread):
     # -----------------------------------------------------------
     def _sessao(self, pw):
         logger.info("Honda iniciando...")
+        if self._modo_teste:
+            logger.info("MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.")
         self._atualizar("on_status", "iniciando")
 
         edge_path = next(
@@ -145,6 +191,19 @@ class HondaEngine(threading.Thread):
         if not self._garantir_browser(pw, edge_path):
             return
 
+        # Remove o handler de dialog de uma sessão anterior, se ainda
+        # estiver preso na página (acontece quando o Edge é reaproveitado
+        # entre Play/Stop/Play). Sem isso, os handlers se acumulam e cada
+        # dialog é processado por handlers de sessões antigas + a atual
+        # ao mesmo tempo, causando "Cannot accept dialog which is already
+        # handled" no console a cada novo Play.
+        if self._dialog_handler_atual is not None:
+            try:
+                self._page.remove_listener("dialog", self._dialog_handler_atual)
+            except Exception:
+                pass
+            self._dialog_handler_atual = None
+
         self._recovery = RecoveryManager(self._stop_ev, modulo="HONDA")
 
         _aceitar = lambda d: d.accept()
@@ -157,7 +216,10 @@ class HondaEngine(threading.Thread):
             self._page.remove_listener("dialog", _aceitar)
         except Exception:
             pass
-        self._page.on("dialog", self._recovery.criar_handler_dialog("Honda"))
+
+        handler_recovery = self._recovery.criar_handler_dialog("Honda")
+        self._page.on("dialog", handler_recovery)
+        self._dialog_handler_atual = handler_recovery
 
         logger.info("Navegando para a rotina da LUNA...")
         self._navegar_seguro(self._page, settings.ROTINA_LUNA_URL)
@@ -193,6 +255,7 @@ class HondaEngine(threading.Thread):
                 logger.info("Browser anterior não responde. Encerrando processos residuais...")
                 self._context = None
                 self._page = None
+                self._dialog_handler_atual = None
                 self._matar_processos_edge()
 
         logger.info("Abrindo Edge...")
@@ -250,6 +313,7 @@ class HondaEngine(threading.Thread):
             pass
         self._context = None
         self._page = None
+        self._dialog_handler_atual = None
 
     # -----------------------------------------------------------
     # Login
@@ -397,6 +461,9 @@ class HondaEngine(threading.Thread):
 
             self._pdf_miss_count = 0
 
+            if self._modo_teste:
+                self._abrir_pdf_fisicamente(page)
+
             match = re.search(r"abrirPdf\('(.*?)'\)", onclick)
             if not match:
                 logger.erro("URL do PDF não reconhecida.")
@@ -445,6 +512,15 @@ class HondaEngine(threading.Thread):
                 return
 
             self._atualizar("on_campos", "validados")
+
+            if self._modo_teste:
+                acao = self._aguardar_confirmacao(page)
+                if acao is None:
+                    return  # STOP acionado enquanto aguardava conferência
+                if acao != "gravar":
+                    logger.aviso(f"Ação '{acao}' não reconhecida em modo de teste — caso não será gravado.")
+                    return
+
             self._atualizar("on_gravar", "gravando")
 
             resultado = self._clicar_gravar(page)
@@ -473,15 +549,6 @@ class HondaEngine(threading.Thread):
     # Sessão expirada / fila vazia
     # -----------------------------------------------------------
     def _fila_vazia(self, page: Page) -> bool:
-        """
-        CORRIGIDO (bug 1): settings.LUNA_SELETORES["total"] já é o
-        seletor completo 'input[name="total"]'. O código antigo
-        envolvia isso de novo em f'input[name="{...}"]', gerando
-        locator('input[name="input[name="total"]"]') — inválido,
-        nunca encontrava o campo, e por isso a fila vazia nunca era
-        detectada antes de tentar baixar o PDF (causa raiz do caso
-        falso "ERRO NO PDF" sendo gravado com a fila zerada).
-        """
         for frame in page.frames:
             try:
                 loc = frame.locator(settings.LUNA_SELETORES["total"]).first
@@ -516,6 +583,24 @@ class HondaEngine(threading.Thread):
                 continue
         return None
 
+    def _abrir_pdf_fisicamente(self, page: Page) -> bool:
+        """
+        Modo de teste: clica de verdade no ícone do PDF na LUNA, abrindo
+        o documento visualmente. Independente da extração via requests
+        em baixar_e_extrair_texto — são dois caminhos paralelos.
+        """
+        for frame in page.frames:
+            try:
+                el = frame.locator(settings.LUNA_SELETORES["botao_pdf"]).first
+                if el.count() > 0:
+                    el.click(timeout=3_000)
+                    logger.info("PDF aberto fisicamente para conferência.")
+                    return True
+            except Exception:
+                continue
+        logger.aviso("Não consegui abrir o PDF fisicamente (modo de teste). A extração automática segue normalmente.")
+        return False
+
     def _extrair_grupo_cota(self, pdf_path: str) -> str:
         m = re.search(r"lido_ok_(.*?)_CONTRATO", pdf_path, re.IGNORECASE)
         if not m:
@@ -543,7 +628,11 @@ class HondaEngine(threading.Thread):
     # -----------------------------------------------------------
     def _preencher_campos(self, page: Page, grupo_cota: str, dados: dict) -> bool:
         self._verificar_stop()
+        # Limpa os dois campos possíveis de nome do cliente — nem todo
+        # contrato exibe os dois; _js_set não faz nada (rápido) se o
+        # campo não existir na tela.
         self._js_set(page, settings.LUNA_CAMPOS["nome"], "")
+        self._js_set(page, settings.LUNA_CAMPOS["nome_alt"], "")
         self._js_set(page, settings.LUNA_CAMPOS["cpf_cnpj"], "")
         self._js_set(page, settings.LUNA_CAMPOS["grupo_cota"],
                      parser_honda.normalizar(grupo_cota, preservar_ponto=True))
@@ -637,15 +726,43 @@ class HondaEngine(threading.Thread):
         return None
 
     # -----------------------------------------------------------
+    # Confirmação manual (modo de teste)
+    # -----------------------------------------------------------
+    def _aguardar_confirmacao(self, page: Page) -> Optional[str]:
+        """
+        Bloqueia (verificando STOP) até a UI chamar confirmar(). Nunca
+        clica em GRAVAR sem essa confirmação explícita quando o modo
+        de teste está ativo.
+        """
+        self._confirmar_ev.clear()
+        self._acao_pendente = None
+        logger.info(
+            "MODO DE TESTE: aguardando sua conferência. Revise o PDF e os "
+            "campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix."
+        )
+        self._atualizar("on_gravar", "aguardando")
+
+        while not self._confirmar_ev.is_set():
+            if self._stop_ev.is_set() or self._quit_ev.is_set():
+                logger.info("STOP acionado enquanto aguardava sua conferência.")
+                return None
+            time.sleep(0.1)
+
+        return self._acao_pendente
+
+    # -----------------------------------------------------------
     # Gravação
     # -----------------------------------------------------------
     def _clicar_gravar(self, page: Page):
         """
-        Fiel ao AlphaBot: handler único local, .click() físico,
-        confirmacao aceita e aguarda sucesso.
         Dialogs esperados:
-          1. "Confirma a gravação..." → confirmacao → aceita e aguarda próximo
-          2. "Dados gravados com sucesso" → sucesso → retorna True
+          1. "Confirma a gravação..." → confirmacao
+          2. "Dados gravados com sucesso" → sucesso
+
+        O handler local abaixo NÃO chama dialog.accept() — a sessão já
+        tem um handler global (self._dialog_handler_atual) registrado,
+        que é o único responsável por aceitar qualquer dialog da
+        página. O handler local só observa e classifica.
         """
         alertas = []
 
@@ -655,12 +772,9 @@ class HondaEngine(threading.Thread):
                 if tipo == "recovery":
                     self._recovery._recovery_pendente = True
                 logger.info(f"Alerta GRAVAR ({tipo}): {dialog.message[:80]}")
-                dialog.accept()
                 alertas.append((tipo, dialog.message))
             except Exception as e:
-                err = str(e)
-                if "already handled" not in err and "Cannot accept" not in err:
-                    logger.erro(f"Erro no alerta de gravação: {e}")
+                logger.erro(f"Erro ao classificar alerta de gravação: {e}")
 
         def avaliar() -> Optional[bool]:
             if any(t == "recovery" for t, _ in alertas):
@@ -739,6 +853,7 @@ class HondaEngine(threading.Thread):
     # -----------------------------------------------------------
     def _gravar_marcacao(self, page: Page, grupo_cota: str, marcacao: str):
         self._js_set(page, settings.LUNA_CAMPOS["nome"], "")
+        self._js_set(page, settings.LUNA_CAMPOS["nome_alt"], "")
         self._js_set(page, settings.LUNA_CAMPOS["cpf_cnpj"], "")
         self._js_set(page, settings.LUNA_CAMPOS["grupo_cota"],
                      parser_honda.normalizar(grupo_cota, preservar_ponto=True))
