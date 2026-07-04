@@ -106,19 +106,24 @@ class RecoveryManager:
         return True
 
     def _forcar_carregamento(self, page: Page) -> bool:
+        """
+        AJUSTADO (pedido do usuário): antes havia um _aguardar(2_000)
+        entre o clique da seta direita e o da seta esquerda, esperando
+        os campos "carregarem" no meio do caminho. Não é necessário —
+        os cliques podem ser feitos direto, um após o outro. Mantém só
+        a espera final antes de validar que a tela carregou de verdade.
+        """
         logger.info("Forçando carregamento: seta direita → seta esquerda...")
 
         if not self._clicar_seta(page, "direita"):
             logger.erro("Seta direita não encontrada.")
             return False
 
-        self._aguardar(2_000)
-        self.aceitar_dialog_pendente(page)
-
         if not self._clicar_seta(page, "esquerda"):
             logger.erro("Seta esquerda não encontrada.")
             return False
 
+        self.aceitar_dialog_pendente(page)
         self._aguardar(2_500)
         self.aceitar_dialog_pendente(page)
 
@@ -165,12 +170,9 @@ class RecoveryManager:
 
     def _tela_ja_processada(self, page: Page) -> bool:
         """
-        CORRIGIDO (bug 2): antes verificava botao_pdf/botao_gravar, que
-        continuam presentes na tela mesmo sem caso real (fila vazia) —
-        por isso o recovery achava que a tela já estava pronta quando
-        não estava. Agora verifica os campos de resultado/endereço, que
-        só existem quando a LUNA carregou um caso de verdade. Mesmo
-        critério comprovado no AlphaBot original (validar_tela_processada_luna).
+        Verifica os campos de resultado/endereço, que só existem quando
+        a LUNA carregou um caso de verdade. Mesmo critério comprovado no
+        AlphaBot original (validar_tela_processada_luna).
         """
         indicadores = [
             'input[name="valor_grupo_cota"]',
@@ -227,14 +229,6 @@ class RecoveryManager:
         return True
 
     def _aguardar(self, ms: int):
-        """
-        CORRIGIDO (bug 4): removidas as duas linhas que zeravam
-        _recovery_pendente/_sessao_bloqueada aqui dentro. _aguardar()
-        só deve esperar — quem decide quando essas flags somem é
-        limpar_flags(), chamado explicitamente por caso no engine.
-        Do jeito que estava, qualquer espera no meio de um recovery
-        apagava as flags que o próprio recovery dependia pra funcionar.
-        """
         fim = ms / 1000
         passo = 0.1
         import time
@@ -275,13 +269,6 @@ class RecoveryManager:
         return False
 
     def _classificar_dialog(self, mensagem: str) -> str:
-        """
-        CORRIGIDO (bug 3): adicionado o tipo "confirmacao" para dialogs
-        como "Confirma a gravação dos dados preenchidos?". Sem isso,
-        esse dialog caía em "desconhecido", o que prejudica o
-        diagnóstico e os logs de auditoria (bíblia, seção 2.3: nunca
-        esconder erro — inclui não confundir tipos de dialog nos logs).
-        """
         t = self._norm(mensagem)
         if "OCORREU UM ERRO" in t and "REINICI" in t:
             return "recovery"

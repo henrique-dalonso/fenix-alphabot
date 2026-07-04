@@ -59,8 +59,15 @@ LUNA_SELETORES = {
 }
 
 # Campos do formulário — mesmo name para Honda e Volks
+#
+# NOTA (ajuste do usuário): a LUNA tem DOIS campos possíveis para nome
+# do cliente — "valor_nome" e "valor_nome2". Nem todo contrato exibe
+# os dois; o Fênix limpa ambos quando presentes, e ignora silenciosamente
+# quando um deles não existir na tela (igual o AlphaBot original fazia
+# com sua lista de candidatos em limpar_nome_cliente()).
 LUNA_CAMPOS = {
     "nome":         "valor_nome2",
+    "nome_alt":     "valor_nome",
     "cpf_cnpj":     "valor_cpf_cnpj",
     "endereco":     "valor_resultado",
     "numero":       "valor_resultado_numero",

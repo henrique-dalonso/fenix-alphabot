@@ -1456,3 +1456,161 @@ Call log:
 [2026-07-03 16:29:56] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
 [2026-07-03 16:29:56] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
 [2026-07-03 16:29:56] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-04 01:26:09] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 01:26:15] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 01:26:15] [INFO] Honda iniciando...
+[2026-07-04 01:26:15] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 01:26:15] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 01:26:15] [INFO] Encerrando processos do Edge...
+[2026-07-04 01:26:17] [INFO] Processos encerrados.
+[2026-07-04 01:26:17] [INFO] Abrindo Edge...
+[2026-07-04 01:26:18] [INFO] Navegando para o login...
+[2026-07-04 01:26:20] [INFO] Auto-login realizado.
+[2026-07-04 01:26:23] [SUCESSO] Login confirmado.
+[2026-07-04 01:26:23] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 01:26:24] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:26:31] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 01:26:31] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:26:36] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 01:26:36] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 01:26:36] [INFO] GRUPO/COTA: 45526.324.1.4
+[2026-07-04 01:26:36] [INFO] Dados: R TENENTE MARIO ALVES, 2 | LIBERDADE | SALVADOR/BA | 40375400
+[2026-07-04 01:26:37] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 01:26:37] [ERRO] Erro inesperado: STOP.
+[2026-07-04 01:26:37] [RECOVERY] Recovery iniciado (erro: STOP.).
+[2026-07-04 01:26:37] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 01:26:46] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 01:26:46] [INFO] Honda iniciando...
+[2026-07-04 01:26:46] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 01:26:46] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 01:26:46] [INFO] Navegando para o login...
+[2026-07-04 01:26:48] [INFO] Auto-login realizado.
+[2026-07-04 01:26:50] [SUCESSO] Login confirmado.
+[2026-07-04 01:26:50] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 01:26:51] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:26:51] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:26:58] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 01:26:58] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:26:58] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:27:03] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 01:27:03] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 01:27:03] [INFO] GRUPO/COTA: 45526.324.1.4
+[2026-07-04 01:27:03] [INFO] Dados: R TENENTE MARIO ALVES, 2 | LIBERDADE | SALVADOR/BA | 40375400
+[2026-07-04 01:27:05] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 01:27:05] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 01:27:30] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 01:27:30] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 01:27:31] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 01:27:31] [INFO] Honda iniciando...
+[2026-07-04 01:27:31] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 01:27:31] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 01:27:31] [INFO] Navegando para o login...
+[2026-07-04 01:27:31] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:27:31] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:27:31] [AVISO] Erro ao tratar dialog: Dialog.accept: Protocol error (Page.handleJavaScriptDialog): No dialog is showing
+[2026-07-04 01:27:31] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:27:31] [AVISO] Erro ao tratar dialog: Dialog.accept: Protocol error (Page.handleJavaScriptDialog): No dialog is showing
+[2026-07-04 01:27:31] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:27:33] [INFO] Auto-login realizado.
+[2026-07-04 01:27:35] [SUCESSO] Login confirmado.
+[2026-07-04 01:27:35] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 01:27:36] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:27:36] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:27:36] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:27:43] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 01:27:43] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:27:43] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:27:43] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:27:48] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 01:27:48] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 01:27:48] [INFO] GRUPO/COTA: 44852.879.3.6
+[2026-07-04 01:27:48] [INFO] Dados: R ANTONINO FREIRE, 861 | CENTRO | ALTOS/PI | 64290000
+[2026-07-04 01:27:50] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 01:27:50] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 01:27:58] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:27:58] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:27:58] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:27:58] [INFO] GRAVAR clicado.
+[2026-07-04 01:27:58] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:27:58] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:27:58] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:27:58] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:27:58] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 01:28:13] [AVISO] Alerta pós-GRAVAR tardio. Tentando dialog pendente...
+[2026-07-04 01:28:18] [INFO] Nenhum alerta após GRAVAR. Seguindo fluxo.
+[2026-07-04 01:28:18] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-04 01:28:18] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 01:28:18] [INFO] GRUPO/COTA: 45567.959.0.3
+[2026-07-04 01:28:19] [INFO] Dados: R DAS ORQUIDEAS, 0 | JARDI | ARIPUANA/MT | 78325000
+[2026-07-04 01:28:20] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 01:28:20] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 01:28:43] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:28:43] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:28:43] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:28:43] [INFO] GRAVAR clicado.
+[2026-07-04 01:28:43] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:28:43] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:28:43] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:28:43] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:28:43] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 01:28:58] [AVISO] Alerta pós-GRAVAR tardio. Tentando dialog pendente...
+[2026-07-04 01:29:03] [INFO] Nenhum alerta após GRAVAR. Seguindo fluxo.
+[2026-07-04 01:29:03] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-04 01:29:03] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 01:29:03] [INFO] GRUPO/COTA: 44445.562.1.3
+[2026-07-04 01:29:04] [INFO] Dados: R 7 DE SETEMBRO, 70 | ITACIBA | CARIACICA/ES | 29150007
+[2026-07-04 01:29:05] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 01:29:05] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 01:37:18] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:37:18] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:37:18] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:37:18] [INFO] GRAVAR clicado.
+[2026-07-04 01:37:18] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:37:18] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:37:18] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:37:18] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:37:18] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 01:37:33] [AVISO] Alerta pós-GRAVAR tardio. Tentando dialog pendente...
+[2026-07-04 01:37:38] [INFO] Nenhum alerta após GRAVAR. Seguindo fluxo.
+[2026-07-04 01:37:38] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-04 01:37:38] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 01:37:38] [INFO] GRUPO/COTA: 45302.325.1.0
+[2026-07-04 01:37:39] [INFO] Dados: R SABARA, 305 | CAMPO NOVO | BARRA DE SAO FRANCISCO/ES | 29800000
+[2026-07-04 01:37:40] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 01:37:40] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 01:48:08] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 01:48:11] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 01:48:11] [INFO] Honda iniciando...
+[2026-07-04 01:48:11] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 01:48:11] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 01:48:11] [INFO] Encerrando processos do Edge...
+[2026-07-04 01:48:13] [INFO] Processos encerrados.
+[2026-07-04 01:48:13] [INFO] Abrindo Edge...
+[2026-07-04 01:48:13] [INFO] Navegando para o login...
+[2026-07-04 01:48:16] [INFO] Auto-login realizado.
+[2026-07-04 01:48:18] [SUCESSO] Login confirmado.
+[2026-07-04 01:48:18] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 01:48:19] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:48:26] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 01:48:26] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:48:29] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 01:48:29] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 01:48:29] [INFO] GRUPO/COTA: 44963.687.1.7
+[2026-07-04 01:48:29] [INFO] Dados: R 8 QD 5 CS 18 CJ JOAQUIM PEDREIRA, 0 | SAO FRANCISCO II | TIMON/MA | 65638300
+[2026-07-04 01:48:31] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 01:48:31] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 01:48:44] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:48:44] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 01:48:44] [INFO] GRAVAR clicado.
+[2026-07-04 01:48:44] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 01:48:44] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 01:48:44] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-04 01:48:44] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 01:48:44] [INFO] GRUPO/COTA: 44963.687.1.7
+[2026-07-04 01:48:45] [INFO] Dados: R 8 QD 5 CS 18 CJ JOAQUIM PEDREIRA, 0 | SAO FRANCISCO II | TIMON/MA | 65638300
+[2026-07-04 01:48:46] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 01:48:46] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
