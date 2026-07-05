@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+data/edge_profile
+
+data/edge_profile_fenix
