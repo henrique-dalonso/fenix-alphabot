@@ -1,7 +1,29 @@
 """
-Janela principal do Fênix — v5.
+Janela principal do Fênix — v7.
 
-Novidades desta versão:
+Novidades desta versão (v7):
+- Callback `on_engine_travado`: quando a thread do engine trava para
+  sempre numa chamada bloqueada do Playwright (ver
+  `modules/honda/engine.py` v21, `_evaluate_com_timeout`) — cenário em
+  que matar o processo do Edge não garante destravar a chamada
+  pendente —, a UI agora abandona essa thread sozinha e cria uma
+  `HondaEngine` nova automaticamente (`_substituir_engine_travado`),
+  restaura o botão Play e mostra o alerta crítico explicando o
+  ocorrido. Antes disso, o único jeito de voltar a operar depois desse
+  travamento era matar o processo do Fênix inteiro — Play e Stop não
+  tinham mais nenhum efeito.
+
+Histórico (v6):
+- Alerta de parada crítica: nova faixa vermelha, sempre visível até o
+  usuário dar Play de novo, mostrando o motivo quando o engine para o
+  Honda por segurança (dados incertos, validação pré-GRAVAR falhou,
+  recovery esgotado — ver `modules/honda/engine.py` v20,
+  `_parar_para_revisao_manual`). Antes, esse tipo de parada só
+  aparecia como mais uma linha no meio do log — fácil de passar
+  despercebida enquanto o robô ficava parado, aguardando o usuário sem
+  que ele soubesse o porquê.
+
+Histórico (v5):
 - `_ao_fechar_janela` agora espera o engine terminar a rotina de
   encerramento (`aguardar_encerramento`) antes de destruir a janela —
   necessário para o handoff do Edge funcionar (ver
@@ -121,7 +143,7 @@ class FenixApp(ctk.CTk):
         self.conteudo = ctk.CTkFrame(self, corner_radius=0)
         self.conteudo.grid(row=0, column=1, sticky="nsew")
         self.conteudo.grid_columnconfigure(0, weight=1)
-        self.conteudo.grid_rowconfigure(3, weight=1)
+        self.conteudo.grid_rowconfigure(4, weight=1)
 
         cabecalho = ctk.CTkFrame(self.conteudo, fg_color="transparent")
         cabecalho.grid(row=0, column=0, sticky="ew", padx=36, pady=(32, 12))
@@ -203,8 +225,30 @@ class FenixApp(ctk.CTk):
 
         self.frame_confirmacao.grid_remove()
 
+        # Alerta de parada crítica — mostrado quando o engine para o
+        # processamento por segurança (dados incertos, validação
+        # pré-GRAVAR falhou, recovery esgotado, etc). Distinto da barra
+        # de confirmação do Modo de Teste: fica visível até o usuário
+        # revisar e dar Play de novo, nunca some sozinho, para garantir
+        # que uma parada de segurança nunca passe despercebida.
+        self.frame_alerta_critico = ctk.CTkFrame(
+            self.conteudo, fg_color=theme.COR_ERRO, corner_radius=theme.RAIO_PAINEL
+        )
+        self.frame_alerta_critico.grid(row=3, column=0, sticky="ew", padx=36, pady=(0, 16))
+        self.frame_alerta_critico.grid_columnconfigure(0, weight=1)
+
+        self.label_alerta_critico = ctk.CTkLabel(
+            self.frame_alerta_critico,
+            text="",
+            font=theme.FONTE_LABEL_PEQUENA, text_color="#ffffff",
+            anchor="w", justify="left", wraplength=760,
+        )
+        self.label_alerta_critico.grid(row=0, column=0, sticky="w", padx=18, pady=14)
+
+        self.frame_alerta_critico.grid_remove()
+
         painel_log = ctk.CTkFrame(self.conteudo, corner_radius=theme.RAIO_PAINEL)
-        painel_log.grid(row=3, column=0, sticky="nsew", padx=36, pady=(0, 32))
+        painel_log.grid(row=4, column=0, sticky="nsew", padx=36, pady=(0, 32))
         painel_log.grid_columnconfigure(0, weight=1)
         painel_log.grid_rowconfigure(1, weight=1)
 
@@ -284,6 +328,14 @@ class FenixApp(ctk.CTk):
     def _alternar_execucao(self):
         self.rodando = not self.rodando
         if self.rodando:
+            if self._engine.travado:
+                # Defesa extra: normalmente `_engine_travado` já troca o
+                # engine assim que a trava é detectada (ver callback
+                # `on_engine_travado`). Isto só age se, por alguma
+                # corrida, o usuário clicar Play antes desse callback
+                # rodar — nunca reaproveita uma thread presa.
+                self._substituir_engine_travado()
+            self.frame_alerta_critico.grid_remove()
             self._btn_acao_stop()
             modo_teste = bool(self.modo_teste_var.get())
             if modo_teste:
@@ -310,7 +362,53 @@ class FenixApp(ctk.CTk):
                 v.upper(), theme.COR_SUCESSO if "valid" in v else theme.COR_INFO
             )),
             "on_gravar": lambda v: self.after(0, lambda: self._atualizar_cartao_gravar(v)),
+            "on_erro_critico": lambda motivo: self.after(0, lambda: self._mostrar_alerta_critico(motivo)),
+            "on_engine_travado": lambda motivo: self.after(0, lambda: self._engine_travado(motivo)),
         }
+
+    def _engine_travado(self, motivo: str):
+        """
+        Chamado quando a thread do engine trava para sempre numa
+        chamada bloqueada do Playwright (ver `HondaEngine.
+        _evaluate_com_timeout` — matar o processo do Edge não garante
+        que a chamada travada retorne). Sem isto, o Fênix ficava com o
+        botão em modo "rodando" indefinidamente: Play e Stop paravam de
+        ter qualquer efeito, porque a única thread do engine nunca mais
+        executava uma linha de código, e o usuário precisava matar o
+        processo do Fênix inteiro para conseguir continuar operando.
+        """
+        logger.aviso("O engine travou de forma irrecuperável — substituindo por uma instância nova.")
+        self.rodando = False
+        self._btn_acao_play()
+        self._mostrar_confirmacao(False)
+        self._mostrar_alerta_critico(
+            f"{motivo} O motor foi reiniciado automaticamente — clique em Play para abrir um novo Edge e continuar."
+        )
+        self._substituir_engine_travado()
+
+    def _substituir_engine_travado(self):
+        """
+        Abandona a thread presa (é daemon — não impede o Fênix de
+        fechar, só fica parada consumindo uma thread ociosa) e cria uma
+        `HondaEngine` nova, pronta para o próximo Play.
+        """
+        from modules.honda.engine import HondaEngine
+        self._engine = HondaEngine()
+        self._engine.start()
+
+    def _mostrar_alerta_critico(self, motivo: str):
+        """
+        Exibe o alerta de parada de segurança — permanece visível até o
+        usuário clicar em Play de novo (ver `_alternar_execucao`), nunca
+        some sozinho. Sem isto, uma parada por dados incertos (validação
+        pré-GRAVAR, recovery esgotado, etc — ver `HondaEngine.
+        _parar_para_revisao_manual`) ficava visível só como mais uma
+        linha no meio do log, fácil de passar despercebida.
+        """
+        self.label_alerta_critico.configure(
+            text=f"⚠ PARADO PARA REVISÃO MANUAL — {motivo}"
+        )
+        self.frame_alerta_critico.grid()
 
     def _atualizar_cartao_gravar(self, v: str):
         if v == "aguardando":
