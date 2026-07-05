@@ -1,41 +1,67 @@
 """
-modules/honda/engine.py — Motor Honda v16.
+modules/honda/engine.py — Motor Honda v17.
 
 Arquitetura: engine é uma Thread persistente.
 - Playwright roda SEMPRE na mesma thread (requisito do sync API).
-- Browser abre uma vez e fica aberto entre sessões (STOP não fecha).
+- Browser abre uma vez e fica aberto entre sessões (STOP não fecha) —
+  e agora também sobrevive ao fechar o Fênix (Quit), de verdade.
 - Play/Stop são eventos de sinalização, não criam novas threads.
-- Quit (fechar app) fecha o Edge automatizado e faz um HANDOFF para um
-  Edge comum com as abas restauradas — ver changelog abaixo.
 
-Novidades desta versão (v16):
-- IMPLEMENTADO handoff do Edge ao fechar o Fênix (solução proposta
-  pelo próprio usuário, viabilizada na ordem tecnicamente correta):
-  como o perfil é PESSOAL e compartilhado, e desde o Chrome/Edge 136 a
-  porta de depuração remota é bloqueada nesse perfil (ver changelog
-  v15), o Edge do Fênix precisa fechar ao encerrar — isso não muda.
-  Mas agora, no `finally` de `run()`, a sequência é: 1) fecha o Edge
-  automatizado de propósito (`context.close()`); 2) para o driver do
-  Playwright (`pw.stop()`); 3) reabre um Edge COMUM (sem nenhuma
-  automação, processo totalmente desanexado via `subprocess.Popen`
-  com `DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP`) no mesmo perfil,
-  com a flag `--restore-last-session`, que força a restauração das
-  abas independente de como o Edge anterior foi fechado. Do ponto de
-  vista do usuário, o Edge "pisca" e volta com tudo que estava aberto
-  — não é persistência de verdade (o processo automatizado morre e um
-  novo assume o perfil), mas resolve o problema prático.
-  IMPORTANTE: só funciona nessa ordem (fechar → abrir). A ideia
-  original do usuário era abrir o novo Edge ANTES de fechar o
-  automatizado, mas o Chromium só permite um dono por perfil — abrir
-  o novo enquanto o antigo ainda vive apenas seria absorvido pelo
-  processo automatizado existente (viraria a mesma instância), então
-  fechar um fecharia o outro do mesmo jeito.
-  Novo método público `aguardar_encerramento(timeout)` — a UI
-  (`ui/main_window.py` v5) precisa chamar isso antes de destruir a
-  janela, senão o processo do Fênix pode morrer no meio dessa rotina,
-  antes do Edge comum ser reaberto. `self._encerrado_ev` (Event) é
-  sinalizado ao final do `finally` de `run()`.
-  NÃO TESTADO AO VIVO AINDA — só validado com `py_compile`.
+Novidades desta versão (v17) — MUDANÇA ESTRUTURAL:
+- MIGRADO de volta para `connect_over_cdp` com Edge rodando como
+  processo DESANEXADO (`subprocess.Popen` com `DETACHED_PROCESS |
+  CREATE_NEW_PROCESS_GROUP`), igual ao padrão do AlphaBot original.
+  Isso só voltou a ser viável porque o perfil do Edge deixou de ser o
+  pessoal do Windows e passou a ser um perfil DEDICADO do Fênix
+  (`settings.DIR_PERFIL_EDGE`, ver changelog v9 de `config/settings.py`)
+  — a restrição do Chrome/Edge 136+ que bloqueia canais de depuração
+  remota (porta ou pipe) só se aplica ao `--user-data-dir` PADRÃO do
+  sistema; um diretório dedicado não sofre essa restrição. Confirmado
+  com o usuário antes de implementar (ver conversa da sessão).
+
+  O que isso resolve, de vez, sem nenhum hack:
+  1. O Edge do Fênix agora SOBREVIVE ao fechamento do app (Quit) —
+     não precisa mais fechar e reabrir um Edge "comum" torcendo pra
+     restaurar abas (hack da v16, removido — ver changelog v16 abaixo,
+     mantido aqui só como histórico). O `finally` de `run()` agora só
+     para o driver do Playwright (`pw.stop()`); o processo do Edge,
+     por ser desanexado, nem percebe.
+  2. Não existe mais checagem/alerta de "Edge já aberto, preciso
+     fechar" nem `_matar_processos_edge()` genérico por nome de
+     imagem — o perfil do Fênix é isolado do perfil pessoal do
+     usuário, então os dois podem ficar abertos ao mesmo tempo sem
+     qualquer conflito. Isso elimina uma fricção que sempre incomodou
+     (precisar fechar todo o Edge pessoal antes de rodar o bot).
+  3. Se algum dia for necessário matar à força o processo do Edge do
+     Fênix (ex: ficou zumbi), agora é feito por PID específico
+     (`_matar_processo_fenix_edge`), nunca mais por `taskkill /IM
+     msedge.exe`, que mataria também o Edge pessoal do usuário — isso
+     seria uma regressão grave e não é mais aceitável agora que os
+     dois perfis coexistem.
+
+  Nova sequência de conexão (`_conectar_edge`): primeiro verifica se a
+  porta de depuração já está respondendo (Edge do Fênix de uma sessão
+  anterior, ainda vivo) — se sim, conecta direto, sem abrir um Edge
+  novo (permite reaproveitar entre reinícios do Fênix, não só entre
+  Play/Stop). Se não, abre o Edge desanexado e aguarda a porta
+  responder (até 20s) antes de conectar via `connect_over_cdp`.
+
+  Removido código morto: `_messagebox`/`ctypes` (só existiam para o
+  alerta "Edge já aberto", que não faz mais sentido) e `_edge_ja_aberto`
+  (checagem genérica de processo, substituída pela checagem de porta).
+
+  AINDA NÃO TESTADO AO VIVO — implementado e revisado, mas depende de
+  validação com um login real na LUNA no novo perfil.
+
+Histórico (v16 — hack removido nesta versão, mantido só como registro):
+- Handoff do Edge ao fechar o Fênix: fechava o Edge automatizado e
+  reabria um Edge "comum" com `--restore-last-session` no mesmo
+  perfil pessoal, pra simular persistência. Só existia por causa da
+  limitação do perfil pessoal (ver v15) — com o perfil dedicado (v17)
+  o problema deixou de existir na raiz, então o hack foi removido por
+  completo, junto com `aguardar_encerramento`/`self._encerrado_ev`
+  (mantidos por compatibilidade com a UI, mas agora resolvem quase
+  instantaneamente, já que não há mais rotina de handoff a esperar).
 
 Histórico (v15):
 - REVERTIDA a mudança estrutural da v14 (`connect_over_cdp` +
@@ -53,14 +79,13 @@ Histórico (v15):
   significa que `connect_over_cdp` é estruturalmente incompatível com
   o requisito do usuário de usar o perfil PESSOAL do Edge — não existe
   ajuste de código que contorne essa restrição do próprio navegador.
+  ESSA CAUSA RAIZ FOI RESOLVIDA NA v17 — o requisito de usar o perfil
+  pessoal deixou de existir (decisão revisitada e confirmada com o
+  usuário), então a limitação em si não se aplica mais.
 
   Voltou-se a `launch_persistent_context` (idêntico à v13): funciona
   de forma confiável com o perfil pessoal, ao custo de o Edge fechar
-  junto com o Fênix de novo (bug original, reaberto). Essa é uma
-  decisão pendente de confirmação do usuário — ver FENIX_STATUS.md
-  seção 2 para as opções apresentadas a ele (aceitar a limitação vs.
-  perfil dedicado do Fênix, que permitiria usar `connect_over_cdp` de
-  verdade).
+  junto com o Fênix de novo (bug original, reaberto).
 
 - MANTIDO da v14 (não tem relação com a causa raiz acima, é uma
   correção independente e válida): CORRIGIDO Stop → Play refazendo
@@ -74,14 +99,12 @@ Histórico (v15):
   `_luna_pronta` é resetado para `False` quando a conexão de browser é
   perdida/recriada (`_garantir_browser`, `_fechar_browser`) ou quando
   uma sessão expirada é detectada em `_processar_um_caso` (força
-  reinicialização completa no próximo Play). Este ponto também ainda
-  não foi validado ao vivo pelo usuário (a v14 quebrou antes dele
-  chegar a testar isso).
+  reinicialização completa no próximo Play).
 
-Histórico (v14 — revertida nesta versão):
-- Tentativa de migrar para `connect_over_cdp` com Edge desanexado via
-  `subprocess.Popen`. Não funcionou — ver explicação da causa raiz
-  acima.
+Histórico (v14):
+- Primeira tentativa de migrar para `connect_over_cdp` com Edge
+  desanexado via `subprocess.Popen`. Não funcionou na época — perfil
+  pessoal (ver causa raiz na v15). Retomada com sucesso na v17.
 
 Histórico (v13):
 - REVERTIDO A PEDIDO DO USUÁRIO (parte da v12): abrir o PDF físico numa
@@ -209,10 +232,11 @@ import json
 import os
 import threading
 import subprocess
-import ctypes
+import urllib.request
+import urllib.error
 from typing import Optional, Callable
 
-from playwright.sync_api import Page, BrowserContext, sync_playwright
+from playwright.sync_api import Page, BrowserContext, Browser, sync_playwright
 
 from config import settings
 from core.browser import OperacaoCancelada
@@ -220,28 +244,6 @@ from core.recovery import RecoveryManager
 from core.logger import logger
 from extraction.pdf_text import baixar_e_extrair_texto, ERRO_PDF
 from extraction.parsers import honda as parser_honda
-
-
-_MB_YESNO         = 0x04
-_MB_ICONWARNING   = 0x30
-_MB_TOPMOST       = 0x40000
-_MB_SETFOREGROUND = 0x10000
-_IDYES = 6
-
-def _messagebox(titulo: str, mensagem: str) -> bool:
-    """
-    Alerta nativo do Windows. Usa MB_TOPMOST + MB_SETFOREGROUND para
-    garantir que a janela realmente ganhe foco e apareça na frente —
-    sem essas flags, o alerta podia abrir atrás da janela do Fênix e
-    passar despercebido (bug relatado: "o alerta não aparece mais").
-    """
-    try:
-        return ctypes.windll.user32.MessageBoxW(
-            0, mensagem, titulo,
-            _MB_YESNO | _MB_ICONWARNING | _MB_TOPMOST | _MB_SETFOREGROUND
-        ) == _IDYES
-    except Exception:
-        return True
 
 
 class HondaEngine(threading.Thread):
@@ -272,8 +274,18 @@ class HondaEngine(threading.Thread):
         self.casos_processados = 0
         self._pdf_miss_count = 0  # controla mensagem de "sem casos"
         self._pw = None
+        self._browser: Optional[Browser] = None
         self._context: Optional[BrowserContext] = None
         self._page: Optional[Page] = None
+
+        # PID do processo do Edge lançado pelo Fênix nesta execução do
+        # app (None se ainda não lançamos nenhum, ou se estamos apenas
+        # reaproveitando um Edge de uma sessão anterior via porta ativa
+        # sem termos lançado nós mesmos). Usado para matar SÓ esse
+        # processo específico se precisar de um reset forçado — nunca
+        # mais um taskkill genérico por nome de imagem (mataria também
+        # o Edge pessoal do usuário, que agora coexiste sem conflito).
+        self._edge_pid: Optional[int] = None
 
         # True quando a LUNA já foi navegada, logada e inicializada
         # (banco/tipo/setas) nesta conexão de browser. Permite que um
@@ -366,30 +378,15 @@ class HondaEngine(threading.Thread):
                     self._play_ev.clear()
                     self._atualizar("on_status", "parado")
         finally:
-            # HANDOFF DO EDGE (solução proposta pelo usuário, viabilizada
-            # na ordem correta): como o perfil é PESSOAL e compartilhado,
-            # o Edge do Fênix precisa fechar ao encerrar — não há como
-            # evitar isso mantendo launch_persistent_context (ver
-            # changelog v15). Só é possível "abrir um Edge novo, sem
-            # conexão" DEPOIS de fechar o antigo, nunca antes: os dois
-            # apontariam pro mesmo perfil ao mesmo tempo, e o Chromium só
-            # permite um dono por perfil — tentar abrir o novo primeiro
-            # apenas seria absorvido pelo processo automatizado existente
-            # (viraria a mesma instância), então fechar um fecharia o
-            # outro do mesmo jeito. Por isso a ordem aqui é: 1) fecha o
-            # Edge automatizado de propósito, 2) reabre um Edge comum
-            # (sem nenhuma automação, processo totalmente desanexado) no
-            # mesmo perfil com --restore-last-session, que força a
-            # restauração das abas independente de como o Edge anterior
-            # foi fechado. Do ponto de vista do usuário, o Edge "pisca" e
-            # volta com tudo que estava aberto — não é persistência de
-            # verdade, mas resolve o problema prático dele.
-            tinha_browser = self._context is not None
-            try:
-                if self._context:
-                    self._context.close()
-            except Exception:
-                pass
+            # Sem handoff: o Edge do Fênix roda como processo desanexado
+            # (ver _lancar_edge_detached) e não tem nenhuma relação de
+            # ciclo de vida com o processo do Fênix ou do Playwright. Ao
+            # encerrar, só paramos o DRIVER do Playwright — isso encerra
+            # a conexão CDP, mas o Edge em si (processo separado) nem
+            # percebe e continua aberto exatamente como estava, pronto
+            # pra ser reconectado no próximo Play (mesmo depois de um
+            # reinício completo do Fênix).
+            self._browser = None
             self._context = None
             self._page = None
 
@@ -397,25 +394,6 @@ class HondaEngine(threading.Thread):
                 pw.stop()
             except Exception:
                 pass
-
-            if tinha_browser:
-                edge_path = next(
-                    (c for c in settings.EDGE_CAMINHOS if os.path.exists(c)), None
-                )
-                if edge_path:
-                    try:
-                        time.sleep(0.6)  # dá tempo do processo antigo liberar o profile
-                        subprocess.Popen(
-                            [edge_path, "--restore-last-session"],
-                            creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP,
-                            stdin=subprocess.DEVNULL,
-                            stdout=subprocess.DEVNULL,
-                            stderr=subprocess.DEVNULL,
-                            close_fds=True,
-                        )
-                        logger.info("Edge comum reaberto com as abas restauradas.")
-                    except Exception as e:
-                        logger.aviso(f"Não consegui reabrir o Edge normalmente: {e}")
 
             self._encerrado_ev.set()
 
@@ -428,30 +406,7 @@ class HondaEngine(threading.Thread):
             logger.info("MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.")
         self._atualizar("on_status", "iniciando")
 
-        edge_path = next(
-            (c for c in settings.EDGE_CAMINHOS if os.path.exists(c)), None
-        )
-        if not edge_path:
-            logger.erro("Edge não encontrado.")
-            return
-
-        # Perfil PESSOAL do usuário (decisão intencional dele) — se o Edge
-        # já estiver aberto, ele PRECISA ser fechado para o Playwright
-        # assumir esse mesmo perfil (é o mesmo user-data-dir, só pode
-        # haver um dono por vez).
-        if self._context is None and self._edge_ja_aberto():
-            confirmado = _messagebox(
-                "Fênix — Edge detectado",
-                "O Edge está aberto no seu perfil pessoal.\n\n"
-                "Preciso fechá-lo para continuar.\n\n"
-                "Deseja continuar?"
-            )
-            if not confirmado:
-                logger.info("Operação cancelada.")
-                return
-            self._matar_processos_edge()
-
-        if not self._garantir_browser(pw, edge_path):
+        if not self._garantir_browser(pw):
             return
 
         # Remove o handler de dialog de uma sessão anterior, se ainda
@@ -529,7 +484,7 @@ class HondaEngine(threading.Thread):
     # -----------------------------------------------------------
     # Browser
     # -----------------------------------------------------------
-    def _garantir_browser(self, pw, edge_path: str) -> bool:
+    def _garantir_browser(self, pw) -> bool:
         if self._context is not None:
             try:
                 _ = self._context.pages
@@ -537,51 +492,108 @@ class HondaEngine(threading.Thread):
                 self._page = self._consolidar_aba(self._context)
                 return self._page is not None
             except Exception:
-                # O processo antigo pode ter travado sem liberar o lock do
-                # profile. Se não matarmos ele aqui, o próximo launch_persistent_context
-                # some no singleton do Edge: o Edge novo só abre uma aba
-                # about:blank no processo zumbi e fecha, e o Playwright recebe
-                # "Target page, context or browser has been closed".
-                logger.info("Browser anterior não responde. Encerrando processos residuais...")
+                logger.info("Conexão anterior com o Edge foi perdida. Reconectando...")
+                self._browser = None
                 self._context = None
                 self._page = None
                 self._dialog_handler_atual = None
                 self._luna_pronta = False
-                self._matar_processos_edge()
 
-        logger.info("Abrindo Edge...")
-        self._context = self._lancar_context(pw, edge_path)
-        if self._context is None:
+        browser = self._conectar_edge(pw)
+        if browser is None:
             return False
 
+        if not browser.contexts:
+            logger.erro("Conectei ao Edge, mas não encontrei nenhum contexto de navegador.")
+            return False
+
+        self._browser = browser
+        self._context = browser.contexts[0]
         self._page = self._consolidar_aba(self._context)
         return self._page is not None
 
-    def _lancar_context(self, pw, edge_path: str, tentar_de_novo: bool = True) -> Optional[BrowserContext]:
+    def _conectar_edge(self, pw, tentar_de_novo: bool = True) -> Optional[Browser]:
+        """
+        Garante um Edge rodando com depuração remota ativa no perfil
+        dedicado do Fênix e conecta o Playwright nele via CDP.
+
+        Se a porta já estiver respondendo (Edge de uma sessão anterior
+        ainda vivo, mesmo depois de fechar/reabrir o Fênix), conecta
+        direto sem abrir um processo novo.
+        """
+        if not self._porta_debug_ativa():
+            edge_path = next(
+                (c for c in settings.EDGE_CAMINHOS if os.path.exists(c)), None
+            )
+            if not edge_path:
+                logger.erro("Edge não encontrado.")
+                return None
+
+            logger.info("Abrindo Edge (perfil dedicado do Fênix)...")
+            if not self._lancar_edge_detached(edge_path):
+                if tentar_de_novo:
+                    logger.aviso("Tentando encerrar o processo e abrir de novo...")
+                    self._matar_processo_fenix_edge()
+                    return self._conectar_edge(pw, tentar_de_novo=False)
+                return None
+        else:
+            logger.info("Edge do Fênix já está aberto. Conectando via CDP...")
+
         try:
-            return pw.chromium.launch_persistent_context(
-                user_data_dir=settings.DIR_PERFIL_EDGE,
-                executable_path=edge_path,
-                channel="msedge",
-                headless=False,
-                args=[
-                    "--start-maximized",
-                    "--disable-blink-features=AutomationControlled",
-                    "--disable-infobars",
-                    "--no-first-run",
-                    "--no-default-browser-check",
-                    "--test-type=gpu",
-                ],
-                no_viewport=True,
-                locale="pt-BR",
+            return pw.chromium.connect_over_cdp(
+                f"http://localhost:{settings.EDGE_DEBUG_PORT}", timeout=8_000
             )
         except Exception as e:
             if tentar_de_novo:
-                logger.aviso(f"Falha ao abrir o Edge ({e}). Encerrando processos residuais e tentando de novo...")
-                self._matar_processos_edge()
-                return self._lancar_context(pw, edge_path, tentar_de_novo=False)
-            logger.erro(f"Não foi possível abrir o Edge: {e}")
+                logger.aviso(f"Falha ao conectar via CDP ({e}). Encerrando e tentando de novo...")
+                self._matar_processo_fenix_edge()
+                return self._conectar_edge(pw, tentar_de_novo=False)
+            logger.erro(f"Não foi possível conectar ao Edge via CDP: {e}")
             return None
+
+    def _lancar_edge_detached(self, edge_path: str) -> bool:
+        """
+        Abre o Edge como processo totalmente independente do Fênix
+        (sobrevive ao fechamento do app), com depuração remota ativa
+        no perfil dedicado. Aguarda a porta responder antes de seguir.
+        """
+        try:
+            processo = subprocess.Popen(
+                [
+                    edge_path,
+                    f"--remote-debugging-port={settings.EDGE_DEBUG_PORT}",
+                    f"--user-data-dir={settings.DIR_PERFIL_EDGE}",
+                    "--start-maximized",
+                    "--no-first-run",
+                    "--no-default-browser-check",
+                ],
+                creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                close_fds=True,
+            )
+            self._edge_pid = processo.pid
+        except Exception as e:
+            logger.erro(f"Não consegui abrir o Edge: {e}")
+            return False
+
+        inicio = time.time()
+        while time.time() - inicio < 20:
+            if self._porta_debug_ativa():
+                return True
+            time.sleep(0.3)
+
+        logger.erro("O Edge não respondeu na porta de depuração a tempo.")
+        return False
+
+    def _porta_debug_ativa(self) -> bool:
+        try:
+            url = f"http://localhost:{settings.EDGE_DEBUG_PORT}/json/version"
+            with urllib.request.urlopen(url, timeout=2) as resp:
+                return resp.status == 200
+        except Exception:
+            return False
 
     def _consolidar_aba(self, context: BrowserContext) -> Optional[Page]:
         """Escolhe a aba da LUNA e fecha todas as demais abas do contexto."""
@@ -598,15 +610,15 @@ class HondaEngine(threading.Thread):
         return aba
 
     def _fechar_browser(self):
-        try:
-            if self._context:
-                self._context.close()
-        except Exception:
-            pass
+        """
+        Usado em caso de erro na sessão — apenas esquece a conexão
+        atual (não mata o processo do Edge). O Edge continua aberto e
+        será reconectado no próximo Play via `_conectar_edge`.
+        """
+        self._browser = None
         self._context = None
         self._page = None
         self._dialog_handler_atual = None
-        self._luna_pronta = False
         self._luna_pronta = False
 
     # -----------------------------------------------------------
@@ -1332,20 +1344,28 @@ class HondaEngine(threading.Thread):
         except Exception as e:
             logger.aviso(f"Aviso ao navegar: {e}")
 
-    @staticmethod
-    def _edge_ja_aberto() -> bool:
-        try:
-            saida = subprocess.check_output(
-                ["tasklist", "/FI", "IMAGENAME eq msedge.exe", "/NH"],
-                stderr=subprocess.DEVNULL, timeout=5,
-            ).decode("utf-8", errors="ignore")
-            return "msedge.exe" in saida.lower()
-        except Exception:
-            return False
-
-    @staticmethod
-    def _matar_processos_edge():
-        logger.info("Encerrando processos do Edge...")
-        subprocess.run(["taskkill", "/F", "/IM", "msedge.exe"], capture_output=True)
-        time.sleep(2.0)
-        logger.info("Processos encerrados.")
+    def _matar_processo_fenix_edge(self):
+        """
+        Mata SÓ o processo do Edge que o Fênix lançou (por PID), nunca
+        por nome de imagem — o perfil pessoal do usuário pode ter Edge
+        aberto ao mesmo tempo, e um taskkill genérico por "msedge.exe"
+        mataria os dois indiscriminadamente. Se não sabemos o PID
+        (ex: era um Edge de uma sessão anterior do Fênix, e este
+        processo Python não foi quem o lançou), não faz nada — mais
+        seguro deixar a reconexão falhar com um erro claro do que
+        arriscar matar processo errado.
+        """
+        if not self._edge_pid:
+            logger.aviso(
+                "Não sei o PID do Edge do Fênix (não fui eu quem abriu). "
+                "Não vou encerrar processos por segurança — feche manualmente "
+                "a janela do Edge do perfil dedicado se necessário."
+            )
+            return
+        logger.info(f"Encerrando o processo do Edge do Fênix (PID {self._edge_pid})...")
+        subprocess.run(
+            ["taskkill", "/F", "/T", "/PID", str(self._edge_pid)], capture_output=True
+        )
+        self._edge_pid = None
+        time.sleep(1.5)
+        logger.info("Processo encerrado.")

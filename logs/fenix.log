@@ -3350,3 +3350,275 @@ Call log:
   - [pid=20268] <gracefully close end>
 
 [2026-07-05 00:26:35] [INFO] Encerrando o Fênix...
+[2026-07-05 00:49:00] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-05 00:49:03] [INFO] Honda iniciando...
+[2026-07-05 00:49:03] [INFO] Conexão anterior com o Edge foi perdida. Reconectando...
+[2026-07-05 00:49:07] [INFO] Abrindo Edge (perfil dedicado do Fênix)...
+[2026-07-05 00:49:09] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-05 00:49:09] [AVISO] Aviso ao navegar: Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://npjur.paschoalotto.com.br/sistema/relatorios/robots/catia_rotina1.php", waiting until "domcontentloaded"
+
+[2026-07-05 00:49:09] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-05 00:49:12] [ERRO] Banco não encontrado na LUNA.
+[2026-07-05 00:49:12] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-05 00:49:12] [RECOVERY] Tentativa 1/3...
+[2026-07-05 00:49:12] [AVISO] Recovery: erro ao navegar para rotina: Page.goto: Target page, context or browser has been closed
+[2026-07-05 00:49:12] [RECOVERY] Tentativa 2/3...
+[2026-07-05 00:49:12] [AVISO] Recovery: erro ao navegar para rotina: Page.goto: Target page, context or browser has been closed
+[2026-07-05 00:49:12] [RECOVERY] Tentativa 3/3...
+[2026-07-05 00:49:12] [AVISO] Recovery: erro ao navegar para rotina: Page.goto: Target page, context or browser has been closed
+[2026-07-05 00:49:12] [ERRO] Recovery falhou 3 vezes. Parado para revisão manual.
+[2026-07-05 00:49:20] [INFO] Honda iniciando...
+[2026-07-05 00:49:20] [INFO] Reutilizando Edge já aberto.
+[2026-07-05 00:49:20] [INFO] Conexão anterior com o Edge foi perdida. Reconectando...
+[2026-07-05 00:49:21] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-05 00:49:24] [INFO] Abrindo Edge (perfil dedicado do Fênix)...
+[2026-07-05 00:49:26] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-05 00:49:28] [INFO] Sessão não encontrada. Navegando para o login...
+[2026-07-05 00:49:30] [INFO] Auto-login realizado.
+[2026-07-05 00:49:33] [SUCESSO] Login confirmado.
+[2026-07-05 00:49:33] [INFO] Navegando para a rotina da LUNA...
+[2026-07-05 00:49:34] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-05 00:49:45] [INFO] Honda iniciando...
+[2026-07-05 00:49:45] [INFO] Reutilizando Edge já aberto.
+[2026-07-05 00:49:45] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-05 00:49:46] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-05 00:49:53] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-05 00:49:53] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-05 00:49:56] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-05 00:49:56] [INFO] GRUPO/COTA: 44976.213.0.0
+[2026-07-05 00:49:56] [INFO] Encerrando o Fênix...
+[2026-07-05 00:50:12] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-05 00:50:16] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-05 00:50:16] [INFO] Honda iniciando...
+[2026-07-05 00:50:16] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-05 00:50:16] [INFO] Conexão anterior com o Edge foi perdida. Reconectando...
+[2026-07-05 00:50:20] [INFO] Abrindo Edge (perfil dedicado do Fênix)...
+[2026-07-05 00:50:22] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-05 00:50:23] [INFO] Sessão não encontrada. Navegando para o login...
+[2026-07-05 00:50:26] [INFO] Auto-login realizado.
+[2026-07-05 00:50:28] [SUCESSO] Login confirmado.
+[2026-07-05 00:50:28] [INFO] Navegando para a rotina da LUNA...
+[2026-07-05 00:50:36] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-05 00:50:36] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-05 00:50:38] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-05 00:50:38] [INFO] GRUPO/COTA: 45989.237.1.5
+[2026-07-05 00:50:38] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-05 00:50:40] [INFO] Dados: R NEWTON BELLO, 805 | AEROPORTO | SAO BENTO/MA | 65235000
+[2026-07-05 00:50:42] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:50:42] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-05 00:50:56] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:50:56] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:50:56] [INFO] GRAVAR clicado.
+[2026-07-05 00:50:56] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:50:56] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:50:57] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-05 00:50:57] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:50:58] [INFO] GRUPO/COTA: 44672.565.0.0
+[2026-07-05 00:50:58] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-05 00:51:00] [INFO] Dados: AV MOACIR BRAGA COUTINHO, 74 | PERPETUO SOCORRO | MACAPA/AP | 68905820
+[2026-07-05 00:51:01] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:51:01] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-05 00:51:24] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:51:24] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:51:24] [INFO] GRAVAR clicado.
+[2026-07-05 00:51:25] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:51:25] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:51:25] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-05 00:51:25] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:51:26] [INFO] GRUPO/COTA: 44553.240.1.2
+[2026-07-05 00:51:26] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-05 00:51:28] [INFO] Dados: TV CODOZINHO, 56 | CODOZINHO | APICUM ACU/MA | 65275000
+[2026-07-05 00:51:30] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:51:30] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-05 00:51:40] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:51:40] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:51:40] [INFO] GRAVAR clicado.
+[2026-07-05 00:51:41] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:51:41] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:51:41] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-05 00:51:41] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:51:42] [INFO] GRUPO/COTA: 44703.922.1.0
+[2026-07-05 00:51:42] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-05 00:51:44] [INFO] Dados: RAM 19 DE MAIO, 508 | NOVA BRASILIA | SANTANA/AP | 68927335
+[2026-07-05 00:51:46] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:51:46] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-05 00:52:01] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:52:01] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:52:01] [INFO] GRAVAR clicado.
+[2026-07-05 00:52:01] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:52:01] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:52:01] [SUCESSO] Caso gravado. Total sessão: 4
+
+[2026-07-05 00:52:02] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:52:03] [INFO] GRUPO/COTA: 44374.047.0.0
+[2026-07-05 00:52:03] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-05 00:52:05] [INFO] Dados: AV WILSON TAVARES RIBEIRO, 980 | CHS R S TEREZINHA | CONTAGEM/MG | 32183680
+[2026-07-05 00:52:06] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:52:06] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-05 00:52:17] [INFO] Encerrando o Fênix...
+[2026-07-05 00:52:17] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-05 00:52:27] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-05 00:52:31] [INFO] Honda iniciando...
+[2026-07-05 00:52:31] [INFO] Conexão anterior com o Edge foi perdida. Reconectando...
+[2026-07-05 00:52:35] [INFO] Abrindo Edge (perfil dedicado do Fênix)...
+[2026-07-05 00:52:37] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-05 00:52:38] [INFO] Sessão não encontrada. Navegando para o login...
+[2026-07-05 00:52:41] [INFO] Auto-login realizado.
+[2026-07-05 00:52:43] [SUCESSO] Login confirmado.
+[2026-07-05 00:52:43] [INFO] Navegando para a rotina da LUNA...
+[2026-07-05 00:52:51] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-05 00:52:51] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-05 00:52:54] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-05 00:52:54] [INFO] GRUPO/COTA: 44976.213.0.0
+[2026-07-05 00:52:54] [INFO] Dados: CJ HAB SEN TEOTONIO B VILELA, 12 | MATA DO ROLO | RIO LARGO/AL | 57100000
+[2026-07-05 00:52:56] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:52:56] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:52:56] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:52:56] [INFO] GRAVAR clicado.
+[2026-07-05 00:52:57] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:52:57] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:52:57] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-05 00:52:58] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:52:59] [INFO] GRUPO/COTA: 45755.611.1.5
+[2026-07-05 00:52:59] [INFO] Dados: VICINAL LUCIENE, 0 | ZONA RURAL | OURILANDIA DO NORTE/PA | 68390000
+[2026-07-05 00:53:01] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:53:01] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:53:01] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:53:01] [INFO] GRAVAR clicado.
+[2026-07-05 00:53:02] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:53:02] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:53:02] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-05 00:53:02] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:53:03] [INFO] GRUPO/COTA: 44374.047.0.0
+[2026-07-05 00:53:04] [INFO] Dados: AV WILSON TAVARES RIBEIRO, 980 | CHS R S TEREZINHA | CONTAGEM/MG | 32183680
+[2026-07-05 00:53:06] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:53:06] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:53:06] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:53:06] [INFO] GRAVAR clicado.
+[2026-07-05 00:53:06] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-05 00:53:06] [ERRO] Gravação falhou. Pausando.
+[2026-07-05 00:53:06] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-05 00:53:09] [INFO] Honda iniciando...
+[2026-07-05 00:53:09] [INFO] Reutilizando Edge já aberto.
+[2026-07-05 00:53:09] [SUCESSO] Retomando sessão já inicializada da LUNA — pulando login e seleção de banco/tipo.
+[2026-07-05 00:53:09] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:53:09] [INFO] GRUPO/COTA: 44374.047.0.0
+[2026-07-05 00:53:10] [INFO] Dados: AV WILSON TAVARES RIBEIRO, 980 | CHS R S TEREZINHA | CONTAGEM/MG | 32183680
+[2026-07-05 00:53:11] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:53:12] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:53:12] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:53:12] [INFO] GRAVAR clicado.
+[2026-07-05 00:53:12] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:53:12] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:53:12] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-05 00:53:12] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:53:13] [INFO] GRUPO/COTA: 45693.359.1.0
+[2026-07-05 00:53:14] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-05 00:53:14] [INFO] Dados: AVPERIMETRAL, 0 | JARDIM PRIMAVERA | REDENCAO/PA | 68550000
+[2026-07-05 00:53:14] [ERRO] Erro inesperado: STOP.
+[2026-07-05 00:53:14] [RECOVERY] Recovery iniciado (erro: STOP.).
+[2026-07-05 00:53:14] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-05 00:53:15] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-05 00:53:15] [INFO] Honda iniciando...
+[2026-07-05 00:53:15] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-05 00:53:15] [INFO] Reutilizando Edge já aberto.
+[2026-07-05 00:53:15] [SUCESSO] Retomando sessão já inicializada da LUNA — pulando login e seleção de banco/tipo.
+[2026-07-05 00:53:15] [INFO] GRUPO/COTA: 45693.359.1.0
+[2026-07-05 00:53:15] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-05 00:53:17] [INFO] Dados: AVPERIMETRAL, 0 | JARDIM PRIMAVERA | REDENCAO/PA | 68550000
+[2026-07-05 00:53:19] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:53:19] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-05 00:53:30] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:53:30] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:53:30] [INFO] GRAVAR clicado.
+[2026-07-05 00:53:30] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:53:30] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:53:30] [SUCESSO] Caso gravado. Total sessão: 4
+
+[2026-07-05 00:53:31] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:53:32] [INFO] GRUPO/COTA: 45553.068.0.1
+[2026-07-05 00:53:32] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-05 00:53:34] [INFO] Dados: AV LONGUINHO V JUNIOR, 259 | ST SUL | COLMEIA/TO | 77725000
+[2026-07-05 00:53:35] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:53:35] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-05 00:53:52] [INFO] Encerrando o Fênix...
+[2026-07-05 00:53:52] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-05 00:53:59] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-05 00:54:08] [INFO] Honda iniciando...
+[2026-07-05 00:54:08] [INFO] Conexão anterior com o Edge foi perdida. Reconectando...
+[2026-07-05 00:54:12] [INFO] Abrindo Edge (perfil dedicado do Fênix)...
+[2026-07-05 00:54:14] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-05 00:54:15] [INFO] Sessão não encontrada. Navegando para o login...
+[2026-07-05 00:54:18] [INFO] Auto-login realizado.
+[2026-07-05 00:54:20] [SUCESSO] Login confirmado.
+[2026-07-05 00:54:20] [INFO] Navegando para a rotina da LUNA...
+[2026-07-05 00:54:28] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-05 00:54:28] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-05 00:54:31] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-05 00:54:31] [INFO] GRUPO/COTA: 45542.780.0.6
+[2026-07-05 00:54:31] [INFO] Dados: R PRINCIPAL, 0 | TURIRANA | APICUM ACU/MA | 65275000
+[2026-07-05 00:54:33] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:54:33] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:33] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:33] [INFO] GRAVAR clicado.
+[2026-07-05 00:54:34] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:54:34] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:54:34] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-05 00:54:34] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:54:35] [INFO] GRUPO/COTA: 44854.212.0.9
+[2026-07-05 00:54:36] [INFO] Dados: R 22, 1 | NOVA ACUCENA | BALSAS/MA | 65800000
+[2026-07-05 00:54:38] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:54:38] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:38] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:38] [INFO] GRAVAR clicado.
+[2026-07-05 00:54:38] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:54:38] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:54:39] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-05 00:54:39] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:54:40] [INFO] GRUPO/COTA: 44814.786.1.3
+[2026-07-05 00:54:41] [INFO] Dados: RUA 46 112 LT 10 CS 01, 0 | JARDIM AURENY III | PALMAS/TO | 77060128
+[2026-07-05 00:54:42] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:54:43] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:43] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:43] [INFO] GRAVAR clicado.
+[2026-07-05 00:54:43] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:54:43] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:54:43] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-05 00:54:44] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:54:45] [INFO] GRUPO/COTA: 44632.295.1.7
+[2026-07-05 00:54:46] [INFO] Dados: R LIRIO, 170 | PALMEIRA 1 | TUCUMA/PA | 68385000
+[2026-07-05 00:54:47] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:54:47] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:47] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:47] [INFO] GRAVAR clicado.
+[2026-07-05 00:54:48] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-05 00:54:48] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-05 00:54:48] [SUCESSO] Caso gravado. Total sessão: 4
+
+[2026-07-05 00:54:49] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-05 00:54:50] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-05 00:54:50] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-05 00:54:52] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-05 00:54:52] [INFO] Honda iniciando...
+[2026-07-05 00:54:52] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-05 00:54:52] [INFO] Reutilizando Edge já aberto.
+[2026-07-05 00:54:52] [SUCESSO] Retomando sessão já inicializada da LUNA — pulando login e seleção de banco/tipo.
+[2026-07-05 00:54:52] [INFO] GRUPO/COTA: 45941.788.0.2
+[2026-07-05 00:54:52] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-05 00:54:53] [INFO] Dados: R AUGUSTO MATIELLO, 0 | SAO JOAO PETROPOLIS | SANTA TERESA/ES | 29650000
+[2026-07-05 00:54:55] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-05 00:54:55] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-05 00:54:55] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-05 00:55:42] [INFO] Encerrando o Fênix...
+[2026-07-05 00:55:42] [INFO] Honda encerrada. Edge permanece aberto.
