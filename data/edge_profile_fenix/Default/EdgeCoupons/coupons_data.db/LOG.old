@@ -1,6 +1,0 @@
-2026/07/05-00:52:40.541 3198 Reusing MANIFEST C:\Users\cabri\Desktop\Projetos\Fênix\Fenix\data\edge_profile_fenix\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
-2026/07/05-00:52:40.542 3198 Recovering log #10
-2026/07/05-00:52:40.543 3198 Reusing old log C:\Users\cabri\Desktop\Projetos\Fênix\Fenix\data\edge_profile_fenix\Default\EdgeCoupons/coupons_data.db/000010.log 
-2026/07/05-00:52:40.610 2104 Level-0 table #14: started
-2026/07/05-00:52:40.614 2104 Level-0 table #14: 683072 bytes OK
-2026/07/05-00:52:40.617 2104 Delete type=0 #10

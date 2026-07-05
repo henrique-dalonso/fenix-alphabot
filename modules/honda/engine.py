@@ -1,5 +1,5 @@
 """
-modules/honda/engine.py — Motor Honda v17.
+modules/honda/engine.py — Motor Honda v18.
 
 Arquitetura: engine é uma Thread persistente.
 - Playwright roda SEMPRE na mesma thread (requisito do sync API).
@@ -7,7 +7,28 @@ Arquitetura: engine é uma Thread persistente.
   e agora também sobrevive ao fechar o Fênix (Quit), de verdade.
 - Play/Stop são eventos de sinalização, não criam novas threads.
 
-Novidades desta versão (v17) — MUDANÇA ESTRUTURAL:
+Novidades desta versão (v18) — CORREÇÃO PONTUAL, nada da v17 mudou de
+comportamento (validada ao vivo pelo usuário: Honda rodando redondo,
+Edge sobrevivendo ao fechar o Fênix, reconexão funcionando):
+- CORRIGIDO: console inundado com centenas de repetições de
+  `greenlet.error: cannot switch to a different thread (which happens
+  to have exited)` ao fechar o Fênix. Causa: o `finally` de `run()`
+  chamava `pw.stop()` direto, sem fechar a conexão do `Browser`
+  (`self._browser`) antes — isso derrubava a thread interna do driver
+  do Playwright de forma abrupta, com listeners/tasks internos ainda
+  pendentes (ex: o handler de dialog do `RecoveryManager`), cada um
+  deles gerando um erro ao tentar retomar uma greenlet já encerrada.
+  Correção: `self._browser.close()` é chamado ANTES de `pw.stop()`,
+  dando tempo do Playwright encerrar essas tasks de forma limpa.
+  IMPORTANTE — isso é seguro e NÃO fecha o Edge de verdade: pela
+  documentação oficial do Playwright, `Browser.close()` num browser
+  obtido via `connect_over_cdp` (diferente de um lançado via `launch`)
+  apenas limpa os contextos do lado do Playwright e desconecta do
+  servidor de depuração — o processo externo (nosso Edge desanexado)
+  não é encerrado. A mesma correção foi aplicada em `_fechar_browser`
+  (usado em erro de sessão, não só no Quit) por consistência/higiene.
+
+Histórico (v17) — MUDANÇA ESTRUTURAL, validada ao vivo pelo usuário:
 - MIGRADO de volta para `connect_over_cdp` com Edge rodando como
   processo DESANEXADO (`subprocess.Popen` com `DETACHED_PROCESS |
   CREATE_NEW_PROCESS_GROUP`), igual ao padrão do AlphaBot original.
@@ -50,8 +71,11 @@ Novidades desta versão (v17) — MUDANÇA ESTRUTURAL:
   alerta "Edge já aberto", que não faz mais sentido) e `_edge_ja_aberto`
   (checagem genérica de processo, substituída pela checagem de porta).
 
-  AINDA NÃO TESTADO AO VIVO — implementado e revisado, mas depende de
-  validação com um login real na LUNA no novo perfil.
+  TESTADO AO VIVO PELO USUÁRIO E CONFIRMADO: Honda processando casos
+  reais, Stop→Play preservando `_luna_pronta`, Edge sobrevivendo a
+  fechar/reabrir o Fênix e reconectando na mesma sessão. Único problema
+  encontrado: ruído no console ao fechar o Fênix — corrigido na v18
+  (ver changelog acima).
 
 Histórico (v16 — hack removido nesta versão, mantido só como registro):
 - Handoff do Edge ao fechar o Fênix: fechava o Edge automatizado e
@@ -381,11 +405,36 @@ class HondaEngine(threading.Thread):
             # Sem handoff: o Edge do Fênix roda como processo desanexado
             # (ver _lancar_edge_detached) e não tem nenhuma relação de
             # ciclo de vida com o processo do Fênix ou do Playwright. Ao
-            # encerrar, só paramos o DRIVER do Playwright — isso encerra
-            # a conexão CDP, mas o Edge em si (processo separado) nem
-            # percebe e continua aberto exatamente como estava, pronto
-            # pra ser reconectado no próximo Play (mesmo depois de um
-            # reinício completo do Fênix).
+            # encerrar, só precisamos parar o DRIVER do Playwright — o
+            # Edge em si (processo separado) nem percebe e continua
+            # aberto exatamente como estava, pronto pra ser reconectado
+            # no próximo Play (mesmo depois de um reinício completo do
+            # Fênix).
+            #
+            # CORREÇÃO (relatado pelo usuário: console inundado de
+            # "greenlet.error: cannot switch to a different thread" ao
+            # fechar o Fênix): antes, `pw.stop()` era chamado direto,
+            # sem fechar a conexão do Browser primeiro. Isso derrubava a
+            # thread interna do driver do Playwright de forma abrupta,
+            # com vários listeners/tasks internos ainda pendentes (ex:
+            # o handler de dialog do RecoveryManager) — cada um deles
+            # tentava, ao ser cancelado, retomar uma greenlet que já
+            # tinha sido encerrada, gerando um erro por task pendente.
+            # A correção é chamar `self._browser.close()` ANTES de
+            # `pw.stop()`, dando tempo do Playwright encerrar essas
+            # tasks de forma limpa. Isso é seguro e NÃO fecha o Edge de
+            # verdade: pela documentação oficial do Playwright,
+            # `Browser.close()` em um browser obtido via `connect`/
+            # `connect_over_cdp` (ao contrário de um browser lançado via
+            # `launch`) apenas limpa os contextos do lado do Playwright
+            # e desconecta do servidor de depuração — o processo
+            # externo (nosso Edge desanexado) não é encerrado.
+            try:
+                if self._browser is not None:
+                    self._browser.close()
+            except Exception:
+                pass
+
             self._browser = None
             self._context = None
             self._page = None
@@ -611,10 +660,21 @@ class HondaEngine(threading.Thread):
 
     def _fechar_browser(self):
         """
-        Usado em caso de erro na sessão — apenas esquece a conexão
-        atual (não mata o processo do Edge). O Edge continua aberto e
-        será reconectado no próximo Play via `_conectar_edge`.
+        Usado em caso de erro na sessão — fecha a CONEXÃO do Playwright
+        com o Edge (não o processo do Edge, que fica órfão dessa
+        conexão e continua aberto — ver nota em `Browser.close()` no
+        `finally` de `run()`). Sem fechar a conexão antes de descartar
+        a referência, os listeners internos dela (ex: handler de
+        dialog) ficam pendurados até o garbage collector agir, o que
+        pode causar comportamento inesperado numa reconexão logo em
+        seguida.
         """
+        try:
+            if self._browser is not None:
+                self._browser.close()
+        except Exception:
+            pass
+
         self._browser = None
         self._context = None
         self._page = None
