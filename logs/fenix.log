@@ -1614,3 +1614,1739 @@ Call log:
 [2026-07-04 01:48:45] [INFO] Dados: R 8 QD 5 CS 18 CJ JOAQUIM PEDREIRA, 0 | SAO FRANCISCO II | TIMON/MA | 65638300
 [2026-07-04 01:48:46] [INFO] Validação pré-GRAVAR aprovada.
 [2026-07-04 01:48:46] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 01:59:30] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 01:59:32] [INFO] Honda iniciando...
+[2026-07-04 01:59:32] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 01:59:32] [INFO] Encerrando processos do Edge...
+[2026-07-04 01:59:34] [INFO] Processos encerrados.
+[2026-07-04 01:59:34] [INFO] Abrindo Edge...
+[2026-07-04 01:59:35] [INFO] Navegando para o login...
+[2026-07-04 01:59:40] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 01:59:43] [INFO] Honda iniciando...
+[2026-07-04 01:59:43] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 01:59:43] [INFO] Encerrando processos do Edge...
+[2026-07-04 01:59:45] [INFO] Processos encerrados.
+[2026-07-04 01:59:45] [INFO] Abrindo Edge...
+[2026-07-04 01:59:45] [INFO] Navegando para o login...
+[2026-07-04 01:59:48] [INFO] Auto-login realizado.
+[2026-07-04 01:59:50] [SUCESSO] Login confirmado.
+[2026-07-04 01:59:50] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 01:59:51] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 01:59:58] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 01:59:58] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:00:00] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:00:00] [INFO] GRUPO/COTA: 44819.955.1.0
+[2026-07-04 02:00:01] [INFO] Dados: AV J P BARBOSA, 21 | SETOR SUL | FLORESTA DO ARAGUAIA/PA | 68543000
+[2026-07-04 02:00:03] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:00:03] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:00:03] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:00:03] [INFO] GRAVAR clicado.
+[2026-07-04 02:00:04] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:00:04] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:00:04] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-04 02:00:04] [INFO] GRUPO/COTA: 44819.955.1.0
+[2026-07-04 02:00:05] [INFO] Dados: AV J P BARBOSA, 21 | SETOR SUL | FLORESTA DO ARAGUAIA/PA | 68543000
+[2026-07-04 02:00:06] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:00:06] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:00:06] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:00:06] [INFO] GRAVAR clicado.
+[2026-07-04 02:00:07] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:00:07] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:00:07] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-04 02:00:07] [INFO] GRUPO/COTA: 44380.618.1.4
+[2026-07-04 02:00:08] [INFO] Dados: R PEDRO BARBOSA BELA, 8 | SENADOR ARNON MELO | ARAPIRACA/AL | 57315738
+[2026-07-04 02:00:08] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:00:08] [ERRO] Erro inesperado: STOP.
+[2026-07-04 02:00:08] [RECOVERY] Recovery iniciado (erro: STOP.).
+[2026-07-04 02:00:08] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 02:00:15] [INFO] Honda iniciando...
+[2026-07-04 02:00:15] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:00:15] [INFO] Navegando para o login...
+[2026-07-04 02:00:17] [INFO] Auto-login realizado.
+[2026-07-04 02:00:19] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:00:20] [SUCESSO] Login confirmado.
+[2026-07-04 02:00:20] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 02:00:20] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:00:21] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-04 02:03:56] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 02:03:59] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 02:03:59] [INFO] Honda iniciando...
+[2026-07-04 02:03:59] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 02:03:59] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 02:03:59] [INFO] Encerrando processos do Edge...
+[2026-07-04 02:04:01] [INFO] Processos encerrados.
+[2026-07-04 02:04:01] [INFO] Abrindo Edge...
+[2026-07-04 02:04:02] [INFO] Navegando para o login...
+[2026-07-04 02:04:04] [INFO] Auto-login realizado.
+[2026-07-04 02:04:07] [SUCESSO] Login confirmado.
+[2026-07-04 02:04:07] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 02:04:08] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:04:15] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:04:15] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:04:17] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:04:17] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:04:17] [INFO] GRUPO/COTA: 44780.375.1.7
+[2026-07-04 02:04:18] [INFO] Dados: FAZ TAPERA CONT DE BOMFIM, 340 | CENTRO | ANGUERA/BA | 44670000
+[2026-07-04 02:04:20] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:04:20] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:04:26] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:04:26] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:04:26] [INFO] GRAVAR clicado.
+[2026-07-04 02:04:26] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:04:26] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:04:26] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-04 02:04:27] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:04:27] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:04:27] [INFO] GRUPO/COTA: 45801.065.0.7
+[2026-07-04 02:04:27] [INFO] Dados: R BAHIA, 3739 | SETOR 05 | ARIQUEMES/RO | 76870730
+[2026-07-04 02:04:29] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:04:29] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:04:45] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:04:45] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:04:45] [INFO] GRAVAR clicado.
+[2026-07-04 02:04:45] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:04:45] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:04:45] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-04 02:04:46] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:04:46] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:04:46] [INFO] GRUPO/COTA: 45220.213.1.3
+[2026-07-04 02:04:47] [INFO] Dados: R 30, 151 | VILA CRUZEIRO | CONCEICAO DO ARAGUAIA/PA | 68540000
+[2026-07-04 02:04:48] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:04:48] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:05:16] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:05:16] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:05:16] [INFO] GRAVAR clicado.
+[2026-07-04 02:05:17] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:05:17] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:05:17] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-04 02:05:17] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:05:18] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:05:18] [INFO] GRUPO/COTA: 45118.694.1.8
+[2026-07-04 02:05:18] [INFO] Dados: R GOIFO, 2 | RESIDENCIAL M NEGRO | SAO FELIX DO XINGU/PA | 68380000
+[2026-07-04 02:05:20] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:05:20] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:07:37] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:07:37] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:07:37] [INFO] GRAVAR clicado.
+[2026-07-04 02:07:37] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:07:37] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:07:38] [SUCESSO] Caso gravado. Total sessão: 4
+
+[2026-07-04 02:07:38] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:07:38] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:07:38] [INFO] GRUPO/COTA: 46412.125.0.0
+[2026-07-04 02:07:39] [INFO] Dados: R OLHOS DAGUA, 142 | AREA RURAL | CONEGO MARINHO/MG | 39489000
+[2026-07-04 02:07:39] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:07:39] [ERRO] Erro inesperado: STOP.
+[2026-07-04 02:07:39] [RECOVERY] Recovery iniciado (erro: STOP.).
+[2026-07-04 02:07:39] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 02:08:12] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 02:08:14] [INFO] Honda iniciando...
+[2026-07-04 02:08:14] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 02:08:14] [INFO] Encerrando processos do Edge...
+[2026-07-04 02:08:16] [INFO] Processos encerrados.
+[2026-07-04 02:08:16] [INFO] Abrindo Edge...
+[2026-07-04 02:08:16] [INFO] Navegando para o login...
+[2026-07-04 02:08:19] [INFO] Auto-login realizado.
+[2026-07-04 02:08:21] [SUCESSO] Login confirmado.
+[2026-07-04 02:08:21] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 02:08:21] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:08:22] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:08:24] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:08:24] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-04 02:08:32] [INFO] Honda iniciando...
+[2026-07-04 02:08:32] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:08:32] [INFO] Navegando para o login...
+[2026-07-04 02:08:34] [INFO] Auto-login realizado.
+[2026-07-04 02:08:37] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:08:49] [AVISO] Auto-login não redirecionou. Aguardando login manual...
+[2026-07-04 02:08:49] [INFO] Faça o login na janela do Edge — o Fênix continuará automaticamente.
+[2026-07-04 02:09:39] [SUCESSO] Login detectado.
+[2026-07-04 02:09:39] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 02:09:40] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:09:40] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-04 02:09:56] [INFO] Honda iniciando...
+[2026-07-04 02:09:56] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:09:56] [INFO] Navegando para o login...
+[2026-07-04 02:09:58] [INFO] Auto-login realizado.
+[2026-07-04 02:10:00] [SUCESSO] Login confirmado.
+[2026-07-04 02:10:00] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 02:10:01] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:10:08] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:10:08] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:10:11] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:10:11] [INFO] GRUPO/COTA: 45806.085.0.2
+[2026-07-04 02:10:11] [INFO] Dados: AV PREFEITO BENEDITO ROCHA, 2156 | SAO LUIZ 1 | CONCEICAO DO ARAGUAIA/PA | 68540000
+[2026-07-04 02:10:13] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:13] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:13] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:13] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:14] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:14] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:14] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-04 02:10:14] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:14] [INFO] GRUPO/COTA: 45943.212.0.6
+[2026-07-04 02:10:15] [INFO] Dados: R VALE DO ABARE, 818 | SUSSUARANA | SALVADOR/BA | 41213122
+[2026-07-04 02:10:16] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:17] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:17] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:17] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:17] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:17] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:17] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-04 02:10:18] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:18] [INFO] GRUPO/COTA: 46412.125.0.0
+[2026-07-04 02:10:18] [INFO] Dados: R OLHOS DAGUA, 142 | AREA RURAL | CONEGO MARINHO/MG | 39489000
+[2026-07-04 02:10:20] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:20] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:20] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:20] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:21] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:21] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:21] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-04 02:10:21] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:21] [INFO] GRUPO/COTA: 45721.852.0.1
+[2026-07-04 02:10:22] [INFO] Dados: R IMIGRANTES, 381 | MACHADO MINEIRO | AGUAS VERMELHAS/MG | 39990000
+[2026-07-04 02:10:24] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:24] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:24] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:24] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:24] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:24] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:25] [SUCESSO] Caso gravado. Total sessão: 4
+
+[2026-07-04 02:10:25] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:25] [INFO] GRUPO/COTA: 45635.482.0.2
+[2026-07-04 02:10:26] [INFO] Dados: R FRANCISCO ANTONIO DA SILVA, 25 | AVILA | CATENDE/PE | 55400000
+[2026-07-04 02:10:27] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:28] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:28] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:28] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:28] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:28] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:28] [SUCESSO] Caso gravado. Total sessão: 5
+
+[2026-07-04 02:10:29] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:29] [INFO] GRUPO/COTA: 45326.657.1.5
+[2026-07-04 02:10:29] [INFO] Dados: R ZEZITO BOA VISTA, 1548 | PARQUE JOANA | NAZARIA/PI | 64415000
+[2026-07-04 02:10:31] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:31] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:31] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:31] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:32] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:32] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:32] [SUCESSO] Caso gravado. Total sessão: 6
+
+[2026-07-04 02:10:32] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:32] [INFO] GRUPO/COTA: 44827.846.1.0
+[2026-07-04 02:10:33] [INFO] Dados: R CASTELO BRANCO, 1427 | CENTRO | NOVA OLINDA/TO | 77790000
+[2026-07-04 02:10:35] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:35] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:35] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:35] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:35] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:35] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:35] [SUCESSO] Caso gravado. Total sessão: 7
+
+[2026-07-04 02:10:36] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:36] [INFO] GRUPO/COTA: 45517.603.1.1
+[2026-07-04 02:10:37] [INFO] Dados: EST RURAL, 0 | RURAL | RONDONOPOLIS/MT | 78725170
+[2026-07-04 02:10:38] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:38] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:38] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:38] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:39] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:39] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:39] [SUCESSO] Caso gravado. Total sessão: 8
+
+[2026-07-04 02:10:39] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:40] [INFO] GRUPO/COTA: 44864.754.0.0
+[2026-07-04 02:10:41] [INFO] Dados: R 13, 1159 | POTOZI | BALSAS/MA | 65800000
+[2026-07-04 02:10:42] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:42] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:42] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:42] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:43] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:43] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:43] [SUCESSO] Caso gravado. Total sessão: 9
+
+[2026-07-04 02:10:43] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:44] [INFO] GRUPO/COTA: 45370.686.2.6
+[2026-07-04 02:10:44] [INFO] Dados: R FLORIDA, 359 | AGUA MINERAL | TERESINA/PI | 64006280
+[2026-07-04 02:10:46] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:46] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:46] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:46] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:47] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:47] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:47] [SUCESSO] Caso gravado. Total sessão: 10
+
+[2026-07-04 02:10:47] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:47] [INFO] GRUPO/COTA: 45561.146.0.4
+[2026-07-04 02:10:48] [INFO] Dados: R BERNARDO HOMEM, 0 | RUA VELHA | ALMAS/TO | 77310000
+[2026-07-04 02:10:49] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:50] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:50] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:50] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:50] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:50] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:50] [SUCESSO] Caso gravado. Total sessão: 11
+
+[2026-07-04 02:10:51] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:51] [INFO] GRUPO/COTA: 46514.834.0.4
+[2026-07-04 02:10:51] [INFO] Dados: R BAIANO, 0 | CENTRO | CURURUPU/MA | 65268000
+[2026-07-04 02:10:53] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:53] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:53] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:53] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:54] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:54] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:54] [SUCESSO] Caso gravado. Total sessão: 12
+
+[2026-07-04 02:10:54] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:54] [INFO] GRUPO/COTA: 44800.886.0.9
+[2026-07-04 02:10:55] [INFO] Dados: R ANTONIO LUIZ, 0 | SAO SEBASTIAO | PATOS/PB | 58706040
+[2026-07-04 02:10:57] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:10:57] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:57] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:10:57] [INFO] GRAVAR clicado.
+[2026-07-04 02:10:57] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:10:57] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:10:58] [SUCESSO] Caso gravado. Total sessão: 13
+
+[2026-07-04 02:10:58] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:10:58] [INFO] GRUPO/COTA: 45027.515.1.0
+[2026-07-04 02:10:59] [INFO] Dados: TREVESSA DOS PARECIS, 6733 | BOA ESPERANCA | ROLIM DE MOURA/RO | 76940000
+[2026-07-04 02:11:00] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:01] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:01] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:01] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:01] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:01] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:01] [SUCESSO] Caso gravado. Total sessão: 14
+
+[2026-07-04 02:11:01] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:02] [INFO] GRUPO/COTA: 44829.147.1.9
+[2026-07-04 02:11:02] [INFO] Dados: TV 3 MILTON AMORIN, 12 | ITAPICURU | AMELIA RODRIGUES/BA | 44230000
+[2026-07-04 02:11:04] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:04] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:04] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:04] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:05] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:05] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:05] [SUCESSO] Caso gravado. Total sessão: 15
+
+[2026-07-04 02:11:05] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:05] [INFO] GRUPO/COTA: 44993.553.0.6
+[2026-07-04 02:11:06] [INFO] Dados: R ANAPOLINA, 1792 | LIBERDADE | CACOAL/RO | 76967500
+[2026-07-04 02:11:07] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:08] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:08] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:08] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:08] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:08] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:08] [SUCESSO] Caso gravado. Total sessão: 16
+
+[2026-07-04 02:11:09] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:09] [INFO] GRUPO/COTA: 44607.901.2.9
+[2026-07-04 02:11:09] [INFO] Dados: R LAGOLANDIA, 512 | JARDIM MARILANDIA | VILA VELHA/ES | 29112160
+[2026-07-04 02:11:11] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:11] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:11] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:11] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:12] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:12] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:12] [SUCESSO] Caso gravado. Total sessão: 17
+
+[2026-07-04 02:11:12] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:13] [INFO] GRUPO/COTA: 46074.685.0.3
+[2026-07-04 02:11:13] [INFO] Dados: R 16, 0 | JARDIM SANTO ANTONIO | GOIANIA/GO | 74853290
+[2026-07-04 02:11:15] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:15] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:15] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:15] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:15] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:15] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:16] [SUCESSO] Caso gravado. Total sessão: 18
+
+[2026-07-04 02:11:16] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:16] [INFO] GRUPO/COTA: 45686.749.0.7
+[2026-07-04 02:11:17] [INFO] Dados: R 7 DE SETEMBRO, 0 | PRUDENCIO THOMAZ | RIO BRILHANTE/MS | 79130000
+[2026-07-04 02:11:18] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:19] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:19] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:19] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:19] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:19] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:19] [SUCESSO] Caso gravado. Total sessão: 19
+
+[2026-07-04 02:11:19] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:20] [INFO] GRUPO/COTA: 44827.929.2.3
+[2026-07-04 02:11:20] [INFO] Dados: AV CINCO, 9 | PARQUE CUIABA | CUIABA/MT | 78095000
+[2026-07-04 02:11:22] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:22] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:22] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:22] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:23] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:23] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:23] [SUCESSO] Caso gravado. Total sessão: 20
+
+[2026-07-04 02:11:23] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:23] [INFO] GRUPO/COTA: 44547.823.1.9
+[2026-07-04 02:11:24] [INFO] Dados: POVOADO ALTO DO MEIO, 169 | ALTO DO MEIO RURAL | CAMPO MAIOR/PI | 64280000
+[2026-07-04 02:11:26] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:26] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:26] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:26] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:26] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:26] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:26] [SUCESSO] Caso gravado. Total sessão: 21
+
+[2026-07-04 02:11:27] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:27] [INFO] GRUPO/COTA: 46336.653.0.9
+[2026-07-04 02:11:27] [INFO] Dados: R PARANA, 530 | PARIPE | SALVADOR/BA | 40800440
+[2026-07-04 02:11:29] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:29] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:29] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:29] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:30] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:30] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:30] [SUCESSO] Caso gravado. Total sessão: 22
+
+[2026-07-04 02:11:30] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:31] [INFO] GRUPO/COTA: 46471.732.0.4
+[2026-07-04 02:11:31] [INFO] Dados: R MARIA DOLORES TAVARES BONELLA, 41 | CENTRO | VILA VALERIO/ES | 29785000
+[2026-07-04 02:11:33] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:33] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:33] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:33] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:33] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:33] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:34] [SUCESSO] Caso gravado. Total sessão: 23
+
+[2026-07-04 02:11:34] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:34] [INFO] GRUPO/COTA: 44784.599.0.0
+[2026-07-04 02:11:35] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:35] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:35] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:35] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:35] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:35] [SUCESSO] Caso gravado como 'FALTANDO ENDERECO'.
+[2026-07-04 02:11:36] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:36] [INFO] GRUPO/COTA: 46448.532.0.4
+[2026-07-04 02:11:37] [INFO] Dados: R JATOBA, 0 | INDEFINIDO | NOVO MUNDO/MT | 78528000
+[2026-07-04 02:11:38] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:38] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:38] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:38] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:39] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:39] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:39] [SUCESSO] Caso gravado. Total sessão: 25
+
+[2026-07-04 02:11:39] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:40] [INFO] GRUPO/COTA: 45819.550.0.1
+[2026-07-04 02:11:40] [INFO] Dados: R GOVERNADOR DIVALDO SURUAGY, 260 | CENTRO | JARAMATAIA/AL | 57425000
+[2026-07-04 02:11:42] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:42] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:42] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:42] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:43] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:43] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:43] [SUCESSO] Caso gravado. Total sessão: 26
+
+[2026-07-04 02:11:43] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:43] [INFO] GRUPO/COTA: 45983.217.0.7
+[2026-07-04 02:11:44] [INFO] Dados: R GALDENIO JACINTO, 64 | ALICE GONCALVES | XEXEU/PE | 55555000
+[2026-07-04 02:11:46] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:46] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:46] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:46] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:47] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:47] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:47] [SUCESSO] Caso gravado. Total sessão: 27
+
+[2026-07-04 02:11:47] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:47] [INFO] GRUPO/COTA: 44923.551.0.6
+[2026-07-04 02:11:48] [INFO] Dados: R 3, 0 | INDEFINIDO | VILA RICA/MT | 78645000
+[2026-07-04 02:11:49] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:50] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:50] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:50] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:50] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:50] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:50] [SUCESSO] Caso gravado. Total sessão: 28
+
+[2026-07-04 02:11:51] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:51] [INFO] GRUPO/COTA: 44966.584.0.5
+[2026-07-04 02:11:51] [INFO] Dados: R SAO JOSE, 66 | BARRE | BARREIROS/PE | 55560000
+[2026-07-04 02:11:53] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:53] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:53] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:53] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:54] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:54] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:54] [SUCESSO] Caso gravado. Total sessão: 29
+
+[2026-07-04 02:11:54] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:54] [INFO] GRUPO/COTA: 45161.177.0.8
+[2026-07-04 02:11:55] [INFO] Dados: R IRIRI, 22 | MUTIRAO | ALTAMIRA/PA | 68375607
+[2026-07-04 02:11:57] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:11:57] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:57] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:11:57] [INFO] GRAVAR clicado.
+[2026-07-04 02:11:57] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:11:57] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:11:57] [SUCESSO] Caso gravado. Total sessão: 30
+
+[2026-07-04 02:11:58] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:11:58] [INFO] GRUPO/COTA: 44447.814.0.3
+[2026-07-04 02:11:59] [INFO] Dados: R SAO PEDRO CRENTES BAIRRO RURAL, 0 | RURAL | ESTREITO/MA | 65975000
+[2026-07-04 02:12:00] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:00] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:00] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:00] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:01] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:01] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:01] [SUCESSO] Caso gravado. Total sessão: 31
+
+[2026-07-04 02:12:01] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:02] [INFO] GRUPO/COTA: 44669.620.2.9
+[2026-07-04 02:12:02] [INFO] Dados: AV J MENDONCA, 0 | CENTRO | SANTANA DO ARAGUAIA/PA | 68560000
+[2026-07-04 02:12:04] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:04] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:04] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:04] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:04] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:04] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:05] [SUCESSO] Caso gravado. Total sessão: 32
+
+[2026-07-04 02:12:05] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:05] [INFO] GRUPO/COTA: 44684.496.1.2
+[2026-07-04 02:12:06] [INFO] Dados: PV SAO FRANCISCO SN, 0 | ZONA RURAL | CAMPO MAIOR/PI | 64280000
+[2026-07-04 02:12:07] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:07] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:07] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:07] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:08] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:08] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:08] [SUCESSO] Caso gravado. Total sessão: 33
+
+[2026-07-04 02:12:08] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:09] [INFO] GRUPO/COTA: 45908.587.0.1
+[2026-07-04 02:12:09] [INFO] Dados: R DA COOPERATIVA RUA CURIO 16, 16 | NOVA SANTA LUZIA | SANTA LUZIA/MA | 65390000
+[2026-07-04 02:12:11] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:11] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:11] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:11] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:12] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:12] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:12] [SUCESSO] Caso gravado. Total sessão: 34
+
+[2026-07-04 02:12:12] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:12] [INFO] GRUPO/COTA: 45073.256.1.6
+[2026-07-04 02:12:13] [INFO] Dados: RUA SETE DE SETEMBRO, 41 | CENTRO | GIRAU DO PONCIANO/AL | 57360000
+[2026-07-04 02:12:14] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:15] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:15] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:15] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:15] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:15] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:15] [SUCESSO] Caso gravado. Total sessão: 35
+
+[2026-07-04 02:12:16] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:16] [INFO] GRUPO/COTA: 44818.792.1.9
+[2026-07-04 02:12:16] [INFO] Dados: LT RIACHO DOCE 2 RUA DO ASFALTO, 1 | RIACHO DOCE | MACEIO/AL | 57039425
+[2026-07-04 02:12:18] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:18] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:18] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:18] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:19] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:19] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:19] [SUCESSO] Caso gravado. Total sessão: 36
+
+[2026-07-04 02:12:19] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:19] [INFO] GRUPO/COTA: 45773.869.0.6
+[2026-07-04 02:12:20] [INFO] Dados: AV DOURIVAL COELHO SOARES, 0 | CENTRO | CAMPOS LINDOS/TO | 77777000
+[2026-07-04 02:12:22] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:22] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:22] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:22] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:22] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:22] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:22] [SUCESSO] Caso gravado. Total sessão: 37
+
+[2026-07-04 02:12:23] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:23] [INFO] GRUPO/COTA: 44567.804.1.0
+[2026-07-04 02:12:24] [INFO] Dados: ROD 343 SITIO S VICENTE SN, 0 | GURUPI | TERESINA/PI | 64000000
+[2026-07-04 02:12:25] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:26] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:26] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:26] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:26] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:26] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:26] [SUCESSO] Caso gravado. Total sessão: 38
+
+[2026-07-04 02:12:27] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:27] [INFO] GRUPO/COTA: 44540.413.0.0
+[2026-07-04 02:12:27] [INFO] Dados: AV RAIMUNDO BOTELHO BAIRRO P G L ROCHA, 824 | PARQ GOV LUIS ROCHA | BALSAS/MA | 65800000
+[2026-07-04 02:12:29] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:29] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:29] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:29] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:30] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:30] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:30] [SUCESSO] Caso gravado. Total sessão: 39
+
+[2026-07-04 02:12:30] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:31] [INFO] GRUPO/COTA: 46144.511.0.1
+[2026-07-04 02:12:31] [INFO] Dados: R 34 QD 77 LT 3 CS 1, 0 | JARDIM AURENY III | PALMAS/TO | 77062050
+[2026-07-04 02:12:33] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:33] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:33] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:33] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:33] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:34] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:34] [SUCESSO] Caso gravado. Total sessão: 40
+
+[2026-07-04 02:12:34] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:34] [INFO] GRUPO/COTA: 45525.900.0.2
+[2026-07-04 02:12:35] [INFO] Dados: R RUI BARBOSA, 0 | VILA JAYARA | ANAPOLIS/GO | 75064740
+[2026-07-04 02:12:36] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:37] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:37] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:37] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:37] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:37] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:37] [SUCESSO] Caso gravado. Total sessão: 41
+
+[2026-07-04 02:12:38] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:38] [INFO] GRUPO/COTA: 45556.088.1.6
+[2026-07-04 02:12:38] [INFO] Dados: PV PALMEIRINHA, 20 | PALMEIRINHA | JUNQUEIRO/AL | 57270000
+[2026-07-04 02:12:40] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:40] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:40] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:40] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:41] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:41] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:41] [SUCESSO] Caso gravado. Total sessão: 42
+
+[2026-07-04 02:12:41] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:42] [INFO] GRUPO/COTA: 45027.619.1.4
+[2026-07-04 02:12:42] [INFO] Dados: R PRINCIPAL, 0 | TABULEIRAO | SAO DOMINGOS DO AZEITAO/MA | 65888000
+[2026-07-04 02:12:44] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:44] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:44] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:44] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:45] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:45] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:45] [SUCESSO] Caso gravado. Total sessão: 43
+
+[2026-07-04 02:12:45] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:45] [INFO] GRUPO/COTA: 44715.886.2.3
+[2026-07-04 02:12:46] [INFO] Dados: AV RAIMUNDO TAVARES, 128 | CENTRO | URUCUCA/BA | 45680000
+[2026-07-04 02:12:47] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:48] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:48] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:48] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:48] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:48] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:48] [SUCESSO] Caso gravado. Total sessão: 44
+
+[2026-07-04 02:12:49] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:49] [INFO] GRUPO/COTA: 46058.859.0.5
+[2026-07-04 02:12:49] [INFO] Dados: R RIO DE JANEIRO, 287 | CENTRO | CAMPO VERDE/MT | 78840073
+[2026-07-04 02:12:51] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:51] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:51] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:51] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:52] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:52] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:52] [SUCESSO] Caso gravado. Total sessão: 45
+
+[2026-07-04 02:12:52] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:52] [INFO] GRUPO/COTA: 44462.206.1.1
+[2026-07-04 02:12:53] [INFO] Dados: R COMENDADOR JACOB D ALMENDRA, 573 | NOSSA SENHARA DE FATIMA | CAMPO MAIOR/PI | 64280000
+[2026-07-04 02:12:55] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:55] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:55] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:55] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:55] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:55] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:56] [SUCESSO] Caso gravado. Total sessão: 46
+
+[2026-07-04 02:12:56] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:12:56] [INFO] GRUPO/COTA: 45189.545.1.8
+[2026-07-04 02:12:57] [INFO] Dados: AV 8 DE DEZEMBRO, 4465 | LIBERDAE | GUAJARA MIRIM/RO | 76850000
+[2026-07-04 02:12:58] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:12:59] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:59] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:12:59] [INFO] GRAVAR clicado.
+[2026-07-04 02:12:59] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:12:59] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:12:59] [SUCESSO] Caso gravado. Total sessão: 47
+
+[2026-07-04 02:12:59] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:00] [INFO] GRUPO/COTA: 45141.523.0.1
+[2026-07-04 02:13:00] [INFO] Dados: R DUQUE CAXIAS, 0 | CENTRO | CAPITAO DE CAMPOS/PI | 64270000
+[2026-07-04 02:13:02] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:02] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:02] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:02] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:03] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:03] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:03] [SUCESSO] Caso gravado. Total sessão: 48
+
+[2026-07-04 02:13:03] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:03] [INFO] GRUPO/COTA: 44949.683.0.0
+[2026-07-04 02:13:04] [INFO] Dados: R IVINHEMA, 5670 | JARDIM MONTE LIBANO | DOURADOS/MS | 79831371
+[2026-07-04 02:13:05] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:06] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:06] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:06] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:06] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:06] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:06] [SUCESSO] Caso gravado. Total sessão: 49
+
+[2026-07-04 02:13:07] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:07] [INFO] GRUPO/COTA: 45189.554.1.7
+[2026-07-04 02:13:07] [INFO] Dados: R NOVA, 0 | SAO JOAO | RIACHAO/MA | 65990000
+[2026-07-04 02:13:09] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:09] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:09] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:09] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:10] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:10] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:10] [SUCESSO] Caso gravado. Total sessão: 50
+
+[2026-07-04 02:13:10] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:10] [INFO] GRUPO/COTA: 45074.655.0.7
+[2026-07-04 02:13:11] [INFO] Dados: ET SAO PEDRO, 0 | SAO PEDRO | SAO JOAO DO PARAISO/MA | 65973000
+[2026-07-04 02:13:13] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:13] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:13] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:13] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:13] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:13] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:14] [SUCESSO] Caso gravado. Total sessão: 51
+
+[2026-07-04 02:13:14] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:14] [INFO] GRUPO/COTA: 45115.935.1.0
+[2026-07-04 02:13:15] [INFO] Dados: R TANCREDO NEVES, 2292 | CENTRO | CORUMBIARA/RO | 76995000
+[2026-07-04 02:13:16] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:17] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:17] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:17] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:17] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:17] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:17] [SUCESSO] Caso gravado. Total sessão: 52
+
+[2026-07-04 02:13:18] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:18] [INFO] GRUPO/COTA: 45163.458.1.6
+[2026-07-04 02:13:18] [INFO] Dados: R PRINCIPAL, 537 | ARRAIAL | ARACUAI/MG | 39600000
+[2026-07-04 02:13:20] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:20] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:20] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:20] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:21] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:21] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:21] [SUCESSO] Caso gravado. Total sessão: 53
+
+[2026-07-04 02:13:21] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:22] [INFO] GRUPO/COTA: 45003.646.1.6
+[2026-07-04 02:13:22] [INFO] Dados: R JOSE HONOR DE BRITO, 79 | OSSIAN ARARIPE | CRATO/CE | 63103160
+[2026-07-04 02:13:24] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:24] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:24] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:24] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:24] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:24] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:25] [SUCESSO] Caso gravado. Total sessão: 54
+
+[2026-07-04 02:13:25] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:25] [INFO] GRUPO/COTA: 45702.731.0.3
+[2026-07-04 02:13:26] [INFO] Dados: RUA CAIPO, 760 | CENTRO | CASEARA/TO | 77680000
+[2026-07-04 02:13:27] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:28] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:28] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:28] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:28] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:28] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:28] [SUCESSO] Caso gravado. Total sessão: 55
+
+[2026-07-04 02:13:28] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:29] [INFO] GRUPO/COTA: 46478.781.0.0
+[2026-07-04 02:13:29] [INFO] Dados: R NOVO MUNDO, 62 | MANOA | SETE LAGOAS/MG | 35700506
+[2026-07-04 02:13:31] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:31] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:31] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:31] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:32] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:32] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:32] [SUCESSO] Caso gravado. Total sessão: 56
+
+[2026-07-04 02:13:32] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:32] [INFO] GRUPO/COTA: 45498.043.0.1
+[2026-07-04 02:13:33] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:33] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:33] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:33] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:33] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:34] [SUCESSO] Caso gravado como 'FALTANDO ENDERECO'.
+[2026-07-04 02:13:34] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:34] [INFO] GRUPO/COTA: 45483.532.0.9
+[2026-07-04 02:13:35] [INFO] Dados: R WALTER JOSE WUNDERLICH JUNIOR, 950 | CIDADE INDUSTRIAL | CURITIBA/PR | 81460357
+[2026-07-04 02:13:36] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:37] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:37] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:37] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:37] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:37] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:37] [SUCESSO] Caso gravado. Total sessão: 58
+
+[2026-07-04 02:13:38] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:38] [INFO] GRUPO/COTA: 45278.536.0.0
+[2026-07-04 02:13:38] [INFO] Dados: AV AMERICO VESPICIO, 447 | ALVORADA | PIMENTA BUENO/RO | 76970000
+[2026-07-04 02:13:40] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:40] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:40] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:40] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:41] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:41] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:41] [SUCESSO] Caso gravado. Total sessão: 59
+
+[2026-07-04 02:13:41] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:42] [INFO] GRUPO/COTA: 45435.943.1.3
+[2026-07-04 02:13:42] [INFO] Dados: RUADOZE, 0 | JARDIM AMERICA | REDENCAO/PA | 68551528
+[2026-07-04 02:13:44] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:44] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:44] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:44] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:45] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:45] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:45] [SUCESSO] Caso gravado. Total sessão: 60
+
+[2026-07-04 02:13:45] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:45] [INFO] GRUPO/COTA: 45381.542.0.8
+[2026-07-04 02:13:46] [INFO] Dados: AV 7 DE SETEMBRO, 468 | CENTRO | CONCEICAO DO ARAGUAIA/PA | 68540000
+[2026-07-04 02:13:47] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:48] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:48] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:48] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:48] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:48] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:48] [SUCESSO] Caso gravado. Total sessão: 61
+
+[2026-07-04 02:13:49] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:49] [INFO] GRUPO/COTA: 45863.208.0.2
+[2026-07-04 02:13:49] [INFO] Dados: R SANTA TEREZINHA, 0 | INDEFINIDO | MARCELANDIA/MT | 78535000
+[2026-07-04 02:13:51] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:51] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:51] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:51] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:52] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:52] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:52] [SUCESSO] Caso gravado. Total sessão: 62
+
+[2026-07-04 02:13:52] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:53] [INFO] GRUPO/COTA: 44631.322.1.1
+[2026-07-04 02:13:53] [INFO] Dados: R ARMELINDO PEREIRA SOBRINHO, 45 | MATINHA | TEOFILO OTONI/MG | 39801319
+[2026-07-04 02:13:55] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:55] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:55] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:55] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:55] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:55] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:56] [SUCESSO] Caso gravado. Total sessão: 63
+
+[2026-07-04 02:13:56] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:13:56] [INFO] GRUPO/COTA: 46025.925.0.8
+[2026-07-04 02:13:57] [INFO] Dados: SIT TORROES, 0 | ZONA RURAL | CAMPO GRANDE/AL | 57350000
+[2026-07-04 02:13:58] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:13:59] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:59] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:13:59] [INFO] GRAVAR clicado.
+[2026-07-04 02:13:59] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:13:59] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:13:59] [SUCESSO] Caso gravado. Total sessão: 64
+
+[2026-07-04 02:14:00] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:00] [INFO] GRUPO/COTA: 45279.855.0.7
+[2026-07-04 02:14:00] [INFO] Dados: ET SETOR QUERO VER, 0 | QUERO VER | FORTALEZA DOS NOGUEIRAS/MA | 65805000
+[2026-07-04 02:14:02] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:02] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:02] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:02] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:03] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:03] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:03] [SUCESSO] Caso gravado. Total sessão: 65
+
+[2026-07-04 02:14:03] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:03] [INFO] GRUPO/COTA: 45424.919.0.1
+[2026-07-04 02:14:04] [INFO] Dados: AV DOS PESCADORES, 124 | SERRAMBI | IPOJUCA/PE | 55590000
+[2026-07-04 02:14:05] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:06] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:06] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:06] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:06] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:06] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:06] [SUCESSO] Caso gravado. Total sessão: 66
+
+[2026-07-04 02:14:07] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:07] [INFO] GRUPO/COTA: 45388.413.0.2
+[2026-07-04 02:14:07] [INFO] Dados: R ARIZITE CAROLI, 351 | RESIDENCIAL VERA | PONTES E LACERDA/MT | 78250000
+[2026-07-04 02:14:09] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:09] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:09] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:09] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:10] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:10] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:10] [SUCESSO] Caso gravado. Total sessão: 67
+
+[2026-07-04 02:14:10] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:10] [INFO] GRUPO/COTA: 45526.360.1.0
+[2026-07-04 02:14:11] [INFO] Dados: R TIRADENTES, 687 | ALTO DA POPULAR | SANTA RITA/PB | 58300000
+[2026-07-04 02:14:13] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:13] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:13] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:13] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:13] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:13] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:14] [SUCESSO] Caso gravado. Total sessão: 68
+
+[2026-07-04 02:14:14] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:14] [INFO] GRUPO/COTA: 45354.874.0.0
+[2026-07-04 02:14:15] [INFO] Dados: AV JAPIIM, 5010 | GUARANI | MANCIO LIMA/AC | 69990000
+[2026-07-04 02:14:16] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:17] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:17] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:17] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:17] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:17] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:17] [SUCESSO] Caso gravado. Total sessão: 69
+
+[2026-07-04 02:14:18] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:18] [INFO] GRUPO/COTA: 45921.313.0.2
+[2026-07-04 02:14:18] [INFO] Dados: R LEONE SOARES, 120 | SANTA MONICA 2 | FEIRA DE SANTANA/BA | 44078230
+[2026-07-04 02:14:20] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:20] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:20] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:20] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:21] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:21] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:21] [SUCESSO] Caso gravado. Total sessão: 70
+
+[2026-07-04 02:14:21] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:21] [INFO] GRUPO/COTA: 45773.052.0.5
+[2026-07-04 02:14:22] [INFO] Dados: R LUCIA TELES, 30 | FAZENDA GRANDE II | SALVADOR/BA | 41342455
+[2026-07-04 02:14:24] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:24] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:24] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:24] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:24] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:24] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:24] [SUCESSO] Caso gravado. Total sessão: 71
+
+[2026-07-04 02:14:25] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:25] [INFO] GRUPO/COTA: 45746.216.1.0
+[2026-07-04 02:14:26] [INFO] Dados: AV SAO CARLOS, 58 | PETROPOLIS | MACEIO/AL | 57062475
+[2026-07-04 02:14:27] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:27] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:27] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:27] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:28] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:28] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:28] [SUCESSO] Caso gravado. Total sessão: 72
+
+[2026-07-04 02:14:28] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:29] [INFO] GRUPO/COTA: 44848.701.2.3
+[2026-07-04 02:14:29] [INFO] Dados: R JOAO EURICO PANDOLFI, 23 | JUPARANA | LINHARES/ES | 29900690
+[2026-07-04 02:14:31] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:31] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:31] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:31] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:31] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:31] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:32] [SUCESSO] Caso gravado. Total sessão: 73
+
+[2026-07-04 02:14:32] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:32] [INFO] GRUPO/COTA: 44644.166.0.4
+[2026-07-04 02:14:33] [INFO] Dados: R NIVALDO LUIZ FORASTIERI, 35 | JARDIM DO SOL | ITAMBE/PR | 87175000
+[2026-07-04 02:14:34] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:35] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:35] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:35] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:35] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:35] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:35] [SUCESSO] Caso gravado. Total sessão: 74
+
+[2026-07-04 02:14:36] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:36] [INFO] GRUPO/COTA: 44631.036.1.0
+[2026-07-04 02:14:36] [INFO] Dados: R SILVEIRA, 197 | TABULEIRO | CAMBORIU/SC | 88348273
+[2026-07-04 02:14:38] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:38] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:38] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:38] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:39] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:39] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:39] [SUCESSO] Caso gravado. Total sessão: 75
+
+[2026-07-04 02:14:39] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:39] [INFO] GRUPO/COTA: 44894.292.1.2
+[2026-07-04 02:14:40] [INFO] Dados: R LUIZ CARLOS DE OLIVEIRA, 320 | CAYO GREGORY S TELES | ITATIAIUCU/MG | 35685000
+[2026-07-04 02:14:42] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:42] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:42] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:42] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:42] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:42] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:42] [SUCESSO] Caso gravado. Total sessão: 76
+
+[2026-07-04 02:14:43] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:43] [INFO] GRUPO/COTA: 46106.953.0.8
+[2026-07-04 02:14:44] [INFO] Dados: R CLEMETINO DIAS, 113 | SERRA | AMELIA RODRIGUES/BA | 44230000
+[2026-07-04 02:14:45] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:45] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:45] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:45] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:46] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:46] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:46] [SUCESSO] Caso gravado. Total sessão: 77
+
+[2026-07-04 02:14:46] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:47] [INFO] GRUPO/COTA: 44801.639.2.9
+[2026-07-04 02:14:47] [INFO] Dados: R RESIDENCIAL ANSELMO DIAS RUA CS 122 2, 122 | LIVRAMENTO | TERESINA/PI | 64078860
+[2026-07-04 02:14:49] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:49] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:49] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:49] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:50] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:50] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:50] [SUCESSO] Caso gravado. Total sessão: 78
+
+[2026-07-04 02:14:50] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:50] [INFO] GRUPO/COTA: 45896.263.1.7
+[2026-07-04 02:14:51] [INFO] Dados: R ELIAS JOGAIB, 770 | BOA VISTA | SAO MATEUS/ES | 29931210
+[2026-07-04 02:14:52] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:53] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:53] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:53] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:53] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:53] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:53] [SUCESSO] Caso gravado. Total sessão: 79
+
+[2026-07-04 02:14:54] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:54] [INFO] GRUPO/COTA: 44972.595.2.0
+[2026-07-04 02:14:55] [INFO] Dados: R EMBAIXADOR FREDERICO CLARK, 240 | LOURIVAL PARENTE | TERESINA/PI | 64022400
+[2026-07-04 02:14:56] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:14:56] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:56] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:14:56] [INFO] GRAVAR clicado.
+[2026-07-04 02:14:57] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:14:57] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:14:57] [SUCESSO] Caso gravado. Total sessão: 80
+
+[2026-07-04 02:14:58] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:14:58] [INFO] GRUPO/COTA: 45018.913.0.0
+[2026-07-04 02:15:00] [INFO] Dados: R AUGUSTO BIRCHES TERRAO 9 42, 693 | CENTRO | SARANDI/PR | 87111160
+[2026-07-04 02:15:01] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:01] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:01] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:01] [INFO] GRAVAR clicado.
+[2026-07-04 02:15:02] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:15:02] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:15:02] [SUCESSO] Caso gravado. Total sessão: 81
+
+[2026-07-04 02:15:03] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:15:03] [INFO] GRUPO/COTA: 45234.520.1.6
+[2026-07-04 02:15:03] [INFO] Dados: R JEQUITIBA, 0 | BOM JESUS | PARAUAPEBAS/PA | 68515000
+[2026-07-04 02:15:05] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:05] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:05] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:05] [INFO] GRAVAR clicado.
+[2026-07-04 02:15:06] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:15:06] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:15:06] [SUCESSO] Caso gravado. Total sessão: 82
+
+[2026-07-04 02:15:06] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:15:06] [INFO] GRUPO/COTA: 44788.286.1.1
+[2026-07-04 02:15:07] [INFO] Dados: R OTACILIO DE CARVALHO, 537 | CENTRO | IMBITUBA/SC | 88780000
+[2026-07-04 02:15:09] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:09] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:09] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:09] [INFO] GRAVAR clicado.
+[2026-07-04 02:15:09] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:15:09] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:15:09] [SUCESSO] Caso gravado. Total sessão: 83
+
+[2026-07-04 02:15:10] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:15:10] [INFO] GRUPO/COTA: 44632.333.0.1
+[2026-07-04 02:15:10] [INFO] Dados: R ESTRELA CELESTE, 841 | RAIAR DO SOL | BOA VISTA/RR | 69316076
+[2026-07-04 02:15:12] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:12] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:12] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:12] [INFO] GRAVAR clicado.
+[2026-07-04 02:15:13] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:15:13] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:15:13] [SUCESSO] Caso gravado. Total sessão: 84
+
+[2026-07-04 02:15:13] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:15:14] [INFO] GRUPO/COTA: 45313.516.2.8
+[2026-07-04 02:15:14] [INFO] Dados: CJ RESIDENCIAL BOA ESPERANCA, 0 | SUCO DE UVA | JOSE DE FREITAS/PI | 64110000
+[2026-07-04 02:15:16] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:16] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:16] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:16] [INFO] GRAVAR clicado.
+[2026-07-04 02:15:16] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:15:16] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:15:17] [SUCESSO] Caso gravado. Total sessão: 85
+
+[2026-07-04 02:15:17] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:15:17] [INFO] GRUPO/COTA: 46410.645.0.0
+[2026-07-04 02:15:18] [INFO] Dados: R DOUTOR LOUIS ENSCH, 57 | PARQUE MARACANA | CONTAGEM/MG | 32042420
+[2026-07-04 02:15:19] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:20] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:20] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:20] [INFO] GRAVAR clicado.
+[2026-07-04 02:15:20] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:15:20] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:15:20] [SUCESSO] Caso gravado. Total sessão: 86
+
+[2026-07-04 02:15:21] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:15:21] [INFO] GRUPO/COTA: 46159.510.0.0
+[2026-07-04 02:15:21] [INFO] Dados: RUA PROFETA NAUM, 186 | OUTEIRO | POMBOS/PE | 55600000
+[2026-07-04 02:15:23] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:23] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:23] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:23] [INFO] GRAVAR clicado.
+[2026-07-04 02:15:24] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:15:24] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:15:24] [SUCESSO] Caso gravado. Total sessão: 87
+
+[2026-07-04 02:15:24] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:15:24] [INFO] GRUPO/COTA: 44885.118.2.9
+[2026-07-04 02:15:25] [INFO] Dados: RES J CANELEIRO QD AE BL 6 AP 801 SN, 0 | TORQUATO NETO | TERESINA/PI | 64039556
+[2026-07-04 02:15:26] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:27] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:27] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:15:27] [INFO] GRAVAR clicado.
+[2026-07-04 02:15:27] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:15:27] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:15:27] [SUCESSO] Caso gravado. Total sessão: 88
+
+[2026-07-04 02:15:28] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:15:28] [INFO] GRUPO/COTA: 45016.084.1.1
+[2026-07-04 02:15:28] [INFO] Dados: R LOURIVAL R ROCHA, 22 | UNIVERSITARIO | TIJUCAS/SC | 88200000
+[2026-07-04 02:15:30] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:15:30] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:15:30] [ERRO] Erro ao clicar em GRAVAR: STOP.
+[2026-07-04 02:15:30] [ERRO] Gravação falhou. Pausando.
+[2026-07-04 02:15:30] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 02:18:32] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 02:18:32] [INFO] Honda iniciando...
+[2026-07-04 02:18:32] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 02:18:32] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:18:32] [INFO] Navegando para o login...
+[2026-07-04 02:18:35] [INFO] Auto-login realizado.
+[2026-07-04 02:18:37] [SUCESSO] Login confirmado.
+[2026-07-04 02:18:37] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 02:18:38] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:18:45] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:18:45] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:18:48] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:18:48] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:18:48] [INFO] GRUPO/COTA: 44681.079.2.4
+[2026-07-04 02:18:48] [INFO] Dados: R EUDES CAMPOS SALES, 125 | CENTRO | LOANDA/PR | 87900000
+[2026-07-04 02:18:50] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:18:50] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:18:56] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:18:56] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:18:56] [INFO] GRAVAR clicado.
+[2026-07-04 02:18:56] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:18:56] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:18:56] [SUCESSO] Caso gravado. Total sessão: 89
+
+[2026-07-04 02:18:57] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:18:57] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:18:57] [INFO] GRUPO/COTA: 45982.605.1.1
+[2026-07-04 02:18:58] [INFO] Dados: POV MULUNGU, 0 | AREA RURAL | AQUIDABA/SE | 49790000
+[2026-07-04 02:19:11] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:19:21] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:19:26] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:33:08] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 02:33:12] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 02:33:12] [INFO] Honda iniciando...
+[2026-07-04 02:33:12] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 02:33:12] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 02:33:12] [INFO] Encerrando processos do Edge...
+[2026-07-04 02:33:14] [INFO] Processos encerrados.
+[2026-07-04 02:33:14] [INFO] Abrindo Edge...
+[2026-07-04 02:33:15] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:33:16] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-04 02:33:23] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:33:23] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:33:26] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:33:26] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:33:26] [INFO] GRUPO/COTA: 44675.595.0.3
+[2026-07-04 02:33:27] [INFO] Dados: PV CANTAREM I, 0 | ZONA RURAL | NAZARE DO PIAUI/PI | 64825000
+[2026-07-04 02:34:30] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:39:25] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 02:39:28] [INFO] Honda iniciando...
+[2026-07-04 02:39:28] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 02:39:28] [INFO] Encerrando processos do Edge...
+[2026-07-04 02:39:29] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:39:30] [INFO] Processos encerrados.
+[2026-07-04 02:39:30] [INFO] Abrindo Edge...
+[2026-07-04 02:39:30] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:39:32] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-04 02:39:32] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-04 02:39:35] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 02:39:35] [INFO] Honda iniciando...
+[2026-07-04 02:39:35] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 02:39:35] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:39:35] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:39:35] [AVISO] Aviso ao navegar: Page.goto: Target page, context or browser has been closed
+[2026-07-04 02:39:35] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-04 02:39:37] [ERRO] Banco não encontrado na LUNA.
+[2026-07-04 02:39:37] [RECOVERY] Recovery iniciado (falha na inicialização).
+[2026-07-04 02:39:37] [RECOVERY] Tentativa 1/3...
+[2026-07-04 02:39:37] [AVISO] Recovery: erro ao navegar para rotina: Page.goto: Target page, context or browser has been closed
+[2026-07-04 02:39:37] [RECOVERY] Tentativa 2/3...
+[2026-07-04 02:39:37] [AVISO] Recovery: erro ao navegar para rotina: Page.goto: Target page, context or browser has been closed
+[2026-07-04 02:39:37] [RECOVERY] Tentativa 3/3...
+[2026-07-04 02:39:37] [AVISO] Recovery: erro ao navegar para rotina: Page.goto: Target page, context or browser has been closed
+[2026-07-04 02:39:37] [ERRO] Recovery falhou 3 vezes. Parado para revisão manual.
+[2026-07-04 02:39:45] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 02:39:45] [INFO] Honda iniciando...
+[2026-07-04 02:39:45] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 02:39:45] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:39:45] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 02:39:45] [INFO] Encerrando processos do Edge...
+[2026-07-04 02:39:47] [INFO] Processos encerrados.
+[2026-07-04 02:39:47] [INFO] Abrindo Edge...
+[2026-07-04 02:39:48] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:39:49] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-04 02:39:56] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:39:56] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:39:58] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:39:58] [INFO] GRUPO/COTA: 44675.595.0.3
+[2026-07-04 02:39:58] [INFO] PDF aberto fisicamente para conferência (aba própria).
+[2026-07-04 02:39:59] [INFO] Dados: PV CANTAREM I, 0 | ZONA RURAL | NAZARE DO PIAUI/PI | 64825000
+[2026-07-04 02:40:01] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:40:01] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:40:07] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:40:07] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 02:44:03] [INFO] Honda iniciando...
+[2026-07-04 02:44:03] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:44:03] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:44:04] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-04 02:44:11] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:44:11] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:44:13] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:44:13] [INFO] GRUPO/COTA: 45982.605.1.1
+[2026-07-04 02:44:14] [INFO] Dados: POV MULUNGU, 0 | AREA RURAL | AQUIDABA/SE | 49790000
+[2026-07-04 02:44:16] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:44:16] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:16] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:16] [INFO] GRAVAR clicado.
+[2026-07-04 02:44:16] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:44:16] [ERRO] Gravação falhou. Pausando.
+[2026-07-04 02:44:16] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 02:44:25] [INFO] Honda iniciando...
+[2026-07-04 02:44:25] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:44:25] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:44:26] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-04 02:44:32] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:44:32] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:44:35] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:44:35] [INFO] GRUPO/COTA: 46260.409.1.3
+[2026-07-04 02:44:35] [INFO] Dados: AV TRANS CONTINENTAL, 3165 | CENTRO | ALTO PARAISO/RO | 76862000
+[2026-07-04 02:44:37] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:44:37] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:37] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:37] [INFO] GRAVAR clicado.
+[2026-07-04 02:44:38] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:44:38] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:44:38] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-04 02:44:38] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:44:39] [INFO] GRUPO/COTA: 45578.807.1.8
+[2026-07-04 02:44:40] [INFO] Dados: EST GERAL DA GARUBA, 990 | GASPAR GRANDE | GASPAR/SC | 89111415
+[2026-07-04 02:44:42] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:44:42] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:42] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:42] [INFO] GRAVAR clicado.
+[2026-07-04 02:44:42] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:44:42] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:44:43] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-04 02:44:43] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:44:44] [INFO] GRUPO/COTA: 44707.402.1.9
+[2026-07-04 02:44:44] [INFO] Dados: AV FRANCISCO MILANSKI, 101 | CENTRO | URUARA/PA | 68140000
+[2026-07-04 02:44:46] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:44:46] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:46] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:46] [INFO] GRAVAR clicado.
+[2026-07-04 02:44:47] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:44:47] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:44:47] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-04 02:44:47] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:44:48] [INFO] GRUPO/COTA: 44865.482.1.0
+[2026-07-04 02:44:49] [INFO] Dados: R A, 15 | VILA ALIANCA | ARAGUAINA/TO | 77813720
+[2026-07-04 02:44:51] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:44:51] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:51] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:51] [INFO] GRAVAR clicado.
+[2026-07-04 02:44:51] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:44:51] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:44:51] [SUCESSO] Caso gravado. Total sessão: 4
+
+[2026-07-04 02:44:52] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:44:53] [INFO] GRUPO/COTA: 45258.208.0.2
+[2026-07-04 02:44:53] [INFO] Dados: R DO AREIAL, 0 | CENTRO | PRIMEIRA CRUZ/MA | 65190000
+[2026-07-04 02:44:55] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:44:55] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:55] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:44:55] [INFO] GRAVAR clicado.
+[2026-07-04 02:44:56] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:44:56] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:44:56] [SUCESSO] Caso gravado. Total sessão: 5
+
+[2026-07-04 02:44:56] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:44:57] [INFO] GRUPO/COTA: 44597.905.0.6
+[2026-07-04 02:44:58] [INFO] Dados: R GREGORIO DE MATOS, 2 | FAZENDA COUTOS | SALVADOR/BA | 40730230
+[2026-07-04 02:44:59] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:44:59] [ERRO] Erro inesperado: STOP.
+[2026-07-04 02:44:59] [RECOVERY] Recovery iniciado (erro: STOP.).
+[2026-07-04 02:44:59] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 02:46:30] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 02:46:34] [INFO] Honda iniciando...
+[2026-07-04 02:46:34] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 02:46:34] [INFO] Encerrando processos do Edge...
+[2026-07-04 02:46:36] [INFO] Processos encerrados.
+[2026-07-04 02:46:36] [INFO] Abrindo Edge...
+[2026-07-04 02:46:36] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:46:38] [INFO] Sessão não encontrada. Navegando para o login...
+[2026-07-04 02:46:40] [INFO] Auto-login realizado.
+[2026-07-04 02:46:43] [SUCESSO] Login confirmado.
+[2026-07-04 02:46:43] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 02:46:50] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:46:50] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:46:53] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:46:53] [INFO] GRUPO/COTA: 44906.580.0.4
+[2026-07-04 02:46:54] [INFO] Dados: RUA NO 09 ACNO 11 N 0 CONJ 03 LT 16 CS 03, 0 | PLANO DIRETOR NORTE | PALMAS/TO | 77000000
+[2026-07-04 02:46:55] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:46:56] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:46:56] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:46:56] [INFO] GRAVAR clicado.
+[2026-07-04 02:46:56] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:46:56] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:46:56] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-04 02:46:57] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:46:58] [INFO] GRUPO/COTA: 45018.375.1.8
+[2026-07-04 02:46:58] [INFO] Dados: AV 3, 263 | NOVA CAROLINA | CAROLINA/MA | 65980000
+[2026-07-04 02:47:00] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:47:00] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:47:00] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:47:00] [INFO] GRAVAR clicado.
+[2026-07-04 02:47:01] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:47:01] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:47:01] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-04 02:47:01] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-04 02:47:01] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 02:47:21] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 02:47:21] [INFO] Honda iniciando...
+[2026-07-04 02:47:21] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 02:47:21] [INFO] Reutilizando Edge já aberto.
+[2026-07-04 02:47:21] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:47:23] [SUCESSO] Sessão ativa detectada. Login não necessário.
+[2026-07-04 02:47:29] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:47:29] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:47:32] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:47:32] [INFO] GRUPO/COTA: 44386.050.1.6
+[2026-07-04 02:47:32] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:47:34] [INFO] Dados: R FREI DAMIO, 222 | CENTRO | SENADOR RUI PALMEIRA/AL | 57515000
+[2026-07-04 02:47:35] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:47:35] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:47:43] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:47:43] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:47:43] [INFO] GRAVAR clicado.
+[2026-07-04 02:47:43] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:47:43] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:47:43] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-04 02:47:44] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:47:45] [INFO] GRUPO/COTA: 45777.665.0.4
+[2026-07-04 02:47:45] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:47:46] [INFO] Dados: EG SAO JORGE, 24 | ZONA RURAL | LAGOA DOS GATOS/PE | 55450000
+[2026-07-04 02:47:48] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:47:48] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:48:04] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:48:04] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:48:04] [INFO] GRAVAR clicado.
+[2026-07-04 02:48:04] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:48:04] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:48:05] [SUCESSO] Caso gravado. Total sessão: 4
+
+[2026-07-04 02:48:05] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:48:06] [INFO] GRUPO/COTA: 46342.428.0.0
+[2026-07-04 02:48:06] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:48:08] [INFO] Dados: R OLARIA, 1 | OLARIA | SAO RAIMUNDO DAS MANGABEIRAS/MA | 65840000
+[2026-07-04 02:48:09] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:48:09] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:48:16] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:48:16] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:48:16] [INFO] GRAVAR clicado.
+[2026-07-04 02:48:17] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:48:17] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:48:17] [SUCESSO] Caso gravado. Total sessão: 5
+
+[2026-07-04 02:48:17] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:48:18] [INFO] GRUPO/COTA: 44603.199.1.4
+[2026-07-04 02:48:18] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:48:20] [INFO] Dados: LINHA 627, 0 | ZONA RURAL | TARILANDIA/RO | 76897890
+[2026-07-04 02:48:22] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:48:22] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:48:28] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:48:28] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:48:28] [INFO] GRAVAR clicado.
+[2026-07-04 02:48:28] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:48:28] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:48:28] [SUCESSO] Caso gravado. Total sessão: 6
+
+[2026-07-04 02:48:29] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:48:30] [INFO] GRUPO/COTA: 44487.494.1.5
+[2026-07-04 02:48:30] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:48:32] [INFO] Dados: CH BOA ESPERANCA, 0 | ZONA RURAL | CONCEICAO DO ARAGUAIA/PA | 68540000
+[2026-07-04 02:48:33] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:48:33] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:51:24] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 02:51:26] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 02:51:26] [INFO] Honda iniciando...
+[2026-07-04 02:51:26] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 02:51:26] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 02:51:26] [INFO] Encerrando processos do Edge...
+[2026-07-04 02:51:28] [INFO] Processos encerrados.
+[2026-07-04 02:51:28] [INFO] Abrindo Edge...
+[2026-07-04 02:51:29] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 02:51:30] [INFO] Sessão não encontrada. Navegando para o login...
+[2026-07-04 02:51:32] [INFO] Auto-login realizado.
+[2026-07-04 02:51:35] [SUCESSO] Login confirmado.
+[2026-07-04 02:51:35] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 02:51:43] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 02:51:43] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 02:51:45] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 02:51:45] [INFO] GRUPO/COTA: 44597.905.0.6
+[2026-07-04 02:51:45] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:51:47] [INFO] Dados: R GREGORIO DE MATOS, 2 | FAZENDA COUTOS | SALVADOR/BA | 40730230
+[2026-07-04 02:51:49] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:51:49] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:56:09] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:09] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:09] [INFO] GRAVAR clicado.
+[2026-07-04 02:56:10] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:56:10] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:56:10] [SUCESSO] Caso gravado. Total sessão: 1
+
+[2026-07-04 02:56:10] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:56:11] [INFO] GRUPO/COTA: 47222.925.0.8
+[2026-07-04 02:56:11] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:56:13] [INFO] Dados: R GRACILIANO RAMOS, 17 | ARIPUANA | REDENCAO/PA | 68554130
+[2026-07-04 02:56:15] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:56:15] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:56:22] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:22] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:22] [INFO] GRAVAR clicado.
+[2026-07-04 02:56:22] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:56:22] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:56:22] [SUCESSO] Caso gravado. Total sessão: 2
+
+[2026-07-04 02:56:23] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:56:24] [INFO] GRUPO/COTA: 44487.494.1.5
+[2026-07-04 02:56:24] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:56:26] [INFO] Dados: CH BOA ESPERANCA, 0 | ZONA RURAL | CONCEICAO DO ARAGUAIA/PA | 68540000
+[2026-07-04 02:56:27] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:56:27] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:56:33] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:33] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:33] [INFO] GRAVAR clicado.
+[2026-07-04 02:56:33] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:56:33] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:56:33] [SUCESSO] Caso gravado. Total sessão: 3
+
+[2026-07-04 02:56:34] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:56:35] [INFO] GRUPO/COTA: 45426.751.1.5
+[2026-07-04 02:56:35] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:56:36] [INFO] Dados: PC JOAQUIM GOMES OLIVEIRA PRQ ESTRELAS, 251 | MUCURIPE | CAMPO MAIOR/PI | 64280000
+[2026-07-04 02:56:38] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:56:38] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:56:47] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:47] [AVISO] Erro ao tratar dialog: Dialog.accept: Protocol error (Page.handleJavaScriptDialog): No dialog is showing
+[2026-07-04 02:56:47] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:47] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:56:47] [INFO] GRAVAR clicado.
+[2026-07-04 02:56:47] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:56:47] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:56:47] [SUCESSO] Caso gravado. Total sessão: 4
+
+[2026-07-04 02:56:48] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:56:49] [INFO] GRUPO/COTA: 45567.913.2.0
+[2026-07-04 02:56:49] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:56:51] [INFO] Dados: R SAO JOSE DO EGITO, 175 | BOA VISTA | CARUARU/PE | 55038160
+[2026-07-04 02:56:52] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:56:52] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:57:01] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:57:01] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:57:01] [INFO] GRAVAR clicado.
+[2026-07-04 02:57:01] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:57:01] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:57:02] [SUCESSO] Caso gravado. Total sessão: 5
+
+[2026-07-04 02:57:02] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:57:03] [INFO] GRUPO/COTA: 46154.472.0.5
+[2026-07-04 02:57:03] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:57:05] [INFO] Dados: FAZ CLARINHA, 9996 | PICADO | CONCEICAO DO JACUIPE/BA | 44245000
+[2026-07-04 02:57:07] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:57:07] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:57:38] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:57:38] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:57:38] [INFO] GRAVAR clicado.
+[2026-07-04 02:57:38] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:57:38] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:57:39] [SUCESSO] Caso gravado. Total sessão: 6
+
+[2026-07-04 02:57:39] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:57:40] [INFO] GRUPO/COTA: 46258.466.0.4
+[2026-07-04 02:57:40] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:57:42] [INFO] Dados: AV PRESIDENTE TANCREDO NEVES, 1108 | CENTRO | NOVO HORIZONTE DO SUL/MS | 79745000
+[2026-07-04 02:57:44] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:57:44] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:57:50] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:57:50] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:57:50] [INFO] GRAVAR clicado.
+[2026-07-04 02:57:50] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:57:50] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:57:50] [SUCESSO] Caso gravado. Total sessão: 7
+
+[2026-07-04 02:57:51] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:57:52] [INFO] GRUPO/COTA: 45878.525.0.6
+[2026-07-04 02:57:52] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:57:54] [INFO] Dados: AVPARANA, 29 | NOVO HORIZONTE | REDENCAO/PA | 68550000
+[2026-07-04 02:57:55] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:57:55] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:57:59] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:57:59] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:57:59] [INFO] GRAVAR clicado.
+[2026-07-04 02:57:59] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:57:59] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:57:59] [SUCESSO] Caso gravado. Total sessão: 8
+
+[2026-07-04 02:58:00] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:58:01] [INFO] GRUPO/COTA: 45341.057.1.7
+[2026-07-04 02:58:01] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:58:03] [INFO] Dados: R ALCIDES CODECEIRA, 268 | IPUTINGA | RECIFE/PE | 50800090
+[2026-07-04 02:58:04] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:58:04] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:58:10] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:58:10] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:58:10] [INFO] GRAVAR clicado.
+[2026-07-04 02:58:10] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:58:10] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:58:11] [SUCESSO] Caso gravado. Total sessão: 9
+
+[2026-07-04 02:58:11] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:58:12] [INFO] GRUPO/COTA: 44422.695.2.7
+[2026-07-04 02:58:12] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:58:14] [INFO] Dados: AV JOSE BASILIO DOS SANTOS, 316 | VILA DE ITAUNAS | CONCEICAO DA BARRA/ES | 29960000
+[2026-07-04 02:58:16] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:58:16] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 02:58:24] [INFO] Dialog (confirmacao) em Honda: Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:58:24] [INFO] Alerta GRAVAR (confirmacao): Confirma a gravação dos dados preenchidos?
+[2026-07-04 02:58:24] [INFO] GRAVAR clicado.
+[2026-07-04 02:58:25] [INFO] Dialog (sucesso) em Honda: Dadados registrados com sucesso
+[2026-07-04 02:58:25] [INFO] Alerta GRAVAR (sucesso): Dadados registrados com sucesso
+[2026-07-04 02:58:25] [SUCESSO] Caso gravado. Total sessão: 10
+
+[2026-07-04 02:58:25] [INFO] Troca de caso confirmada pela LUNA. Prosseguindo.
+[2026-07-04 02:58:26] [INFO] GRUPO/COTA: 46312.669.1.1
+[2026-07-04 02:58:26] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 02:58:28] [INFO] Dados: TV 1 NA FARCEIRA, 47 | CAQUENDE | CACHOEIRA/BA | 44300000
+[2026-07-04 02:58:30] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 02:58:30] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 03:01:07] [INFO] Honda encerrada. Edge permanece aberto.
+[2026-07-04 03:01:15] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 03:01:20] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 03:01:20] [INFO] Honda iniciando...
+[2026-07-04 03:01:20] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 03:01:20] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-04 03:01:20] [INFO] Encerrando processos do Edge...
+[2026-07-04 03:01:23] [INFO] Processos encerrados.
+[2026-07-04 03:01:23] [INFO] Abrindo Edge...
+[2026-07-04 03:01:23] [INFO] Verificando sessão ativa na LUNA...
+[2026-07-04 03:01:24] [INFO] Sessão não encontrada. Navegando para o login...
+[2026-07-04 03:01:27] [INFO] Auto-login realizado.
+[2026-07-04 03:01:29] [SUCESSO] Login confirmado.
+[2026-07-04 03:01:29] [INFO] Navegando para a rotina da LUNA...
+[2026-07-04 03:01:37] [INFO] Forçando carregamento: seta direita → seta esquerda...
+[2026-07-04 03:01:37] [INFO] Dialog (dados_carregados) em Honda: Dados carregados com sucesso!
+[2026-07-04 03:01:39] [SUCESSO] LUNA pronta. Iniciando processamento...
+[2026-07-04 03:01:39] [INFO] GRUPO/COTA: 45989.237.1.5
+[2026-07-04 03:01:39] [INFO] PDF aberto fisicamente para conferência.
+[2026-07-04 03:01:41] [INFO] Dados: R NEWTON BELLO, 805 | AEROPORTO | SAO BENTO/MA | 65235000
+[2026-07-04 03:01:43] [INFO] Validação pré-GRAVAR aprovada.
+[2026-07-04 03:01:43] [INFO] MODO DE TESTE: aguardando sua conferência. Revise o PDF e os campos preenchidos na LUNA e clique em 'Confirmar e Gravar' no Fênix.
+[2026-07-04 03:03:15] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-04 03:03:19] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 03:03:19] [INFO] Honda iniciando...
+[2026-07-04 03:03:19] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 03:03:19] [ERRO] Erro na sessão: 'HondaEngine' object has no attribute '_cdp_disponivel'
+[2026-07-04 03:03:30] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 03:03:30] [INFO] Honda iniciando...
+[2026-07-04 03:03:30] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 03:03:30] [ERRO] Erro na sessão: 'HondaEngine' object has no attribute '_cdp_disponivel'
+[2026-07-04 03:03:31] [INFO] Modo de Teste ativado — o Fênix vai abrir o PDF e pausar antes de cada GRAVAR para sua conferência.
+[2026-07-04 03:03:31] [INFO] Honda iniciando...
+[2026-07-04 03:03:31] [INFO] MODO DE TESTE ativo: PDF será aberto fisicamente e nenhuma gravação ocorrerá sem sua confirmação.
+[2026-07-04 03:03:31] [ERRO] Erro na sessão: 'HondaEngine' object has no attribute '_cdp_disponivel'
+[2026-07-05 00:06:50] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-05 00:06:53] [INFO] Honda iniciando...
+[2026-07-05 00:06:57] [INFO] Abrindo Edge...
+[2026-07-05 00:06:57] [INFO] Edge lançado como processo independente.
+[2026-07-05 00:07:20] [ERRO] O Edge não respondeu na porta de depuração a tempo.
+[2026-07-05 00:07:28] [INFO] Honda iniciando...
+[2026-07-05 00:07:35] [INFO] Encerrando processos do Edge...
+[2026-07-05 00:07:37] [INFO] Processos encerrados.
+[2026-07-05 00:07:40] [INFO] Abrindo Edge...
+[2026-07-05 00:07:40] [INFO] Edge lançado como processo independente.
+[2026-07-05 00:08:03] [ERRO] O Edge não respondeu na porta de depuração a tempo.
+[2026-07-05 00:08:09] [INFO] Honda iniciando...
+[2026-07-05 00:08:09] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-05 00:08:14] [INFO] Encerrando processos do Edge...
+[2026-07-05 00:08:16] [INFO] Processos encerrados.
+[2026-07-05 00:08:19] [INFO] Abrindo Edge...
+[2026-07-05 00:08:19] [INFO] Edge lançado como processo independente.
+[2026-07-05 00:08:19] [ERRO] O Edge não respondeu na porta de depuração a tempo.
+[2026-07-05 00:16:00] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-05 00:16:02] [INFO] Honda iniciando...
+[2026-07-05 00:16:05] [INFO] Abrindo Edge...
+[2026-07-05 00:16:05] [INFO] Edge lançado como processo independente.
+[2026-07-05 00:26:00] [INFO] Fênix 1.0.0 iniciado.
+[2026-07-05 00:26:02] [INFO] Honda iniciando...
+[2026-07-05 00:26:02] [INFO] Browser anterior não responde. Encerrando processos residuais...
+[2026-07-05 00:26:02] [INFO] Encerrando processos do Edge...
+[2026-07-05 00:26:04] [INFO] Processos encerrados.
+[2026-07-05 00:26:04] [INFO] Abrindo Edge...
+[2026-07-05 00:26:14] [AVISO] Falha ao abrir o Edge (BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+<launched> pid=9832
+[pid=9832][err] 
+[pid=9832][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+[pid=9832][err] [9832:10236:0705/002606.880:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+[pid=9832][err] [9832:12292:0705/002614.405:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+Call log:
+  - <launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+  - <launched> pid=9832
+  - [pid=9832][err]
+  - [pid=9832][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+  - [pid=9832][err] [9832:10236:0705/002606.880:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+  - [pid=9832][err] [9832:12292:0705/002614.405:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+  - [pid=9832] <gracefully close start>
+  - [pid=9832] <kill>
+  - [pid=9832] <will force kill>
+  - [pid=9832] taskkill stderr: ERRO: o processo "9832" n�o foi encontrado.
+  - [pid=9832] <process did exit: exitCode=0, signal=null>
+  - [pid=9832] starting temporary directories cleanup
+  - [pid=9832] finished temporary directories cleanup
+  - [pid=9832] <gracefully close end>
+). Encerrando processos residuais e tentando de novo...
+[2026-07-05 00:26:14] [INFO] Encerrando processos do Edge...
+[2026-07-05 00:26:16] [INFO] Processos encerrados.
+[2026-07-05 00:26:19] [ERRO] Não foi possível abrir o Edge: BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+<launched> pid=12196
+[pid=12196][err] 
+[pid=12196][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+Call log:
+  - <launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+  - <launched> pid=12196
+  - [pid=12196][err]
+  - [pid=12196][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+  - [pid=12196] <gracefully close start>
+  - [pid=12196] <kill>
+  - [pid=12196] <will force kill>
+  - [pid=12196] taskkill stderr: ERRO: o processo "12196" n�o foi encontrado.
+  - [pid=12196] <process did exit: exitCode=0, signal=null>
+  - [pid=12196] starting temporary directories cleanup
+  - [pid=12196] finished temporary directories cleanup
+  - [pid=12196] <gracefully close end>
+
+[2026-07-05 00:26:19] [AVISO] STOP solicitado — finalizando tarefa atual...
+[2026-07-05 00:26:21] [INFO] Honda iniciando...
+[2026-07-05 00:26:21] [INFO] Abrindo Edge...
+[2026-07-05 00:26:24] [AVISO] Falha ao abrir o Edge (BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+<launched> pid=3040
+[pid=3040][err] 
+[pid=3040][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+[pid=3040][err] [3040:1148:0705/002623.679:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+[pid=3040][err] [3040:7544:0705/002623.828:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+Call log:
+  - <launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+  - <launched> pid=3040
+  - [pid=3040][err]
+  - [pid=3040][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+  - [pid=3040][err] [3040:1148:0705/002623.679:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+  - [pid=3040][err] [3040:7544:0705/002623.828:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+  - [pid=3040] <gracefully close start>
+  - [pid=3040] <kill>
+  - [pid=3040] <will force kill>
+  - [pid=3040] taskkill stderr: ERRO: o processo "3040" n�o foi encontrado.
+  - [pid=3040] <process did exit: exitCode=0, signal=null>
+  - [pid=3040] starting temporary directories cleanup
+  - [pid=3040] finished temporary directories cleanup
+  - [pid=3040] <gracefully close end>
+). Encerrando processos residuais e tentando de novo...
+[2026-07-05 00:26:24] [INFO] Encerrando processos do Edge...
+[2026-07-05 00:26:26] [INFO] Processos encerrados.
+[2026-07-05 00:26:30] [ERRO] Não foi possível abrir o Edge: BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+<launched> pid=20268
+[pid=20268][err] 
+[pid=20268][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+[pid=20268][err] [20268:19616:0705/002629.727:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+[pid=20268][err] [20268:1612:0705/002629.931:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+Call log:
+  - <launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --start-maximized --disable-blink-features=AutomationControlled --disable-infobars --no-first-run --no-default-browser-check --test-type=gpu --user-data-dir=C:\Users\cabri\AppData\Local\Microsoft\Edge\User Data --remote-debugging-pipe about:blank
+  - <launched> pid=20268
+  - [pid=20268][err]
+  - [pid=20268][err] DevTools remote debugging requires a non-default data directory. Specify this using --user-data-dir.
+  - [pid=20268][err] [20268:19616:0705/002629.727:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+  - [pid=20268][err] [20268:1612:0705/002629.931:ERROR:base\metrics\persistent_memory_allocator.cc:898] Corruption detected in shared-memory segment.
+  - [pid=20268] <gracefully close start>
+  - [pid=20268] <kill>
+  - [pid=20268] <will force kill>
+  - [pid=20268] taskkill stderr: ERRO: o processo "20268" n�o foi encontrado.
+  - [pid=20268] <process did exit: exitCode=0, signal=null>
+  - [pid=20268] starting temporary directories cleanup
+  - [pid=20268] finished temporary directories cleanup
+  - [pid=20268] <gracefully close end>
+
+[2026-07-05 00:26:35] [INFO] Encerrando o Fênix...

@@ -1,7 +1,16 @@
 """
-Janela principal do Fênix — v4.
+Janela principal do Fênix — v5.
 
 Novidades desta versão:
+- `_ao_fechar_janela` agora espera o engine terminar a rotina de
+  encerramento (`aguardar_encerramento`) antes de destruir a janela —
+  necessário para o handoff do Edge funcionar (ver
+  modules/honda/engine.py v15+): o engine fecha o Edge automatizado e
+  reabre um Edge comum com as abas restauradas, tudo isso rodando na
+  thread do engine. Sem esperar por isso aqui, o processo do Fênix
+  podia morrer no meio dessa rotina antes do Edge comum ser reaberto.
+
+Histórico (v4):
 - Checkbox "Modo de Teste" no painel Honda: quando ativo, o engine
   abre o PDF fisicamente e pausa antes de GRAVAR, esperando o
   usuário revisar e confirmar pela barra de confirmação que aparece
@@ -345,7 +354,21 @@ class FenixApp(ctk.CTk):
         self.check_modo_teste.configure(state="disabled")
 
     def _ao_fechar_janela(self):
+        """
+        Sinaliza o encerramento ao engine e ESPERA a rotina de handoff
+        do Edge terminar (fechar o Edge automatizado + reabrir um Edge
+        comum com as abas restauradas — ver modules/honda/engine.py)
+        antes de destruir a janela e deixar o processo do Fênix morrer.
+        Sem essa espera, o processo podia ser encerrado no meio da
+        rotina, antes do Edge comum ser reaberto.
+
+        O timeout de 6s é uma rede de segurança: se por algum motivo o
+        engine travar nessa rotina, a janela fecha mesmo assim (não
+        trava o Fênix indefinidamente).
+        """
+        logger.info("Encerrando o Fênix...")
         self._engine.quit()
+        self._engine.aguardar_encerramento(timeout=6.0)
         self.destroy()
 
     def _abrir_configuracoes(self):

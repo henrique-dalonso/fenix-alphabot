@@ -1,6 +1,19 @@
 """
-Configurações centrais do Fênix.
+Configurações centrais do Fênix — v8.
 Nenhum outro módulo declara constantes de negócio — tudo passa por aqui.
+
+Novidades desta versão:
+- Adicionado EDGE_DEBUG_PORT: usado pelo engine (v14) para conectar no
+  Edge via CDP (connect_over_cdp) em vez de launch_persistent_context.
+  Ver changelog completo em modules/honda/engine.py.
+
+Histórico (v7):
+- REVERTIDO A PEDIDO DO USUÁRIO: a v6 havia trocado DIR_PERFIL_EDGE para
+  um perfil dedicado e isolado, mas o usuário confirmou que usar o
+  perfil PESSOAL do Edge é intencional (quer o login/sessão do dia a
+  dia, quer ver o bot rodando na mesma janela que usa normalmente).
+  Voltou a apontar para o perfil real do Windows
+  (%LOCALAPPDATA%\\Microsoft\\Edge\\User Data).
 """
 
 import os
@@ -80,17 +93,6 @@ LUNA_CAMPOS = {
 }
 
 # -----------------------------------------------------------
-# Edge
-# -----------------------------------------------------------
-EDGE_CAMINHOS = [
-    r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
-    r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
-]
-
-_LOCALAPPDATA = os.environ.get("LOCALAPPDATA", "")
-DIR_PERFIL_EDGE = os.path.join(_LOCALAPPDATA, "Microsoft", "Edge", "User Data")
-
-# -----------------------------------------------------------
 # Caminhos internos do projeto
 # -----------------------------------------------------------
 DIR_BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -100,5 +102,25 @@ DIR_DATA = os.path.join(DIR_BASE, "data")
 
 os.makedirs(DIR_LOGS, exist_ok=True)
 os.makedirs(DIR_DATA, exist_ok=True)
+
+# -----------------------------------------------------------
+# Edge
+# -----------------------------------------------------------
+EDGE_CAMINHOS = [
+    r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+    r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+]
+
+# Perfil PESSOAL do usuário — decisão intencional dele, não um bug.
+# Reaproveita o mesmo Edge do dia a dia (login/sessão persistem igual
+# ao uso normal do navegador).
+_LOCALAPPDATA = os.environ.get("LOCALAPPDATA", "")
+DIR_PERFIL_EDGE = os.path.join(_LOCALAPPDATA, "Microsoft", "Edge", "User Data")
+
+# Porta de depuração remota usada para o Fênix se conectar ao Edge via
+# CDP (connect_over_cdp) — desde a v14 do engine, o Edge é aberto como
+# processo independente do Fênix (não mais launch_persistent_context),
+# o que faz o navegador sobreviver ao fechamento do app.
+EDGE_DEBUG_PORT = 9333
 
 DEBUG = False
