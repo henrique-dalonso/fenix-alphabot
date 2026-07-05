@@ -1,0 +1,50 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI neural icon colorful">
+  <defs>
+    <!-- Multi-color gradient -->
+    <linearGradient id="multi" x1="0" y1="0" x2="64" y2="64">
+      <stop offset="0%" stop-color="#00E0C6"></stop>
+      <stop offset="50%" stop-color="#6A5ACD"></stop>
+      <stop offset="100%" stop-color="#1E90FF"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond cirkel -->
+  <circle cx="32" cy="32" r="30" fill="#1E2230"></circle>
+  <circle cx="32" cy="32" r="30" stroke="white" opacity="0.12"></circle>
+
+  <!-- Kern -->
+  <circle cx="32" cy="32" r="8" stroke="url(#multi)" stroke-width="3" fill="none"></circle>
+
+  <!-- Verbindingen + nodes -->
+  <!-- Boven -->
+  <line x1="32" y1="24" x2="32" y2="12" stroke="url(#multi)" stroke-width="2.5"></line>
+  <circle cx="32" cy="10" r="3" fill="url(#multi)"></circle>
+
+  <!-- Onder -->
+  <line x1="32" y1="40" x2="32" y2="52" stroke="url(#multi)" stroke-width="2.5"></line>
+  <circle cx="32" cy="54" r="3" fill="url(#multi)"></circle>
+
+  <!-- Links -->
+  <line x1="24" y1="32" x2="12" y2="32" stroke="url(#multi)" stroke-width="2.5"></line>
+  <circle cx="10" cy="32" r="3" fill="url(#multi)"></circle>
+
+  <!-- Rechts -->
+  <line x1="40" y1="32" x2="52" y2="32" stroke="url(#multi)" stroke-width="2.5"></line>
+  <circle cx="54" cy="32" r="3" fill="url(#multi)"></circle>
+
+  <!-- Linksboven -->
+  <line x1="27" y1="27" x2="16" y2="16" stroke="url(#multi)" stroke-width="2.5"></line>
+  <circle cx="14" cy="14" r="3" fill="url(#multi)"></circle>
+
+  <!-- Rechtsboven -->
+  <line x1="37" y1="27" x2="48" y2="16" stroke="url(#multi)" stroke-width="2.5"></line>
+  <circle cx="50" cy="14" r="3" fill="url(#multi)"></circle>
+
+  <!-- Linksonder -->
+  <line x1="27" y1="37" x2="16" y2="48" stroke="url(#multi)" stroke-width="2.5"></line>
+  <circle cx="14" cy="50" r="3" fill="url(#multi)"></circle>
+
+  <!-- Rechtsonder -->
+  <line x1="37" y1="37" x2="48" y2="48" stroke="url(#multi)" stroke-width="2.5"></line>
+  <circle cx="50" cy="50" r="3" fill="url(#multi)"></circle>
+</svg>

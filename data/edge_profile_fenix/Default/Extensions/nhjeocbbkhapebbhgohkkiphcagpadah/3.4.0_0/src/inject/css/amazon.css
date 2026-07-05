@@ -1,0 +1,32 @@
+.__ig_extention-container.___amazon {
+    margin-bottom: 30px;
+}
+.__ig_extention-container.___amazon .__ig_inside-container {
+    flex-direction: column;
+    text-align: center;
+}
+.__ig_extention-container.___amazon .__ig_inside-container .__ig_logo {
+    margin-right: 0;
+    flex: initial;
+    margin-bottom: 20px;
+}
+.__ig_extention-container.___amazon .__ig_inside-container .__ig_title {
+    display: none;
+}
+.__ig_extention-container.___amazon .__ig_inside-container .__ig_data  {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
+}
+.__ig_extention-container.___amazon .__ig_inside-container .__ig_data .__ig_buy-button {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+}
+@media screen and (max-width: 650px) {
+    .__ig_extention-container.___amazon .__ig_inside-container .__ig_logo  {
+        width: 100px;
+        margin-bottom: 10px;
+    }
+}

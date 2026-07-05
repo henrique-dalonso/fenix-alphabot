@@ -1,0 +1,30 @@
+.__ig_extention-container.___gamivo {
+    margin-bottom: 15px;
+}
+@media screen and (min-width: 1200px) {
+    .__ig_extention-container.___gamivo .__ig_inside-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    .__ig_extention-container.___gamivo .__ig_inside-container .__ig_logo {
+        margin-right: 0;
+        flex: initial;
+        margin-bottom: 10px
+    }
+    .__ig_extention-container.___gamivo .__ig_inside-container .__ig_title {
+        display: none;
+    }
+    .__ig_extention-container.___gamivo .__ig_inside-container .__ig_data  {
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        width: 100%;
+        font-size: 24px;
+        margin-left: 0;
+    }
+    .__ig_extention-container.___gamivo .__ig_inside-container .__ig_data .__ig_buy-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

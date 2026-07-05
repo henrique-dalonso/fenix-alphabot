@@ -1,0 +1,13 @@
+.__ig_extention-container.___pcgamer {
+    margin-bottom: 30px;
+}
+@media screen and (max-width: 930px) {
+    .__ig_extention-container.___pcgamer {
+        margin-bottom: 30px;
+    }
+}
+@media screen and (max-width: 850px) {
+    .__ig_extention-container.___pcgamer {
+        margin-bottom: 15px;
+    }
+}

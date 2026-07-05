@@ -1,0 +1,12 @@
+{
+  "routeFallback": {
+    "isActive": false,
+    "mockedFlags": {
+      "extension_activation_feedback": true,
+      "extension_activation_reminder": true,
+      "extension_reminder_v2": true,
+      "extension_tab_suggester": true,
+      "extension_tip": true
+    }
+  }
+}

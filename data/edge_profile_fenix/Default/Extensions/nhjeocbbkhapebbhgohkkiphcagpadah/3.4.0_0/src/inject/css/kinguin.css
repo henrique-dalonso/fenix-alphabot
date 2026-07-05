@@ -1,0 +1,31 @@
+.__ig_extention-container.___kinguin {
+    margin-top: 20px;
+}
+@media screen and (min-width: 1200px) {
+    .__ig_extention-container.___kinguin .__ig_inside-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .__ig_extention-container.___kinguin .__ig_inside-container .__ig_logo {
+        margin-right: 0;
+        flex: initial;
+    }
+    .__ig_extention-container.___kinguin .__ig_inside-container .__ig_title {
+        display: none;
+    }
+    .__ig_extention-container.___kinguin .__ig_inside-container .__ig_data  {
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        width: 100%;
+        font-size: 24px;
+        margin-left: 0;
+    }
+    .__ig_extention-container.___kinguin .__ig_inside-container .__ig_data .__ig_numbers {
+        margin-top: 20px;
+    }
+    .__ig_extention-container.___kinguin .__ig_inside-container .__ig_data .__ig_buy-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

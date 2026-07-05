@@ -1,0 +1,41 @@
+{
+   "action": {
+      "default_popup": "index.html",
+      "default_title": "Whom"
+   },
+   "background": {
+      "service_worker": "static/js/worker.bundle.js"
+   },
+   "content_scripts": [ {
+      "exclude_matches": [ "https://iss.fazenda.df.gov.br/*" ],
+      "js": [ "static/js/content.bundle.js" ],
+      "matches": [ "*://*/*" ]
+   }, {
+      "all_frames": true,
+      "js": [ "static/js/content.bundle.js" ],
+      "matches": [ "https://iss.fazenda.df.gov.br/*" ]
+   } ],
+   "externally_connectable": {
+      "matches": [ "*://*/*" ]
+   },
+   "host_permissions": [ "\u003Call_urls>", "*://*/*" ],
+   "icons": {
+      "128": "imgs/icon_128.png",
+      "16": "imgs/icon_16.png",
+      "48": "imgs/icon_48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkrcONisdfyb3jYjSe06B0HzwzciETDPB3D4Wk4nVoTyXszIov4+kGMdZAaN60AhwAKCRrZcdQ2djSa7wMUtljB6pxHPRD70Rrg3CagxkIeL13GxRSuCxZpoFgJTObEahTcr69LTr+2sZBJf5o82LEPQmNgrYFry9bjYEP1zwDvtxTHFDHU26k1C3I+LUlll2o1kNpoAg6B3aqb/2wZPvjlkAM5rvPE/bw2FOsb55LKIkXAvXjSU5vDiQlWeC6i5e3Mchv8Pq0OzVohB5MPE6AIzG/MjgPlKaW+rmRvZqMzsC8yC46M4cPsX+GzAvTBCzccfwH0zfZ2cTYkb9EIpmqQIDAQAB",
+   "manifest_version": 3,
+   "name": "Whom? Gerenciador de certificados digitais",
+   "permissions": [ "downloads", "storage", "scripting", "activeTab", "cookies", "tabs", "management", "proxy", "notifications", "system.cpu", "system.memory", "declarativeNetRequest", "browsingData", "unlimitedStorage", "webNavigation", "sidePanel" ],
+   "short_name": "Whom? Gerenciador de certificados digitais",
+   "side_panel": {
+      "default_path": "sidepanel.html"
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.3.15",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "configs.json", "imgs/icon_16.png", "imgs/logo_alert.png", "static/js/scripts/ecac.js", "static/js/scripts/pje.js", "static/js/scripts/pjeTwo.js", "static/js/scripts/trt.js", "static/js/scripts/conectividade.js", "static/html/loading.html", "index.html", "sidepanel.html" ]
+   } ]
+}

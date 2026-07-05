@@ -1,0 +1,34 @@
+{
+   "appDesc": {
+      "description": "Каждый день на сайте Givee.Club за выполнение простейших действий мы раздаём ключи разнообразных игр для активации в Steam. С помощью этого расширения вы сможете выполнять эти задания и получать заветные ключи от игр.",
+      "message": "Givee.Club Checker - теперь вы можете выполнять задания и получать заветные ключи игр абсолютно бесплатно!"
+   },
+   "appName": {
+      "description": "Givee.Club Checker",
+      "message": "Givee.Club - Получай игры за действия!"
+   },
+   "columnEventName": {
+      "description": "Название столбца",
+      "message": "Название"
+   },
+   "columnEventType": {
+      "description": "Название столбца",
+      "message": "Тип"
+   },
+   "errorNoEvents": {
+      "description": "Текст ошибки при отсутствии ивента",
+      "message": "Не найдено ни одного активного ивента."
+   },
+   "eventTypeGiveaway": {
+      "description": "Тип ивента",
+      "message": "Моментальная раздача"
+   },
+   "eventTypeRaffle": {
+      "description": "Тип ивента",
+      "message": "Розыгрыш (шанс выиграть)"
+   },
+   "linkGetIt": {
+      "description": "Текст ссылки на ивент",
+      "message": "Получить"
+   }
+}

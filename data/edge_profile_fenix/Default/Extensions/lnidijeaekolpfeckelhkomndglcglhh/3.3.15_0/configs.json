@@ -1,0 +1,27 @@
+{
+  "company": "Whom",
+  "theme": {
+    "main": "#0B3DAF",
+    "btnPrimary": "#31CB74",
+    "btnSecondary": "#F9F9F9",
+    "textPrimary": "#ffffff",
+    "textSecondary": "#000000",
+    "bgPrimary": "#0B3DAF",
+    "bgLoading": "#000a1d",
+    "defaultLogoUrl": "/imgs/logo_principal.png",
+    "secondaryLogoUrl": "/imgs/logo_secundaria.png",
+    "loadingLogoUrl": "/imgs/logo_principal.png"
+  },
+  "desktop": true,
+  "mainQuestions": true,
+  "poweredBy": false,
+  "footerNews": true,
+  "footerAvailability": false,
+  "footerSupport": true,
+  "alertsAvailability": true,
+  "amplitude": false,
+  "nps": true,
+  "cookiesPolicy": "keep-gov-only",
+  "auth": "api",
+  "id": "lnidijeaekolpfeckelhkomndglcglhh"
+}

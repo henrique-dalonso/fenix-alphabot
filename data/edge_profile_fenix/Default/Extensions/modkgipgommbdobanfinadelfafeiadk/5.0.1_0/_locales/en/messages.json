@@ -1,0 +1,34 @@
+{
+   "appDesc": {
+      "description": "Every day Givee.Club prepares a lot of new giveaways for you. To get the key you have to complete small sponsor`s tasks (to enter social group or to vote for something). This extension allows you to check status of the tasks and get game keys!",
+      "message": "Givee.Club Checker - now you can complete GiveAway.su tasks and get game keys!"
+   },
+   "appName": {
+      "description": "Givee.Club Checker",
+      "message": "Givee.Club - Get games for free!"
+   },
+   "columnEventName": {
+      "description": "Column name",
+      "message": "Name"
+   },
+   "columnEventType": {
+      "description": "Column name",
+      "message": "Type"
+   },
+   "errorNoEvents": {
+      "description": "No active events text",
+      "message": "No active events found"
+   },
+   "eventTypeGiveaway": {
+      "description": "Type of event",
+      "message": "Instant giveaway"
+   },
+   "eventTypeRaffle": {
+      "description": "Type of event",
+      "message": "Raffle (chance to win)"
+   },
+   "linkGetIt": {
+      "description": "Anchor of a link to event",
+      "message": "Get"
+   }
+}

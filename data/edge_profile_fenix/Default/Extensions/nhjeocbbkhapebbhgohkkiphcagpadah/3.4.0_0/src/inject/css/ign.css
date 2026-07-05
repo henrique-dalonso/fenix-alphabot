@@ -1,0 +1,15 @@
+.__ig_extention-container.___ign {
+    max-width: 864px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+@media screen and (max-width: 930px) {
+    .__ig_extention-container.___ign {
+        margin-bottom: 30px;
+    }
+}
+@media screen and (max-width: 850px) {
+    .__ig_extention-container.___ign {
+        margin-bottom: 15px;
+    }
+}

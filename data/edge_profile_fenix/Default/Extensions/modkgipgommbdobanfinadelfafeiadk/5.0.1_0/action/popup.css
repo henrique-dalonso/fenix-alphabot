@@ -1,0 +1,54 @@
+html, body { width: 500px; height:400px; }
+.padding-all{padding:20px;}
+.margin-all{margin:20px;}
+.loading{text-align: center;padding-top: 40%}
+.hide{display:none}
+body>div{max-height: 400px; overflow: auto}
+#events {position:relative}
+#events table{margin:0}
+#events table th {background-color:#50677a;color:#fff;line-height:24px;font-size:12px}
+#events table th.type {width:60px;text-align:center}
+#events table th.platform {}
+#events table th.name {}
+#events table th.action {}
+#events table td {vertical-align: middle}
+#events table td.type {padding:0;text-align:center}
+#events table td.platform {padding:0;text-align:center}
+#events table td.name {padding:0 5px;line-height:16px}
+#events table td.action {text-align:right}
+#events table tr.highlight {background-color: #d4ffff}
+#events table td.events-empty {text-align:center;padding-top:50px}
+
+#events table tr.legacy .action a {
+    background-color:#ccc;
+    border-color:#999;
+}
+#events table tr.legacy .action a:after {
+    content: " v1.0";
+    display: inline-block;
+    margin-left: 5px;
+    background: #999;
+    padding: 0 5px;
+}
+
+.spritesheet {background: url('../images/spritesheet.png') no-repeat -5000px 0}
+
+.event-platform, .event-type {width:22px;height:22px;display:inline-block}
+
+.event-platform-steam {background-position: 0 -22px}
+.event-platform-gog {background-position: -22px -22px}
+.event-platform-origin {background-position: -44px -22px}
+.event-platform-battlenet {background-position: 0 -44px}
+.event-platform-amazon {background-position: -22px -44px}
+.event-platform-microsoft {background-position: -44px -44px}
+.event-platform-ubisoft {background-position: 0 -66px}
+.event-platform-kartridge {background-position: -22px -66px}
+.event-platform-epicgames {background-position: -44px -66px}
+.event-platform-drmfree {background-position: 0 -88px}
+.event-platform-itchio {background-position: -22px -88px}
+
+.event-type-raffle {background-position: 0 0}
+.event-type-giveaway {background-position: -22px 0}
+
+#notifications {position:absolute;top:6px;right:5px;color:#fff;background-color:#84144f!important;border-color:#6f1143!important;}
+#notifications:hover,#notifications:active,#notifications:focus {color:#fff;background-color:#620f3b!important;border-color:#430a28!important;}

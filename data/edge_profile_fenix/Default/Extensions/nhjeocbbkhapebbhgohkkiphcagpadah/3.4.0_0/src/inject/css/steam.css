@@ -1,0 +1,15 @@
+.__ig_extention-container.___steam {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.__ig_extention-container.___steam .__ig_inside-container .__ig_data {
+    position: absolute;
+    right: 14px;
+    border-radius: 7px;
+    background-color: #101010;
+    bottom: -28px;
+    padding: 3px;
+}
+.__ig_extention-container.___steam .__ig_inside-container .__ig_data .__ig_numbers {
+    margin-left: 10px;
+}

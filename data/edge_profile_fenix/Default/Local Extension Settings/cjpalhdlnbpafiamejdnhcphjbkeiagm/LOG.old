@@ -1,0 +1,11 @@
+2026/07/05-00:52:46.871 2104 Creating DB C:\Users\cabri\Desktop\Projetos\Fênix\Fenix\data\edge_profile_fenix\Default\Local Extension Settings\cjpalhdlnbpafiamejdnhcphjbkeiagm since it was missing.
+2026/07/05-00:52:46.881 2104 Reusing MANIFEST C:\Users\cabri\Desktop\Projetos\Fênix\Fenix\data\edge_profile_fenix\Default\Local Extension Settings\cjpalhdlnbpafiamejdnhcphjbkeiagm/MANIFEST-000001
+2026/07/05-00:52:48.618 2104 Level-0 table #5: started
+2026/07/05-00:52:48.632 2104 Level-0 table #5: 5748373 bytes OK
+2026/07/05-00:52:48.636 2104 Delete type=0 #3
+2026/07/05-00:52:57.429 2104 Level-0 table #7: started
+2026/07/05-00:52:57.450 2104 Level-0 table #7: 5281320 bytes OK
+2026/07/05-00:52:57.454 2104 Delete type=0 #4
+2026/07/05-00:53:03.332 2104 Level-0 table #9: started
+2026/07/05-00:53:03.343 2104 Level-0 table #9: 4794733 bytes OK
+2026/07/05-00:53:03.347 2104 Delete type=0 #6

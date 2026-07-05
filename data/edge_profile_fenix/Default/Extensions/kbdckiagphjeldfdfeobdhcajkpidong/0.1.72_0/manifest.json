@@ -1,0 +1,73 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "images/icon128.png",
+         "16": "images/icon16.png",
+         "48": "images/icon48.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "AIWorkspace Pro"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "commands": {
+      "toggle-pause": {
+         "description": "Pause/Resume all extension activity (helps with DevTools performance)",
+         "suggested_key": {
+            "default": "Ctrl+Shift+Space",
+            "mac": "Command+Shift+Space"
+         }
+      }
+   },
+   "content_scripts": [ {
+      "js": [ "referral-capture.js" ],
+      "matches": [ "https://www.getaiworkspace.com/*", "https://getaiworkspace.com/*" ],
+      "run_at": "document_start"
+   }, {
+      "js": [ "prehide-bootstrap.js" ],
+      "matches": [ "https://chatgpt.com/*", "https://chat.openai.com/*" ],
+      "run_at": "document_start"
+   }, {
+      "css": [ "styles.css" ],
+      "js": [ "content.js" ],
+      "matches": [ "https://chatgpt.com/*", "https://chat.openai.com/*" ],
+      "run_at": "document_end"
+   }, {
+      "css": [ "styles.css" ],
+      "js": [ "content.js" ],
+      "matches": [ "https://claude.ai/*" ],
+      "run_at": "document_end"
+   }, {
+      "css": [ "styles.css" ],
+      "js": [ "content.js" ],
+      "matches": [ "https://grok.com/*" ],
+      "run_at": "document_end"
+   }, {
+      "css": [ "styles.css" ],
+      "js": [ "content.js" ],
+      "matches": [ "https://gemini.google.com/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "ChatGPT prompt manager and sidebar workspace to organize prompts, chats, notes, and workflows for faster AI productivity.",
+   "host_permissions": [ "https://chatgpt.com/*", "https://chat.openai.com/*", "https://claude.ai/*", "https://grok.com/*", "https://gemini.google.com/*", "https://superprompt-api-production.up.railway.app/*", "http://localhost:3000/*", "http://127.0.0.1:3000/*", "https://www.getaiworkspace.com/*", "https://getaiworkspace.com/*" ],
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiXhWZYe29sFbUroeDaxtIY1T6jRS0sNeWUjg2giZ2mU2tI1n/3+aKYbUBAxByCpMpchqhhSUu6j17wKt8C5LJFdlXmzLEiqXnQdvmW0i9G+n78jz8Bc6Ud7Gy0CTQFCi7XrhvISwVj+imfx88TdoN1P69mU9YHAFuPbW2Kl7xS+UdYYm2y51znKZB9tMGwWGgXFYMwa48EqPBVW18Pe4gDcPW/Clvv23Lch6ZhxKqQHcosL12iHjE+bBmmZHoVy5j8v6/EbOWPi/pkWTtr+tCOt77hzqHK/VYiz5QhVTioyLjwbj4erqqyBnp9SjVtjizVGmYRecmNccX6u4PbhoFQIDAQAB",
+   "manifest_version": 3,
+   "name": "AI Workspace Pro - ChatGPT Prompt Manager, Sidebar & Productivity Tools",
+   "oauth2": {
+      "client_id": "701470572744-4otiacqv5ivm0cgf49pdhf93pibnbmn2.apps.googleusercontent.com",
+      "scopes": [ "openid", "email", "profile" ]
+   },
+   "permissions": [ "tabs", "storage", "activeTab", "webRequest", "scripting", "identity", "alarms", "notifications", "contextMenus" ],
+   "update_url": "https://edge.microsoft.com/extensionwebstorebase/v1/crx",
+   "version": "0.1.72",
+   "web_accessible_resources": [ {
+      "matches": [ "https://chatgpt.com/*", "https://claude.ai/*", "https://grok.com/*", "https://gemini.google.com/*" ],
+      "resources": [ "styles.css", "chat-gpt-page-listener.js", "chatgpt-convo-width.js", "chatgpt-highlight-manager.js", "chatgpt-thread-trimmer.js", "claude-page-listener.js", "grok-page-listener.js", "gemini-page-listener.js", "chatgpt-early-suppressor.js", "vault-event-relay.js", "injected/modules/*", "images/logo.svg", "images/chatgpt.svg", "images/Github.svg", "images/gmail.png", "images/outlook.png", "images/mail.png", "images/welcome/*", "assets/*", "fonts/*", "katex.min.css", "katex/*" ]
+   } ]
+}
