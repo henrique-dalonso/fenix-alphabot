@@ -1,5 +1,5 @@
 """
-modules/honda/engine.py — Motor Honda v18.
+modules/honda/engine.py — Motor Honda v19.
 
 Arquitetura: engine é uma Thread persistente.
 - Playwright roda SEMPRE na mesma thread (requisito do sync API).
@@ -7,9 +7,39 @@ Arquitetura: engine é uma Thread persistente.
   e agora também sobrevive ao fechar o Fênix (Quit), de verdade.
 - Play/Stop são eventos de sinalização, não criam novas threads.
 
-Novidades desta versão (v18) — CORREÇÃO PONTUAL, nada da v17 mudou de
-comportamento (validada ao vivo pelo usuário: Honda rodando redondo,
-Edge sobrevivendo ao fechar o Fênix, reconexão funcionando):
+Novidades desta versão (v19) — CORREÇÃO DA CAUSA RAIZ do console
+inundado (a v18 tinha corrigido só um sintoma secundário) + correção
+de bug funcional relatados pelo usuário:
+
+1. CORRIGIDO DE VERDADE: `greenlet.error: cannot switch to a different
+   thread` + `Task exception was never retrieved: Frame.evaluate: Frame
+   was detached`, que a v18 não eliminou. Causa raiz real (agora
+   confirmada): `_evaluate_com_timeout` chamava `frame.evaluate()` (uma
+   API SÍNCRONA do Playwright) de dentro de uma thread Python auxiliar
+   nova a CADA chamada — e a API síncrona do Playwright só pode ser
+   usada pela MESMA thread que chamou `sync_playwright()`. Como
+   `_js_set`/`_evaluate_com_timeout` roda a cada campo preenchido (ou
+   seja, dezenas de vezes por caso), isso deixava um rastro constante
+   de chamadas "órfãs" rodando de verdade em segundo plano depois do
+   timeout local expirar — cada uma delas, ao resolver mais tarde
+   (às vezes só no fechamento do Fênix), tentava retomar uma greenlet
+   de uma thread que já não existia mais. Corrigido: `evaluate()`
+   agora roda direto na thread do engine (forma correta); uma thread
+   "sentinela" externa NÃO chama nada do Playwright — só mata o
+   processo do Edge por PID se o tempo estourar, o que já era o
+   resultado prático anterior (o engine já parava nesse cenário).
+   Ver docstring de `_evaluate_com_timeout` para detalhes.
+
+2. CORRIGIDO (bug funcional): `_gravar_marcacao` (usada nos fluxos
+   ERRO NO PDF / FALTANDO ENDERECO) só limpava nome/nome_alt/cpf_cnpj
+   antes de gravar a marcação — os demais campos (CEP, estado, cidade,
+   bairro, número, complemento) podiam ficar com dados residuais do
+   caso anterior. Também ignorava o Modo de Teste, gravando direto sem
+   pausar para conferência. Ambos corrigidos: todos os campos são
+   limpos antes de marcar, e a pausa de confirmação do Modo de Teste
+   agora é respeitada aqui também, igual ao fluxo normal.
+
+Histórico (v18) — correção parcial/insuficiente, mantida por registro:
 - CORRIGIDO: console inundado com centenas de repetições de
   `greenlet.error: cannot switch to a different thread (which happens
   to have exited)` ao fechar o Fênix. Causa: o `finally` de `run()`
@@ -1126,33 +1156,60 @@ class HondaEngine(threading.Thread):
 
     def _evaluate_com_timeout(self, frame, script: str, arg, timeout_s: float = 8.0):
         """
-        Executa frame.evaluate() com um teto de tempo real, usando uma
-        thread auxiliar. `evaluate()` do Playwright NÃO tem timeout
-        próprio — se o processo do navegador travar por qualquer motivo
-        (ex.: uma aba pesada consumindo o processo), a chamada pode
-        ficar pendurada para sempre, travando o engine inteiro em
-        silêncio. Isso transforma esse tipo de travamento num erro
-        claro e recuperável (levanta TimeoutError) em vez de um hang.
+        Executa frame.evaluate() com um teto de tempo real.
+
+        CORRIGIDO (causava o console inundado de `greenlet.error: cannot
+        switch to a different thread`): a implementação anterior rodava
+        `frame.evaluate()` dentro de uma thread Python auxiliar nova a
+        CADA chamada, e violava o contrato de threading do Playwright —
+        a API síncrona do Playwright só pode ser chamada a partir da
+        MESMA thread que iniciou `sync_playwright()` (aqui, a própria
+        thread do engine). Chamar `evaluate()` de uma thread estranha
+        registra um contexto de greenlet que nunca é devidamente limpo
+        quando o timeout expira e o código segue em frente sem esperar
+        essa thread terminar de verdade — o evaluate() "esquecido"
+        continua rodando de verdade em segundo plano, e quando ele
+        finalmente resolve (às vezes só no fechamento do Fênix), tenta
+        retomar uma greenlet cuja thread dona já não existe mais.
+
+        Nova abordagem: `frame.evaluate()` roda direto NESTA thread (a
+        única forma correta de chamar a API síncrona do Playwright).
+        Uma thread "sentinela" à parte não chama NENHUM método do
+        Playwright — ela só espera `timeout_s` e, se a chamada ainda
+        não tiver terminado, presume que o navegador travou e encerra
+        o processo do Edge por PID (`_matar_processo_fenix_edge`, ação
+        de sistema operacional, sem relação com o Playwright, portanto
+        segura de chamar de qualquer thread). Isso libera o
+        `evaluate()` preso com um erro claro em vez de deixá-lo
+        pendurado para sempre — e o engine já para (`self._stop_ev`)
+        nesse cenário de qualquer forma, então matar o processo aqui
+        não piora o resultado prático, só evita o vazamento de threads
+        e o ruído no console.
         """
-        resultado: dict = {}
+        concluido = threading.Event()
+        travou = {"sim": False}
 
-        def _alvo():
-            try:
-                resultado["valor"] = frame.evaluate(script, arg)
-            except Exception as e:
-                resultado["erro"] = e
+        def _sentinela():
+            if not concluido.wait(timeout_s):
+                travou["sim"] = True
+                logger.aviso(
+                    f"evaluate() não respondeu em {timeout_s:.0f}s — "
+                    "encerrando o Edge para destravar o engine."
+                )
+                self._matar_processo_fenix_edge()
 
-        t = threading.Thread(target=_alvo, daemon=True)
-        t.start()
-        t.join(timeout_s)
-        if t.is_alive():
-            raise TimeoutError(
-                f"evaluate() não respondeu em {timeout_s:.0f}s — "
-                "o navegador pode estar travado ou sobrecarregado."
-            )
-        if "erro" in resultado:
-            raise resultado["erro"]
-        return resultado.get("valor")
+        threading.Thread(target=_sentinela, daemon=True).start()
+        try:
+            return frame.evaluate(script, arg)
+        except Exception as e:
+            if travou["sim"]:
+                raise TimeoutError(
+                    f"evaluate() não respondeu em {timeout_s:.0f}s — "
+                    "o navegador travou e precisou ser encerrado."
+                ) from e
+            raise
+        finally:
+            concluido.set()
 
     def _js_set(self, page: Page, name: str, valor: str):
         for frame in page.frames:
@@ -1352,13 +1409,43 @@ class HondaEngine(threading.Thread):
     # Marcações especiais
     # -----------------------------------------------------------
     def _gravar_marcacao(self, page: Page, grupo_cota: str, marcacao: str, identificador_atual: Optional[str] = None):
-        self._js_set(page, settings.LUNA_CAMPOS["nome"], "")
-        self._js_set(page, settings.LUNA_CAMPOS["nome_alt"], "")
-        self._js_set(page, settings.LUNA_CAMPOS["cpf_cnpj"], "")
+        """
+        Grava uma marcação especial (ERRO NO PDF / FALTANDO ENDERECO)
+        quando o PDF não pôde ser lido com segurança.
+
+        CORRIGIDO (relatado pelo usuário): antes, esta função só
+        limpava nome/nome_alt/cpf_cnpj e escrevia grupo_cota + a
+        marcação no campo de endereço — os demais campos (CEP, estado,
+        cidade, bairro, número, complemento) podiam ficar com dados
+        RESIDUAIS do caso anterior, já que nunca eram limpos nem
+        sobrescritos aqui. Agora todos os campos usados no fluxo normal
+        são explicitamente limpos primeiro, igual a `_preencher_campos`
+        faz para o caso normal.
+
+        Também respeita o Modo de Teste agora: antes, o gravar era
+        acionado direto, ignorando a pausa de conferência — usuário
+        relatou que o robô gravou mesmo com o Modo de Teste ativo.
+        """
+        for campo in (
+            "nome", "nome_alt", "cpf_cnpj",
+            "cep", "estado", "cidade", "bairro",
+            "numero", "complemento",
+        ):
+            self._js_set(page, settings.LUNA_CAMPOS[campo], "")
+
         self._js_set(page, settings.LUNA_CAMPOS["grupo_cota"],
                      parser_honda.normalizar(grupo_cota, preservar_ponto=True))
         self._js_set(page, settings.LUNA_CAMPOS["endereco"],
                      parser_honda.normalizar(marcacao))
+
+        if self._modo_teste:
+            acao = self._aguardar_confirmacao(page)
+            if acao is None:
+                return  # STOP acionado enquanto aguardava conferência
+            if acao != "gravar":
+                logger.aviso(f"Ação '{acao}' não reconhecida em modo de teste — caso não será gravado.")
+                return
+
         resultado = self._clicar_gravar(page)
         if resultado is True:
             self.casos_processados += 1
