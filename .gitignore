@@ -222,3 +222,8 @@ data/edge_profile
 data/edge_profile_fenix
 modules/honda/__pycache__/engine.cpython-314.pyc
 modules/honda/__pycache__/engine.cpython-314.pyc
+
+# Dados locais (perfis do Edge, credenciais, logs) nunca vao pro git
+data/
+logs/
+edge_profile_alphabot/

@@ -43,7 +43,6 @@ APP_VERSION = "1.0.0"
 # -----------------------------------------------------------
 BASE_URL = "https://npjur.paschoalotto.com.br"
 ROTINA_LUNA_URL = f"{BASE_URL}/sistema/relatorios/robots/catia_rotina1.php"
-LOGIN_URL = f"{BASE_URL}/gelogin.php?origem=%2F"
 
 MAX_TENTATIVAS_RECOVERY = 3
 WATCHDOG_CASO_SEGUNDOS = 180

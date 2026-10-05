@@ -1,7 +1,21 @@
 """
-core/recovery.py — Recovery e inicialização da LUNA.
+core/recovery.py — Recovery e inicialização da LUNA — v2.
 
 Seletores confirmados inspecionando o HTML real da LUNA.
+
+Novidades desta versão (v2) — parte da correção definitiva do
+travamento relatado pelo usuário (ver changelog completo em
+`modules/honda/engine.py` v24): `_clicar_seta` e `_js_select` (renomeado
+`_selecionar_option`) usavam `frame.evaluate()` com JS puro para clicar
+na seta e selecionar banco/tipo — igual ao antigo `_js_set` do engine,
+sem timeout nativo do Playwright. Substituídos por `locator.click(
+force=True, timeout=...)` e `locator.select_option(value=..., timeout=
+...)`, réplica exata de `clicar_elemento_por_seletores` e
+`selecionar_option_por_valor_ou_texto` do AlphaBot original — o motivo
+pelo qual o AlphaBot nunca precisou de nenhuma blindagem própria contra
+travamento: as ações nativas do Playwright já levantam um erro limpo
+sozinhas se algo não responder, sem precisar de thread sentinela nem
+matar processo nenhum.
 """
 
 import re
@@ -78,7 +92,7 @@ class RecoveryManager:
         banco_val = cfg.get("banco_value", "")
         tipo_val = cfg.get("tipo_value", "")
 
-        ok_banco = self._js_select(page,
+        ok_banco = self._selecionar_option(page,
                                    settings.LUNA_SELETORES["banco"],
                                    banco_val)
         if not ok_banco:
@@ -93,7 +107,7 @@ class RecoveryManager:
         while _time.time() - inicio < 6:
             if self._stop.is_set():
                 return False
-            ok_tipo = self._js_select(page, settings.LUNA_SELETORES["tipo"], tipo_val)
+            ok_tipo = self._selecionar_option(page, settings.LUNA_SELETORES["tipo"], tipo_val)
             if ok_tipo:
                 break
             _time.sleep(0.5)
@@ -130,18 +144,23 @@ class RecoveryManager:
         return self._tela_ja_processada(page)
 
     def _clicar_seta(self, page: Page, direcao: str) -> bool:
+        """
+        Clica na seta via locator NATIVO do Playwright (`click(force=True,
+        timeout=...)`) — igual ao `clicar_elemento_por_seletores` do
+        AlphaBot original. Antes usava `frame.evaluate()` com um
+        `el.click()` em JS puro: sem timeout nativo do Playwright, o
+        que exigia inventar uma blindagem própria pra detectar
+        travamento (removida — ver changelog do engine.py). Ação nativa
+        já levanta um erro limpo se travar, sem precisar de nada disso.
+        """
         seletores = settings.LUNA_SELETORES[f"seta_{direcao}"]
 
         for frame in page.frames:
             for sel in seletores:
                 try:
-                    ok = frame.evaluate(f"""() => {{
-                        const el = document.querySelector('{sel}');
-                        if (!el) return false;
-                        el.click();
-                        return true;
-                    }}""")
-                    if ok:
+                    loc = frame.locator(sel).first
+                    if loc.count() > 0:
+                        loc.click(force=True, timeout=3_000)
                         return True
                 except Exception:
                     continue
@@ -249,20 +268,21 @@ class RecoveryManager:
     # -----------------------------------------------------------
     # Internos
     # -----------------------------------------------------------
-    def _js_select(self, page: Page, seletor: str, valor: str) -> bool:
+    def _selecionar_option(self, page: Page, seletor: str, valor: str) -> bool:
+        """
+        Seleciona uma opção do <select> via `select_option` NATIVO do
+        Playwright — igual ao `selecionar_option_por_valor_ou_texto` do
+        AlphaBot original. Antes usava `frame.evaluate()` com JS puro
+        (setar `.value` + disparar `change` manualmente): sem timeout
+        nativo do Playwright, exigia a blindagem própria de travamento
+        que foi removida (ver changelog do engine.py). `select_option`
+        já dispara os eventos corretos sozinho e tem timeout seguro.
+        """
         for frame in page.frames:
             try:
-                ok = frame.evaluate(
-                    """([sel, val]) => {
-                        const el = document.querySelector(sel);
-                        if (!el) return false;
-                        el.value = val;
-                        el.dispatchEvent(new Event('change', {bubbles: true}));
-                        return true;
-                    }""",
-                    [seletor, valor]
-                )
-                if ok:
+                loc = frame.locator(seletor).first
+                if loc.count() > 0:
+                    loc.select_option(value=valor, timeout=3_000)
                     return True
             except Exception:
                 continue

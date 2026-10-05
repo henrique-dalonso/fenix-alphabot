@@ -1,5 +1,5 @@
 """
-modules/honda/engine.py — Motor Honda v22.
+modules/honda/engine.py — Motor Honda v24.
 
 Arquitetura: engine é uma Thread persistente.
 - Playwright roda SEMPRE na mesma thread (requisito do sync API).
@@ -7,7 +7,120 @@ Arquitetura: engine é uma Thread persistente.
   e agora também sobrevive ao fechar o Fênix (Quit), de verdade.
 - Play/Stop são eventos de sinalização, não criam novas threads.
 
-Novidades desta versão (v22) — a v21 detectava corretamente um engine
+Novidades desta versão (v24) — CORREÇÃO DEFINITIVA da causa raiz do
+travamento (a v23 regrediu a conexão com o Edge para o modelo manual
+do AlphaBot, mas o travamento em si — "quase não funciona, fecha o
+tempo todo" — continuava, inclusive fora do Modo de Teste). Comparando
+`AlphaBot.py` linha a linha com o Fênix, achei a divergência real:
+
+TODA ação de interação com a página no AlphaBot original — preencher
+campo (`preencher_campo`), selecionar banco/tipo (`selecionar_option_
+por_valor_ou_texto`), clicar seta (`clicar_seta_luna`) — usa ações
+NATIVAS do Playwright: `locator.click()`, `.press()`, `.fill()`,
+`.select_option()`, `.wait_for()`. Toda ação nativa do Playwright já
+tem timeout embutido e SEGURO: se travar, levanta uma exceção limpa na
+MESMA thread, sem drama. O Fênix, em algum ponto da sua reescrita,
+trocou isso por `frame.evaluate()` com JavaScript injetado
+(`_js_set`/`_js_select`/clique via JS em `_clicar_seta`) — e
+`evaluate()` NÃO TEM timeout nativo no Playwright. Foi exatamente por
+isso que uma sessão anterior precisou inventar uma thread "sentinela"
+pra adivinhar quando travou e matar o processo do Edge à força
+(`_evaluate_com_timeout` + `_matar_processo_fenix_edge`) — um
+mecanismo que o AlphaBot NUNCA teve porque NUNCA precisou: ele sempre
+usou a API certa. Esse mecanismo de emergência, além de frágil (matar
+o processo não garante destravar a chamada pendente — ver changelog
+v21), transformava toda lentidão momentânea do navegador (não
+necessariamente um travamento de verdade) num evento catastrófico:
+Edge morto, engine perdido, tudo reiniciado do zero. Essa é a causa
+raiz real de toda a instabilidade relatada nesta e nas sessões
+anteriores.
+
+1. REESCRITO: `_js_set` → `_preencher_campo` (renomeado), agora usa
+   `locator.wait_for(state="visible", timeout=8000)` + `click(force=
+   True)` + `press("Control+A")` + `press("Backspace")` + `fill()` —
+   cópia exata do `preencher_campo` do AlphaBot. Chamado por
+   `_preencher_campos` e `_gravar_marcacao`.
+2. REESCRITO em `core/recovery.py` (v2): `_js_select` → `
+   _selecionar_option`, agora usa `locator.select_option(value=...)` —
+   cópia do `selecionar_option_por_valor_ou_texto` do AlphaBot.
+   `_clicar_seta` agora usa `locator.click(force=True)` no lugar de
+   `frame.evaluate()` — cópia de `clicar_elemento_por_seletores`.
+3. REMOVIDO PARA SEMPRE (deixou de ser necessário — não existe mais
+   nenhuma chamada de `evaluate()` sem timeout nativo no caminho de
+   preenchimento/interação): `_evaluate_com_timeout`, a thread
+   sentinela, `self._travado_ev`/propriedade `travado`,
+   `_matar_processo_fenix_edge`, `_pid_por_porta`, e o callback
+   `on_engine_travado` + `_engine_travado`/`_substituir_engine_travado`
+   em `ui/main_window.py` (v9). Toda essa máquina existia só para
+   compensar a ausência de timeout do `evaluate()` — sem ele, não tem
+   mais nada para compensar.
+4. NOVO: `abrir_pdf` (parâmetro de `play()`, default True) —
+   independente do Modo de Teste, réplica do `abrir_pdf_visual_var` do
+   AlphaBot original (era um checkbox na versão FINAL de produção do
+   AlphaBot, não uma "versão de testes" — ligar/desligar não muda em
+   nada o trabalho do robô). `_abrir_pdf_fisicamente` também parou de
+   esperar 1.2s artificialmente após o clique — o AlphaBot clica e
+   segue imediatamente (`time.sleep(0.01)`); a pausa tinha sido
+   introduzida numa sessão anterior sob uma hipótese de causa raiz que
+   não era a real (ver item acima).
+5. CORRIGIDO: `abrir_edge_debug()` fazia uma requisição HTTP (checar se
+   a porta já respondia) ANTES de abrir o Edge — bloqueando a THREAD
+   DA UI (Tkinter) por até 2s a cada clique no botão (sempre os 2s
+   completos da primeira vez, já que nada escuta a porta ainda antes
+   do primeiro Edge aberto). O AlphaBot nunca fazia essa checagem — só
+   lançava o processo e seguia. Removida; o botão agora é instantâneo,
+   igual ao AlphaBot.
+
+Histórico (v23) — REGRESSÃO ARQUITETURAL DELIBERADA, a
+pedido explícito do usuário: as versões v17-v22 foram construindo,
+sessão após sessão, uma automação cada vez mais "esperta" na conexão
+com o Edge (lançar o processo sozinho, detectar sessão, fazer
+auto-login, navegar para a rotina, reconectar e tentar de novo em
+loop) — e essa complexidade acabou sendo a própria causa da
+instabilidade relatada ("quase não funciona, fecha o tempo todo"), bem
+mais divergente do AlphaBot original (que nunca teve esse tipo de
+problema) do que deveria. Decisão do usuário: descartar essa camada
+inteira e voltar ao modelo simples e comprovado do AlphaBot — o
+usuário abre o Edge Debug manualmente, loga, seleciona HONDA e deixa
+um caso carregado à mão; o Fênix só assume a partir do Play.
+
+1. REMOVIDO: `_lancar_edge_detached` (lançar o Edge automaticamente),
+   `_fazer_login`/`_preencher_login`/`_carregar_credenciais`
+   (auto-login com `data/credentials.json`), e toda a navegação
+   automática para `ROTINA_LUNA_URL`/`LOGIN_URL` no início de `_sessao`.
+   O Fênix nunca mais abre o Edge, faz login ou navega por conta
+   própria a partir do Play — réplica exata da filosofia do AlphaBot
+   original (`abrir_edge_debug` só lança o processo, nada mais).
+2. NOVO: `abrir_edge_debug()` — método chamável direto pela UI (botão
+   "Abrir Edge Debug", igual ao AlphaBot), lança o Edge com depuração
+   remota no perfil dedicado do Fênix e SÓ ISSO. Não usa Playwright
+   (só `subprocess`), então é seguro chamar de qualquer thread, mesmo
+   com o engine dormindo.
+3. SIMPLIFICADO: `_conectar_edge` agora só tenta conectar via CDP ao
+   que já está aberto — sem lançar, sem retry-com-kill-e-relança. Se a
+   porta não responder, ou a conexão falhar, `_garantir_browser` para
+   o robô com uma mensagem clara pedindo para abrir o Edge Debug e
+   preparar a tela manualmente. Nenhuma tentativa automática de
+   recuperação nessa etapa.
+4. MANTIDO (é exatamente o que o usuário pediu para preservar): a
+   lógica de recovery em pleno processamento — `RecoveryManager.
+   _inicializar_luna` (seleciona banco/tipo do HONDA e força
+   carregamento com seta direita → esquerda) continua sendo usada
+   tanto no início de uma sessão (se `_luna_ja_pronta_para_honda`
+   detectar que a tela NÃO está pronta — ex: usuário esqueceu de
+   selecionar banco/tipo) quanto no meio de um lote, sempre que a LUNA
+   resetar/travar (metade do lote, sessão instável etc.) — mesmo
+   mecanismo de sempre, só que nunca mais precedido de uma navegação
+   ou login automáticos.
+5. SIMPLIFICADO: `_matar_processo_fenix_edge` não depende mais de um
+   PID lembrado (`self._edge_pid`, removido) — como o Fênix nunca mais
+   lança o Edge sozinho, o PID é sempre identificado pela porta de
+   depuração (`_pid_por_porta`). Usado só quando um `evaluate()` trava
+   de vez (ver `_evaluate_com_timeout`); depois de matar, o Fênix NÃO
+   tenta reabrir ou reconectar sozinho — o usuário clica "Abrir Edge
+   Debug" de novo, refaz a tela e dá Play.
+
+Histórico (v22) — a v21 detectava corretamente um engine
 travado e substituía a instância, mas o log real de produção (usuário
 relatou "quase não funciona, fecha o tempo todo", em modo normal E em
 Modo de Teste) mostrou que isso não bastava: depois de um travamento,
@@ -423,12 +536,10 @@ Histórico (v7):
 
 import re
 import time
-import json
 import os
 import threading
 import subprocess
 import urllib.request
-import urllib.error
 from typing import Optional, Callable
 
 from playwright.sync_api import Page, BrowserContext, Browser, sync_playwright
@@ -473,15 +584,6 @@ class HondaEngine(threading.Thread):
         self._context: Optional[BrowserContext] = None
         self._page: Optional[Page] = None
 
-        # PID do processo do Edge lançado pelo Fênix nesta execução do
-        # app (None se ainda não lançamos nenhum, ou se estamos apenas
-        # reaproveitando um Edge de uma sessão anterior via porta ativa
-        # sem termos lançado nós mesmos). Usado para matar SÓ esse
-        # processo específico se precisar de um reset forçado — nunca
-        # mais um taskkill genérico por nome de imagem (mataria também
-        # o Edge pessoal do usuário, que agora coexiste sem conflito).
-        self._edge_pid: Optional[int] = None
-
         # True quando a LUNA já foi navegada, logada e inicializada
         # (banco/tipo/setas) nesta conexão de browser. Permite que um
         # Stop → Play reaproveite a tela exatamente como estava, sem
@@ -498,36 +600,25 @@ class HondaEngine(threading.Thread):
         self._confirmar_ev = threading.Event()
         self._acao_pendente: Optional[str] = None
 
+        # Abrir o PDF fisicamente para conferência visual — INDEPENDENTE
+        # do Modo de Teste (ver changelog v24). Réplica do
+        # `abrir_pdf_visual_var` do AlphaBot original: é uma preferência
+        # de visualização, não muda em nada o trabalho do robô.
+        self._abrir_pdf = True
+
         # Sinalizado quando o run() termina toda a rotina de
         # encerramento (incluindo o handoff do Edge — ver quit()/run()).
         # A UI espera nele antes de matar o processo de vez, senão a
         # rotina de handoff pode ser interrompida pela metade.
         self._encerrado_ev = threading.Event()
 
-        # Sinalizado pela thread SENTINELA de `_evaluate_com_timeout`
-        # quando um `frame.evaluate()` trava e o Edge precisa ser
-        # encerrado à força (ver docstring de `_evaluate_com_timeout`).
-        # Matar o processo do Edge não garante que a chamada bloqueada
-        # do Playwright na thread do engine realmente retorne — um
-        # `taskkill /F` não envia um close limpo no canal CDP, então a
-        # thread do engine pode ficar travada para sempre dentro dessa
-        # chamada, sem nunca voltar a checar `_play_ev`/`_stop_ev`
-        # (STOP e Play deixam de ter qualquer efeito nela, pois ela
-        # nunca mais executa uma linha de código). Python não tem como
-        # interromper de fora uma chamada síncrona bloqueada numa outra
-        # thread, então a UI usa este evento para abandonar esta thread
-        # (ela é daemon — não impede o Fênix de fechar, só fica presa,
-        # inofensiva) e criar uma instância nova de `HondaEngine` para
-        # os próximos Play. Ver `ui/main_window.py`, callback
-        # `on_engine_travado`.
-        self._travado_ev = threading.Event()
-
     # -----------------------------------------------------------
     # API para a UI
     # -----------------------------------------------------------
-    def play(self, callbacks: dict, modo_teste: bool = False):
+    def play(self, callbacks: dict, modo_teste: bool = False, abrir_pdf: bool = True):
         self._callbacks = callbacks
         self._modo_teste = modo_teste
+        self._abrir_pdf = abrir_pdf
         self._stop_ev.clear()
         self._play_ev.set()
 
@@ -586,12 +677,6 @@ class HondaEngine(threading.Thread):
     @property
     def rodando(self) -> bool:
         return self._play_ev.is_set() and not self._stop_ev.is_set()
-
-    @property
-    def travado(self) -> bool:
-        """True se a thread do engine ficou presa numa chamada bloqueada
-        do Playwright e não deve mais ser reutilizada — ver `_travado_ev`."""
-        return self._travado_ev.is_set()
 
     # -----------------------------------------------------------
     # Thread principal
@@ -700,62 +785,39 @@ class HondaEngine(threading.Thread):
         # a checagem abaixo) até travar por completo.
         self._recovery.aceitar_dialog_pendente(self._page)
 
-        if not self._luna_pronta and self._luna_ja_pronta_para_honda(self._page):
-            # Edge sobrevivente de uma sessão anterior do Fênix (ou
-            # deixado aberto manualmente pelo usuário) já está numa
-            # aba da LUNA com HONDA selecionado e um caso carregado —
-            # navegar de novo reiniciaria a rotina à toa (perderia o
-            # caso já na tela) mesmo com tudo certo. Aproveita como
-            # está, igual ao caminho de STOP → PLAY.
-            logger.sucesso("Edge já estava na LUNA com HONDA carregado — pulando reinicialização.")
+        if not self._luna_pronta:
+            # Réplica do AlphaBot original: o Fênix NUNCA navega, faz
+            # login ou seleciona banco/tipo por conta própria no início
+            # de uma sessão — isso é trabalho do usuário, feito
+            # manualmente no Edge Debug (botão "Abrir Edge Debug")
+            # antes de clicar Play. O engine só assume a partir da tela
+            # em que a aba já estiver.
             handler_recovery = self._recovery.criar_handler_dialog("Honda")
             self._page.on("dialog", handler_recovery)
             self._dialog_handler_atual = handler_recovery
-            self._luna_pronta = True
 
-        elif not self._luna_pronta:
-            # Primeira vez nesta conexão de browser: navega, checa
-            # sessão/login e inicializa banco/tipo/setas do zero.
-            _aceitar = lambda d: d.accept()
-            self._page.on("dialog", _aceitar)
-
-            logger.info("Verificando sessão ativa na LUNA...")
-            self._navegar_seguro(self._page, settings.ROTINA_LUNA_URL)
-            url_atual = ""
-            try:
-                url_atual = (self._page.url or "").lower()
-            except Exception:
-                pass
-            sessao_ativa = "gelogin" not in url_atual and "login" not in url_atual
-
-            if not sessao_ativa:
-                logger.info("Sessão não encontrada. Navegando para o login...")
-                self._navegar_seguro(self._page, settings.LOGIN_URL)
-                if not self._fazer_login(self._page):
-                    return
-                logger.info("Navegando para a rotina da LUNA...")
-                self._navegar_seguro(self._page, settings.ROTINA_LUNA_URL)
+            if self._luna_ja_pronta_para_honda(self._page):
+                # A aba já está na LUNA com HONDA selecionado e um caso
+                # carregado — exatamente como o usuário deixou. Nada a
+                # fazer, só começar a processar.
+                logger.sucesso("LUNA já está pronta com HONDA carregado — iniciando processamento.")
             else:
-                logger.sucesso("Sessão ativa detectada. Login não necessário.")
-
-            try:
-                self._page.remove_listener("dialog", _aceitar)
-            except Exception:
-                pass
-
-            handler_recovery = self._recovery.criar_handler_dialog("Honda")
-            self._page.on("dialog", handler_recovery)
-            self._dialog_handler_atual = handler_recovery
-
-            self._aguardar(1_500)
-
-            if not self._recovery._inicializar_luna(self._page):
-                if not self._recovery.executar(self._page, "falha na inicialização"):
-                    self._parar_para_revisao_manual("Falha ao inicializar a LUNA (banco/tipo/tela). Recovery esgotado.")
-                    return
+                # Tela não está pronta (banco/tipo errado, ou caso não
+                # carregado) — mesmo mecanismo que a LUNA já precisa no
+                # meio de um lote (metade do lote, tela resetada etc.):
+                # seleciona banco/tipo do HONDA e força o carregamento
+                # com seta direita → esquerda. Não navega para nenhuma
+                # URL — trabalha em cima da aba que já está aberta.
+                logger.info("Preparando a tela da LUNA (banco/tipo e carregamento do caso)...")
+                if not self._recovery._inicializar_luna(self._page):
+                    if not self._recovery.executar(self._page, "falha na inicialização"):
+                        self._parar_para_revisao_manual(
+                            "Não consegui preparar a tela da LUNA (banco/tipo/carregamento). "
+                            "Confira se você está logado e na rotina certa no Edge Debug."
+                        )
+                        return
 
             self._luna_pronta = True
-            logger.sucesso("LUNA pronta. Iniciando processamento...")
         else:
             # STOP → PLAY na mesma conexão: a tela já está exatamente
             # como ficou quando pausamos — não navega, não refaz login,
@@ -832,6 +894,53 @@ class HondaEngine(threading.Thread):
     # -----------------------------------------------------------
     # Browser
     # -----------------------------------------------------------
+    def abrir_edge_debug(self):
+        """
+        Réplica direta e LITERAL do botão "Abrir Edge Debug" do AlphaBot
+        original: só abre o Edge com depuração remota ativa no perfil
+        dedicado do Fênix. NADA MAIS — nenhuma navegação, login ou
+        seleção de banco/tipo automática, e (CORRIGIDO — causava a UI
+        travar por até 2s a cada clique) nenhuma checagem de porta
+        antes de abrir. O AlphaBot nunca checava nada: só lançava o
+        processo e seguia. `subprocess.Popen` retorna na hora; a
+        checagem daqui (`_porta_debug_ativa`, uma requisição HTTP com
+        timeout de 2s) rodava na THREAD PRINCIPAL DA UI (Tkinter),
+        travando a janela inteira por até 2s a cada clique — sempre os
+        2s completos na primeira vez, já que não há nada escutando a
+        porta ainda. O usuário faz login, entra na rotina, seleciona
+        HONDA e deixa um caso carregado manualmente; só então clica
+        Play. Chamado direto pela UI (thread principal), não usa
+        Playwright — só `subprocess`, então é seguro chamar de qualquer
+        thread.
+        """
+        edge_path = next((c for c in settings.EDGE_CAMINHOS if os.path.exists(c)), None)
+        if not edge_path:
+            logger.erro("Edge não encontrado nos caminhos padrão.")
+            return
+
+        try:
+            subprocess.Popen(
+                [
+                    edge_path,
+                    f"--remote-debugging-port={settings.EDGE_DEBUG_PORT}",
+                    f"--user-data-dir={settings.DIR_PERFIL_EDGE}",
+                    "--start-maximized",
+                    "--no-first-run",
+                    "--no-default-browser-check",
+                ],
+                creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                close_fds=True,
+            )
+            logger.sucesso(
+                "Edge Debug iniciado. Faça login, selecione HONDA e deixe um "
+                "caso carregado na LUNA antes de clicar Play."
+            )
+        except Exception as e:
+            logger.erro(f"Erro ao abrir Edge Debug: {e}")
+
     def _garantir_browser(self, pw) -> bool:
         if self._context is not None:
             try:
@@ -849,10 +958,17 @@ class HondaEngine(threading.Thread):
 
         browser = self._conectar_edge(pw)
         if browser is None:
+            self._parar_para_revisao_manual(
+                "Edge Debug não está aberto (ou não respondeu). Clique em "
+                "'Abrir Edge Debug', faça login, selecione HONDA e deixe um "
+                "caso carregado na LUNA antes de dar Play."
+            )
             return False
 
         if not browser.contexts:
-            logger.erro("Conectei ao Edge, mas não encontrei nenhum contexto de navegador.")
+            self._parar_para_revisao_manual(
+                "Conectei ao Edge Debug, mas não encontrei nenhuma aba aberta."
+            )
             return False
 
         self._browser = browser
@@ -860,86 +976,34 @@ class HondaEngine(threading.Thread):
         self._page = self._consolidar_aba(self._context)
         return self._page is not None
 
-    def _conectar_edge(self, pw, tentar_de_novo: bool = True) -> Optional[Browser]:
+    def _conectar_edge(self, pw) -> Optional[Browser]:
         """
-        Garante um Edge rodando com depuração remota ativa no perfil
-        dedicado do Fênix e conecta o Playwright nele via CDP.
-
-        Se a porta já estiver respondendo (Edge de uma sessão anterior
-        ainda vivo, mesmo depois de fechar/reabrir o Fênix), conecta
-        direto sem abrir um processo novo.
+        Conecta via CDP ao Edge Debug que o usuário já abriu manualmente
+        (botão "Abrir Edge Debug" / `abrir_edge_debug`). Réplica do
+        AlphaBot original: o Fênix NUNCA abre o Edge, faz login ou
+        navega por conta própria a partir do Play — só conecta ao que
+        já está aberto. Se a porta não responder, quem chamou decide
+        como avisar o usuário (mensagem clara, sem tentativa de abrir
+        ou reconectar sozinho).
         """
         if not self._porta_debug_ativa():
-            edge_path = next(
-                (c for c in settings.EDGE_CAMINHOS if os.path.exists(c)), None
+            logger.erro(
+                f"Edge Debug não está respondendo na porta {settings.EDGE_DEBUG_PORT}."
             )
-            if not edge_path:
-                logger.erro("Edge não encontrado.")
-                return None
-
-            logger.info("Abrindo Edge (perfil dedicado do Fênix)...")
-            if not self._lancar_edge_detached(edge_path):
-                if tentar_de_novo:
-                    logger.aviso("Tentando encerrar o processo e abrir de novo...")
-                    self._matar_processo_fenix_edge()
-                    return self._conectar_edge(pw, tentar_de_novo=False)
-                return None
-        else:
-            logger.info("Edge do Fênix já está aberto. Conectando via CDP...")
+            return None
 
         try:
-            # 20s (era 8s): o log real mostrou o handshake completar
-            # ("<ws connected>") e MESMO ASSIM estourar "Timeout 8000ms
-            # exceeded" — 8s não é margem suficiente nesta máquina para
-            # o Playwright terminar de anexar aos targets depois do
-            # websocket conectar. Isso disparava kills e reconexões
-            # desnecessárias mesmo sem nenhum travamento real.
+            # 20s: o log real de produção mostrou o handshake completar
+            # ("<ws connected>") e MESMO ASSIM estourar um timeout de
+            # 8s — 8s não é margem suficiente nesta máquina para o
+            # Playwright terminar de anexar aos targets depois do
+            # websocket conectar.
             return pw.chromium.connect_over_cdp(
                 f"http://localhost:{settings.EDGE_DEBUG_PORT}", timeout=20_000
             )
         except Exception as e:
-            if tentar_de_novo:
-                logger.aviso(f"Falha ao conectar via CDP ({e}). Encerrando e tentando de novo...")
-                self._matar_processo_fenix_edge()
-                return self._conectar_edge(pw, tentar_de_novo=False)
-            logger.erro(f"Não foi possível conectar ao Edge via CDP: {e}")
+            logger.erro(f"Não foi possível conectar ao Edge Debug via CDP: {e}")
             return None
-
-    def _lancar_edge_detached(self, edge_path: str) -> bool:
-        """
-        Abre o Edge como processo totalmente independente do Fênix
-        (sobrevive ao fechamento do app), com depuração remota ativa
-        no perfil dedicado. Aguarda a porta responder antes de seguir.
-        """
-        try:
-            processo = subprocess.Popen(
-                [
-                    edge_path,
-                    f"--remote-debugging-port={settings.EDGE_DEBUG_PORT}",
-                    f"--user-data-dir={settings.DIR_PERFIL_EDGE}",
-                    "--start-maximized",
-                    "--no-first-run",
-                    "--no-default-browser-check",
-                ],
-                creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP,
-                stdin=subprocess.DEVNULL,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                close_fds=True,
-            )
-            self._edge_pid = processo.pid
-        except Exception as e:
-            logger.erro(f"Não consegui abrir o Edge: {e}")
-            return False
-
-        inicio = time.time()
-        while time.time() - inicio < 20:
-            if self._porta_debug_ativa():
-                return True
-            time.sleep(0.3)
-
-        logger.erro("O Edge não respondeu na porta de depuração a tempo.")
-        return False
 
     def _porta_debug_ativa(self) -> bool:
         try:
@@ -985,100 +1049,6 @@ class HondaEngine(threading.Thread):
         self._page = None
         self._dialog_handler_atual = None
         self._luna_pronta = False
-
-    # -----------------------------------------------------------
-    # Login
-    # -----------------------------------------------------------
-    def _fazer_login(self, page: Page) -> bool:
-        url = ""
-        try:
-            url = page.url or ""
-        except Exception:
-            pass
-
-        if "gelogin" not in url and "login" not in url.lower():
-            logger.info("Sessão ativa, login não necessário.")
-            return True
-
-        creds = self._carregar_credenciais()
-        if creds and self._preencher_login(page, creds):
-            logger.info("Auto-login realizado.")
-            try:
-                page.wait_for_url(
-                    lambda u: "gelogin" not in u and "login" not in u.lower(),
-                    timeout=15_000
-                )
-                page.wait_for_timeout(1_200)
-                logger.sucesso("Login confirmado.")
-                return True
-            except Exception:
-                logger.aviso("Auto-login não redirecionou. Aguardando login manual...")
-
-        logger.info("Faça o login na janela do Edge — o Fênix continuará automaticamente.")
-        try:
-            page.wait_for_url(
-                lambda u: "gelogin" not in u and "login" not in u.lower(),
-                timeout=300_000
-            )
-            page.wait_for_timeout(1_200)
-            logger.sucesso("Login detectado.")
-            return True
-        except Exception as e:
-            if self._stop_ev.is_set():
-                return False
-            logger.erro(f"Timeout aguardando login: {e}")
-            return False
-
-    def _preencher_login(self, page: Page, creds: dict) -> bool:
-        try:
-            page.wait_for_timeout(1_000)
-            ok = page.evaluate("""([usuario, senha, filial]) => {
-                const campos = [
-                    document.querySelector('input[name="usuario"]'),
-                    document.querySelector('input[name="login"]'),
-                    document.querySelector('input[name="user"]'),
-                    document.querySelector('input[type="text"]'),
-                ];
-                const elUser = campos.find(el => el && el.offsetParent !== null);
-                if (!elUser) return false;
-                elUser.value = usuario;
-                elUser.dispatchEvent(new Event('input', {bubbles: true}));
-                const elSenha = document.querySelector('input[type="password"]');
-                if (!elSenha) return false;
-                elSenha.value = senha;
-                elSenha.dispatchEvent(new Event('input', {bubbles: true}));
-                if (filial) {
-                    for (const sel of document.querySelectorAll('select')) {
-                        for (const opt of sel.options) {
-                            if (opt.text.trim().toUpperCase().includes(filial.toUpperCase())) {
-                                sel.value = opt.value;
-                                sel.dispatchEvent(new Event('change', {bubbles: true}));
-                                break;
-                            }
-                        }
-                    }
-                }
-                const btn = document.querySelector('button[type="submit"]')
-                    || document.querySelector('input[value="Entrar"]')
-                    || document.querySelector('button');
-                if (!btn) return false;
-                btn.click();
-                return true;
-            }""", [creds.get("usuario",""), creds.get("senha",""), creds.get("filial","")])
-            return bool(ok)
-        except Exception as e:
-            logger.aviso(f"Auto-login falhou: {e}")
-            return False
-
-    def _carregar_credenciais(self) -> Optional[dict]:
-        caminho = os.path.join(settings.DIR_DATA, "credentials.json")
-        try:
-            if os.path.exists(caminho):
-                with open(caminho, "r", encoding="utf-8") as f:
-                    return json.load(f)
-        except Exception:
-            pass
-        return None
 
     # -----------------------------------------------------------
     # Identificador de caso (transição pós-GRAVAR)
@@ -1222,9 +1192,9 @@ class HondaEngine(threading.Thread):
 
             pdf_path = match.group(1)
             grupo_cota = self._extrair_grupo_cota(pdf_path)
-            logger.info(f"GRUPO/COTA: {grupo_cota}")
+            logger.info(f"GRUPO/COTA: {grupo_cota} | PDF: {pdf_path}")
 
-            if self._modo_teste:
+            if self._abrir_pdf:
                 self._abrir_pdf_fisicamente(page)
 
             self._verificar_stop()
@@ -1351,36 +1321,34 @@ class HondaEngine(threading.Thread):
 
     def _abrir_pdf_fisicamente(self, page: Page) -> bool:
         """
-        Modo de teste: clica no ícone do PDF na própria LUNA, abrindo o
-        documento visualmente na mesma tela onde você confere os campos
-        preenchidos — é assim que você acompanha visualmente, então
-        precisa continuar sendo na mesma página (nada de aba separada).
+        Clica no ícone do PDF na própria LUNA para conferência visual —
+        réplica exata de `encontrar_botao_pdf` (ramo `abrir_visualmente`)
+        do AlphaBot original: clica e segue IMEDIATAMENTE, sem esperar o
+        PDF terminar de carregar. Controlado pelo checkbox "Abrir PDF
+        para conferência" (`self._abrir_pdf`), independente do Modo de
+        Teste — no AlphaBot isso era assim na versão final de produção,
+        sem nenhuma diferença no trabalho do robô.
 
-        NOTA sobre o travamento relatado numa sessão anterior: a
-        hipótese era o PDF pesado carregando na mesma página deixar o
-        navegador ocupado por tempo suficiente para travar a próxima
-        chamada do Playwright. Ainda não temos certeza de que era
-        exatamente isso (só aconteceu uma vez) — por isso, em vez de
-        mudar o comportamento visual (que você precisa), a proteção
-        agora está em duas frentes: uma pausa curta aqui para dar
-        tempo do PDF começar a carregar antes de seguir, e um teto de
-        tempo real em `_js_set` (`_evaluate_com_timeout`) — se o
-        navegador realmente travar de novo, o log vai mostrar
-        exatamente isso (timeout claro), em vez de travar mudo. Isso
-        também nos dá a confirmação que faltava para saber se essa
-        hipótese está certa.
+        HISTÓRICO: uma sessão anterior introduziu uma pausa de 1.2s
+        aqui, sob a hipótese de que o PDF pesado carregando "na mesma
+        página" travaria a próxima chamada do Playwright — e construiu
+        uma blindagem inteira (`_evaluate_com_timeout` + kill do Edge)
+        em cima dessa hipótese. A causa raiz real era outra (ver
+        changelog v24 do arquivo): `_preencher_campo` usava
+        `frame.evaluate()` sem timeout nativo. Corrigido isso, a pausa
+        artificial aqui deixou de ter função — removida, igual ao
+        AlphaBot (`time.sleep(0.01)`, ou seja, nenhuma espera real).
         """
         for frame in page.frames:
             try:
                 el = frame.locator(settings.LUNA_SELETORES["botao_pdf"]).first
                 if el.count() > 0:
-                    el.click(timeout=3_000)
-                    logger.info("PDF aberto fisicamente para conferência.")
-                    self._aguardar(1_200)  # dá tempo do PDF começar a carregar
+                    el.click(force=True, timeout=3_000)
+                    logger.info("PDF aberto para conferência visual.")
                     return True
             except Exception:
                 continue
-        logger.aviso("Não consegui abrir o PDF fisicamente (modo de teste). A extração automática segue normalmente.")
+        logger.aviso("Não consegui abrir o PDF fisicamente. A extração automática segue normalmente.")
         return False
 
     def _extrair_grupo_cota(self, pdf_path: str) -> str:
@@ -1411,12 +1379,12 @@ class HondaEngine(threading.Thread):
     def _preencher_campos(self, page: Page, grupo_cota: str, dados: dict) -> bool:
         self._verificar_stop()
         # Limpa os dois campos possíveis de nome do cliente — nem todo
-        # contrato exibe os dois; _js_set não faz nada (rápido) se o
-        # campo não existir na tela.
-        self._js_set(page, settings.LUNA_CAMPOS["nome"], "")
-        self._js_set(page, settings.LUNA_CAMPOS["nome_alt"], "")
-        self._js_set(page, settings.LUNA_CAMPOS["cpf_cnpj"], "")
-        self._js_set(page, settings.LUNA_CAMPOS["grupo_cota"],
+        # contrato exibe os dois; _preencher_campo não faz nada (rápido)
+        # se o campo não existir na tela.
+        self._preencher_campo(page, settings.LUNA_CAMPOS["nome"], "")
+        self._preencher_campo(page, settings.LUNA_CAMPOS["nome_alt"], "")
+        self._preencher_campo(page, settings.LUNA_CAMPOS["cpf_cnpj"], "")
+        self._preencher_campo(page, settings.LUNA_CAMPOS["grupo_cota"],
                      parser_honda.normalizar(grupo_cota, preservar_ponto=True))
         self._aguardar(800)
 
@@ -1436,125 +1404,63 @@ class HondaEngine(threading.Thread):
             if self._watchdog(page):
                 return False
             self._verificar_stop()
-            self._js_set(page, name, parser_honda.normalizar(valor))
+            self._preencher_campo(page, name, parser_honda.normalizar(valor))
             self._aguardar(100)
 
         return True
 
-    def _evaluate_com_timeout(self, frame, script: str, arg, timeout_s: float = 15.0):
+    def _preencher_campo(self, page: Page, name: str, valor: str) -> bool:
         """
-        Executa frame.evaluate() com um teto de tempo real.
+        Preenche um campo da LUNA via locator NATIVO do Playwright —
+        réplica exata do `preencher_campo` do AlphaBot original: espera
+        o campo ficar visível, clica, seleciona tudo e apaga (Ctrl+A +
+        Backspace) e preenche com `.fill()`.
 
-        CORRIGIDO (causava o console inundado de `greenlet.error: cannot
-        switch to a different thread`): a implementação anterior rodava
-        `frame.evaluate()` dentro de uma thread Python auxiliar nova a
-        CADA chamada, e violava o contrato de threading do Playwright —
-        a API síncrona do Playwright só pode ser chamada a partir da
-        MESMA thread que iniciou `sync_playwright()` (aqui, a própria
-        thread do engine). Chamar `evaluate()` de uma thread estranha
-        registra um contexto de greenlet que nunca é devidamente limpo
-        quando o timeout expira e o código segue em frente sem esperar
-        essa thread terminar de verdade — o evaluate() "esquecido"
-        continua rodando de verdade em segundo plano, e quando ele
-        finalmente resolve (às vezes só no fechamento do Fênix), tenta
-        retomar uma greenlet cuja thread dona já não existe mais.
-
-        Nova abordagem: `frame.evaluate()` roda direto NESTA thread (a
-        única forma correta de chamar a API síncrona do Playwright).
-        Uma thread "sentinela" à parte não chama NENHUM método do
-        Playwright — ela só espera `timeout_s` e, se a chamada ainda
-        não tiver terminado, presume que o navegador travou e encerra
-        o processo do Edge por PID (`_matar_processo_fenix_edge`, ação
-        de sistema operacional, sem relação com o Playwright, portanto
-        segura de chamar de qualquer thread).
-
-        CORREÇÃO (v20 — travamento permanente relatado pelo usuário: um
-        PDF em modo de teste travou o preenchimento, o Edge foi
-        encerrado como esperado, mas o Fênix ficou "rodando" sem fazer
-        nada — Play e Stop pararam de ter qualquer efeito, exigindo
-        matar o processo do Fênix inteiro): o parágrafo anterior desta
-        docstring presumia que matar o processo do Edge sempre destrava
-        o `evaluate()` pendente com um erro. NÃO é garantido — um
-        `taskkill /F` não envia um close limpo pelo canal CDP, então o
-        Playwright pode nunca perceber a conexão perdida, e a chamada
-        síncrona bloqueada na thread do engine trava PARA SEMPRE (essa
-        thread nunca mais volta a checar `_play_ev`/`_stop_ev`, porque
-        não está num loop — está parada dentro desta única chamada).
-        Python não tem como interromper de fora uma chamada síncrona
-        bloqueada noutra thread. A sentinela agora dá uma janela curta
-        (5s) para o caminho feliz depois de matar o processo; se o
-        `evaluate()` ainda não retornou, marca `self._travado_ev` e
-        avisa a UI (`on_engine_travado`) para abandonar esta thread
-        (ela é daemon — presa, mas inofensiva) e criar uma instância
-        nova de `HondaEngine`, em vez de deixar o usuário com um app
-        que parece rodando mas nunca mais vai fazer nada.
+        CORREÇÃO DEFINITIVA (causa raiz do travamento permanente
+        relatado pelo usuário — "quase não funciona, fecha o tempo
+        todo"): a implementação anterior (`_js_set`, removida) usava
+        `frame.evaluate()` com JavaScript injetado para setar o valor e
+        disparar os eventos manualmente. O Playwright NÃO impõe nenhum
+        timeout próprio a `evaluate()` — foi por isso que o Fênix
+        precisou inventar uma thread "sentinela" para adivinhar quando
+        travou e matar o processo do Edge à força (`_evaluate_com_timeout`
+        + `_matar_processo_fenix_edge`, ambos removidos), um mecanismo
+        inteiro que o AlphaBot NUNCA teve porque nunca precisou: ações
+        nativas do Playwright (`click`, `press`, `fill`, `wait_for`) já
+        têm timeout embutido e seguro — se travarem, levantam uma
+        exceção limpa na MESMA thread, sem sentinela, sem matar
+        processo, sem perder o estado do engine. Divergir dessa API foi
+        a causa raiz de toda a instabilidade desta sessão; usar a
+        mesma API do AlphaBot elimina o problema pela raiz, não só o
+        sintoma.
         """
-        concluido = threading.Event()
-        travou = {"sim": False}
-
-        def _sentinela():
-            if not concluido.wait(timeout_s):
-                travou["sim"] = True
-                logger.aviso(
-                    f"evaluate() não respondeu em {timeout_s:.0f}s — "
-                    "encerrando o Edge para destravar o engine."
-                )
-                self._matar_processo_fenix_edge()
-
-                # Encerrar o processo do Edge NÃO garante que a chamada
-                # bloqueada de `frame.evaluate()` (rodando na thread do
-                # engine, abaixo) realmente retorne — um `taskkill /F`
-                # não envia um close limpo pelo canal CDP, então o
-                # Playwright pode nunca perceber a conexão perdida e a
-                # thread do engine fica presa para sempre. Dá-se uma
-                # janela curta para o caminho feliz (a chamada retorna
-                # com um erro assim que o Playwright detecta a conexão
-                # encerrada); se isso não acontecer, marca o engine
-                # como travado — a UI vai abandonar esta thread e criar
-                # uma instância nova (ver `ui/main_window.py`,
-                # `on_engine_travado`), já que Play/Stop nunca mais
-                # teriam efeito nela.
-                if not concluido.wait(5.0):
-                    self._travado_ev.set()
-                    self._atualizar(
-                        "on_engine_travado",
-                        "O navegador travou ao preencher um campo e precisou ser encerrado à força.",
-                    )
-
-        threading.Thread(target=_sentinela, daemon=True).start()
         try:
-            return frame.evaluate(script, arg)
-        except Exception as e:
-            if travou["sim"]:
-                raise TimeoutError(
-                    f"evaluate() não respondeu em {timeout_s:.0f}s — "
-                    "o navegador travou e precisou ser encerrado."
-                ) from e
-            raise
-        finally:
-            concluido.set()
+            if self._stop_ev.is_set():
+                return False
+            for frame in page.frames:
+                try:
+                    locator = frame.locator(f'input[name="{name}"]').first
+                    if locator.count() == 0:
+                        continue
 
-    def _js_set(self, page: Page, name: str, valor: str):
-        for frame in page.frames:
-            try:
-                ok = self._evaluate_com_timeout(
-                    frame,
-                    """([n, v]) => {
-                        const el = document.querySelector('input[name="' + n + '"]');
-                        if (!el) return false;
-                        el.focus(); el.value = v;
-                        el.dispatchEvent(new Event('input', {bubbles:true}));
-                        el.dispatchEvent(new Event('change', {bubbles:true}));
-                        return true;
-                    }""", [name, valor]
-                )
-                if ok:
-                    return
-            except TimeoutError as e:
-                self._parar_para_revisao_manual(f"Timeout ao preencher o campo '{name}': {e}")
-                return
-            except Exception:
-                continue
+                    locator.wait_for(state="visible", timeout=8_000)
+                    if self._stop_ev.is_set():
+                        return False
+                    locator.click(force=True)
+                    if self._stop_ev.is_set():
+                        return False
+                    locator.press("Control+A")
+                    locator.press("Backspace")
+                    if self._stop_ev.is_set():
+                        return False
+                    locator.fill(str(valor))
+                    return True
+                except Exception:
+                    continue
+            return False
+        except Exception as e:
+            logger.erro(f"Erro ao preencher o campo '{name}': {e}")
+            return False
 
     # -----------------------------------------------------------
     # Validação pré-GRAVAR
@@ -1776,11 +1682,11 @@ class HondaEngine(threading.Thread):
             "cep", "estado", "cidade", "bairro",
             "numero", "complemento",
         ):
-            self._js_set(page, settings.LUNA_CAMPOS[campo], "")
+            self._preencher_campo(page, settings.LUNA_CAMPOS[campo], "")
 
-        self._js_set(page, settings.LUNA_CAMPOS["grupo_cota"],
+        self._preencher_campo(page, settings.LUNA_CAMPOS["grupo_cota"],
                      parser_honda.normalizar(grupo_cota, preservar_ponto=True))
-        self._js_set(page, settings.LUNA_CAMPOS["endereco"],
+        self._preencher_campo(page, settings.LUNA_CAMPOS["endereco"],
                      parser_honda.normalizar(marcacao))
 
         if self._modo_teste:
@@ -1838,83 +1744,3 @@ class HondaEngine(threading.Thread):
             except Exception:
                 pass
 
-    def _navegar_seguro(self, page: Page, url: str):
-        try:
-            page.goto(url, wait_until="domcontentloaded", timeout=20_000)
-            page.wait_for_timeout(1_000)
-        except Exception as e:
-            logger.aviso(f"Aviso ao navegar: {e}")
-
-    def _pid_por_porta(self, porta: int) -> Optional[int]:
-        """
-        Descobre, via `netstat`, o PID do processo OUVINDO na porta de
-        depuração do Edge — independente de termos lançado o processo
-        nesta execução ou não. Mesmo grau de segurança do PID lembrado
-        (`self._edge_pid`): identifica exatamente o processo ligado à
-        porta dedicada do Fênix (`settings.EDGE_DEBUG_PORT`), nunca por
-        nome de imagem — o Edge pessoal do usuário não escuta nessa
-        porta, então não corre o risco de ser confundido e morto junto.
-        """
-        try:
-            saida = subprocess.run(
-                ["netstat", "-ano"], capture_output=True, text=True, timeout=5
-            ).stdout
-            for linha in saida.splitlines():
-                if re.search(rf":{porta}\s", linha) and "LISTENING" in linha.upper():
-                    partes = linha.split()
-                    if partes:
-                        return int(partes[-1])
-        except Exception:
-            pass
-        return None
-
-    def _matar_processo_fenix_edge(self):
-        """
-        Mata o processo do Edge da porta dedicada do Fênix, nunca por
-        nome de imagem — o Edge pessoal do usuário pode estar aberto ao
-        mesmo tempo, e um taskkill genérico por "msedge.exe" mataria os
-        dois indiscriminadamente.
-
-        CORRIGIDO (v21 — causa direta do padrão "trava → substitui
-        engine → reconecta no mesmo Edge quebrado → trava de novo"
-        relatado pelo usuário): antes, se `self._edge_pid` fosse
-        desconhecido (cenário comum — acontece toda vez que o Fênix
-        RECONECTA a um Edge de uma sessão anterior em vez de lançar um
-        novo, ver `_conectar_edge`, caminho "já está aberto"), esta
-        função não fazia NADA "por segurança". Na prática isso significa
-        que um Edge travado/zumbi reaproveitado nunca era encerrado: a
-        próxima tentativa de reconexão batia exatamente no mesmo
-        processo quebrado, travava de novo, e o ciclo se repetia sem
-        fim. Agora, na ausência do PID lembrado, o PID é identificado
-        pela porta de depuração (`_pid_por_porta`) — igualmente seguro
-        (identifica o processo específico da porta dedicada do Fênix,
-        não por nome de imagem) e fecha essa lacuna.
-        """
-        pid = self._edge_pid
-        origem = "lançado por este processo"
-        if not pid:
-            pid = self._pid_por_porta(settings.EDGE_DEBUG_PORT)
-            origem = f"identificado pela porta {settings.EDGE_DEBUG_PORT}"
-
-        if not pid:
-            logger.aviso(
-                "Não consegui identificar o PID do Edge do Fênix (nem pelo "
-                "lançamento, nem pela porta de depuração). Não vou encerrar "
-                "processos por segurança — feche manualmente a janela do "
-                "Edge do perfil dedicado se necessário."
-            )
-            return
-
-        logger.info(f"Encerrando o processo do Edge do Fênix (PID {pid}, {origem})...")
-        subprocess.run(
-            ["taskkill", "/F", "/T", "/PID", str(pid)], capture_output=True
-        )
-        self._edge_pid = None
-        # 3s (era 1.5s): dá tempo do Windows liberar de fato o lock do
-        # perfil (SingletonLock) e todos os processos filhos do Edge
-        # (renderer, GPU, crashpad) encerrarem antes da próxima
-        # tentativa de abrir/conectar — o log real mostrou ciclos de
-        # "Abrindo Edge... Falha ao conectar via CDP" logo em seguida a
-        # um kill, consistente com essa corrida.
-        time.sleep(3.0)
-        logger.info("Processo encerrado.")

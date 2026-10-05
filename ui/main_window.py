@@ -1,7 +1,31 @@
 """
-Janela principal do Fênix — v7.
+Janela principal do Fênix — v9.
 
-Novidades desta versão (v7):
+Novidades desta versão (v9) — correção definitiva do travamento
+relatado pelo usuário (ver changelog completo em
+`modules/honda/engine.py` v24: trocar `frame.evaluate()` por ações
+nativas do Playwright eliminou a causa raiz, então a máquina de
+"engine travado" deste arquivo deixou de ser necessária):
+- REMOVIDO: callback `on_engine_travado`, método `_engine_travado` e
+  `_substituir_engine_travado` — sem mais chamadas cruas de
+  `evaluate()` sem timeout no engine, não existe mais cenário em que a
+  thread do engine trava para sempre, então não há mais nada para a UI
+  detectar ou substituir aqui.
+- NOVO: checkbox "Abrir PDF para conferência" (`abrir_pdf_var`,
+  default ligado) — INDEPENDENTE do Modo de Teste, réplica do
+  `abrir_pdf_visual_var` do AlphaBot original. Passado para
+  `HondaEngine.play(..., abrir_pdf=...)`.
+
+Histórico (v8):
+- Botão "Abrir Edge Debug" (réplica do AlphaBot original): chama
+  `HondaEngine.abrir_edge_debug()` direto (não usa Playwright, seguro
+  chamar da UI). Fez parte da regressão arquitetural pedida pelo
+  usuário — o Fênix não abre mais o Edge, faz login ou navega sozinho
+  a partir do Play; o usuário prepara a janela manualmente (abre com
+  este botão, loga, seleciona HONDA, deixa um caso carregado) e só
+  então clica Play.
+
+Histórico (v7):
 - Callback `on_engine_travado`: quando a thread do engine trava para
   sempre numa chamada bloqueada do Playwright (ver
   `modules/honda/engine.py` v21, `_evaluate_com_timeout`) — cenário em
@@ -168,6 +192,32 @@ class FenixApp(ctk.CTk):
         )
         self.check_modo_teste.grid(row=2, column=0, sticky="w", pady=(12, 0))
 
+        # Abrir PDF para conferência: INDEPENDENTE do Modo de Teste —
+        # réplica do `abrir_pdf_visual_var` do AlphaBot original, que
+        # ficava ligado por padrão na versão final de produção, sem
+        # nenhuma diferença no trabalho do robô (só abre o PDF na tela
+        # pra você acompanhar; não pausa nem muda o fluxo).
+        self.abrir_pdf_var = ctk.BooleanVar(value=True)
+        self.check_abrir_pdf = ctk.CTkCheckBox(
+            cabecalho, text="Abrir PDF para conferência",
+            variable=self.abrir_pdf_var, font=theme.FONTE_LABEL_PEQUENA,
+        )
+        self.check_abrir_pdf.grid(row=3, column=0, sticky="w", pady=(8, 0))
+
+        # Réplica do botão "Abrir Edge Debug" do AlphaBot original: só
+        # abre o Edge com depuração remota no perfil dedicado do Fênix.
+        # O usuário loga, seleciona HONDA e deixa um caso carregado
+        # manualmente — só depois disso o Play deve ser clicado. O
+        # engine (`HondaEngine.abrir_edge_debug`) não navega, não loga
+        # e não seleciona banco/tipo sozinho a partir do Play.
+        self.btn_edge_debug = ctk.CTkButton(
+            cabecalho, text="Abrir Edge Debug",
+            command=self._abrir_edge_debug,
+            fg_color="transparent", border_width=1,
+            font=theme.FONTE_BOTAO,
+        )
+        self.btn_edge_debug.grid(row=2, column=1, sticky="e", pady=(12, 0))
+
         # Botão circular renderizado como imagem — garante círculo perfeito
         from core.icon_loader import botao_circular
         self._img_play       = botao_circular(theme.ICONE_PLAY, theme.COR_PRIMARIA,       80, 34)
@@ -316,10 +366,12 @@ class FenixApp(ctk.CTk):
             self.label_modulo.configure(text="Honda")
             self.label_descricao.configure(text="Automação completa do início ao fim.")
             self.check_modo_teste.grid()
+            self.check_abrir_pdf.grid()
         else:
             self.label_modulo.configure(text="Volks")
             self.label_descricao.configure(text="Assistente — preenche e aguarda sua conferência.")
             self.check_modo_teste.grid_remove()
+            self.check_abrir_pdf.grid_remove()
             self._mostrar_confirmacao(False)
 
     # -----------------------------------------------------------
@@ -328,22 +380,16 @@ class FenixApp(ctk.CTk):
     def _alternar_execucao(self):
         self.rodando = not self.rodando
         if self.rodando:
-            if self._engine.travado:
-                # Defesa extra: normalmente `_engine_travado` já troca o
-                # engine assim que a trava é detectada (ver callback
-                # `on_engine_travado`). Isto só age se, por alguma
-                # corrida, o usuário clicar Play antes desse callback
-                # rodar — nunca reaproveita uma thread presa.
-                self._substituir_engine_travado()
             self.frame_alerta_critico.grid_remove()
             self._btn_acao_stop()
             modo_teste = bool(self.modo_teste_var.get())
+            abrir_pdf = bool(self.abrir_pdf_var.get())
             if modo_teste:
                 logger.info(
-                    "Modo de Teste ativado — o Fênix vai abrir o PDF e pausar "
-                    "antes de cada GRAVAR para sua conferência."
+                    "Modo de Teste ativado — o Fênix vai pausar antes de cada "
+                    "GRAVAR para sua conferência."
                 )
-            self._engine.play(self._montar_callbacks(), modo_teste=modo_teste)
+            self._engine.play(self._montar_callbacks(), modo_teste=modo_teste, abrir_pdf=abrir_pdf)
             # Monitora quando o engine para para atualizar o botão
             self.after(300, self._verificar_engine_parado)
         else:
@@ -363,38 +409,7 @@ class FenixApp(ctk.CTk):
             )),
             "on_gravar": lambda v: self.after(0, lambda: self._atualizar_cartao_gravar(v)),
             "on_erro_critico": lambda motivo: self.after(0, lambda: self._mostrar_alerta_critico(motivo)),
-            "on_engine_travado": lambda motivo: self.after(0, lambda: self._engine_travado(motivo)),
         }
-
-    def _engine_travado(self, motivo: str):
-        """
-        Chamado quando a thread do engine trava para sempre numa
-        chamada bloqueada do Playwright (ver `HondaEngine.
-        _evaluate_com_timeout` — matar o processo do Edge não garante
-        que a chamada travada retorne). Sem isto, o Fênix ficava com o
-        botão em modo "rodando" indefinidamente: Play e Stop paravam de
-        ter qualquer efeito, porque a única thread do engine nunca mais
-        executava uma linha de código, e o usuário precisava matar o
-        processo do Fênix inteiro para conseguir continuar operando.
-        """
-        logger.aviso("O engine travou de forma irrecuperável — substituindo por uma instância nova.")
-        self.rodando = False
-        self._btn_acao_play()
-        self._mostrar_confirmacao(False)
-        self._mostrar_alerta_critico(
-            f"{motivo} O motor foi reiniciado automaticamente — clique em Play para abrir um novo Edge e continuar."
-        )
-        self._substituir_engine_travado()
-
-    def _substituir_engine_travado(self):
-        """
-        Abandona a thread presa (é daemon — não impede o Fênix de
-        fechar, só fica parada consumindo uma thread ociosa) e cria uma
-        `HondaEngine` nova, pronta para o próximo Play.
-        """
-        from modules.honda.engine import HondaEngine
-        self._engine = HondaEngine()
-        self._engine.start()
 
     def _mostrar_alerta_critico(self, motivo: str):
         """
@@ -468,6 +483,16 @@ class FenixApp(ctk.CTk):
         self._engine.quit()
         self._engine.aguardar_encerramento(timeout=6.0)
         self.destroy()
+
+    def _abrir_edge_debug(self):
+        """
+        Botão manual — só abre o Edge com depuração remota ativa,
+        nada mais. Chama direto `HondaEngine.abrir_edge_debug`, que não
+        usa Playwright (só `subprocess`), então é seguro chamar daqui
+        (thread principal da UI) mesmo com o engine dormindo à espera
+        de Play.
+        """
+        self._engine.abrir_edge_debug()
 
     def _abrir_configuracoes(self):
         logger.info("Configurações ainda não implementadas nesta versão.")
